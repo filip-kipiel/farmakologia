@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Farmakologia - leki pogrupowane</title>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; max-width: 1400px; margin: 20px auto; padding: 0 20px; color: #222; line-height: 1.35; }
+  h1 { text-align: center; color: #2c3e50; border-bottom: 3px solid #2c3e50; padding-bottom: 10px; }
+  h2 { color: #fff; background: #2c3e50; padding: 10px 15px; margin-top: 40px; border-radius: 6px; font-size: 1.15em; }
+  h3 { color: #2c3e50; margin-top: 25px; border-left: 5px solid #e74c3c; padding-left: 10px; }
+  .grupa-info { background: #fff8dc; border-left: 5px solid #f39c12; padding: 10px 15px; margin: 10px 0 15px 0; font-size: 0.95em; }
+  .mnemo { background: #e8f5e9; border-left: 5px solid #27ae60; padding: 8px 15px; margin: 10px 0; font-style: italic; font-size: 0.95em; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 15px; font-size: 0.83em; }
+  th, td { border: 1px solid #bbb; padding: 6px 8px; vertical-align: top; text-align: left; }
+  th { background: #34495e; color: white; font-weight: 600; }
+  td:first-child { font-weight: bold; background: #f4f6f7; width: 130px; }
+  tr:nth-child(even) td:not(:first-child) { background: #fafbfc; }
+  .toc { background: #ecf0f1; padding: 15px 25px; border-radius: 8px; margin-bottom: 30px; }
+  .toc ol { columns: 2; column-gap: 30px; }
+  .toc a { color: #2980b9; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .key { color: #c0392b; font-weight: bold; }
+  @media print { h2 { page-break-before: always; } h2:first-of-type { page-break-before: avoid; } }
+</style>
+</head>
+<body>
+
+<h1>Farmakologia weterynaryjna — leki pogrupowane</h1>
+
+<div class="toc">
+<strong>Spis treści (mechanizm → grupa leków):</strong>
+<ol>
+  <li><a href="#g1">Przeciwgrzybicze: AZOLE (hamują syntezę ergosterolu)</a></li>
+  <li><a href="#g2">Przeciwgrzybicze: pozostałe inhibitory ergosterolu (alliloaminy, morfoliny, pirydynony)</a></li>
+  <li><a href="#g3">Przeciwgrzybicze: POLIENY (porami w błonie)</a></li>
+  <li><a href="#g4">Przeciwgrzybicze: pozostałe (gryzeofulwina, flucytozyna, echinokandyny)</a></li>
+  <li><a href="#g5">Przeciwwirusowe: analogi nukleozydów (hamują polimerazę DNA)</a></li>
+  <li><a href="#g6">Przeciwwirusowe: pozostałe mechanizmy</a></li>
+  <li><a href="#g7">Endopasożyty: BENZIMIDAZOLE (mikrotubule nicieni)</a></li>
+  <li><a href="#g8">Endopasożyty: agoniści receptorów cholinergicznych (paraliż spastyczny)</a></li>
+  <li><a href="#g9">Endo+Ekto: MAKROCYKLICZNE LAKTONY — endektocydy (kanały Cl⁻, paraliż wiotki)</a></li>
+  <li><a href="#g10">Przeciw tasiemcom / przywrom</a></li>
+  <li><a href="#g11">Przeciw pierwotniakom (kokcydia, babesia, giardia)</a></li>
+  <li><a href="#g12">Ektopasożyty: IZOKSAZOLINY (kanały Cl⁻/GABA — paraliż)</a></li>
+  <li><a href="#g13">Ektopasożyty: pozostałe neurotoksyny (neonikotynoidy, fipronile, pyretroidy, karbaminiany, formamidyny)</a></li>
+  <li><a href="#g14">Ektopasożyty: IGR — regulatory wzrostu owadów</a></li>
+  <li><a href="#g15">GLIKOKORTYKOSTEROIDY (immunosup./przeciwzapalne)</a></li>
+  <li><a href="#g16">Cytostatyki: leki ALKILUJĄCE</a></li>
+  <li><a href="#g17">Cytostatyki: ANTYMETABOLITY</a></li>
+  <li><a href="#g18">Cytostatyki: inhibitory MITOZY (alkaloidy + taksany)</a></li>
+  <li><a href="#g19">Cytostatyki: antybiotyki przeciwnowotworowe (interkalujące DNA)</a></li>
+  <li><a href="#g20">Cytostatyki: pochodne PLATYNY</a></li>
+  <li><a href="#g21">INHIBITORY KINAZ (tyrozynowych i janusowych)</a></li>
+  <li><a href="#g22">Immunosupresyjne selektywne (limfocyty T/B)</a></li>
+  <li><a href="#g23">IMMUNOMODULATORY (stymulujące)</a></li>
+  <li><a href="#g24">Okulistyka: antybiotyki</a></li>
+  <li><a href="#g25">Okulistyka: jaskra (obniżenie ciśnienia śródgałkowego)</a></li>
+  <li><a href="#g26">Okulistyka: NLPZ + inhibitory metaloproteinaz</a></li>
+</ol>
+</div>
+
+<!-- ============================================ -->
+<h2 id="g1">1. Przeciwgrzybicze: AZOLE — hamują syntezę ergosterolu</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> hamują enzym zależny od cyt. P-450 → zahamowanie syntezy ergosterolu → gromadzą się toksyczne sterole pośrednie → wzrost przepuszczalności błony → <span class="key">ŚMIERĆ</span>. Działają <strong>grzybostatycznie</strong>, w wyższych stężeniach grzybobójczo.<br>
+<strong>Wspólne DN:</strong> hepatotoksyczność, zaburzenia pp. <strong>Inhibitory cyt. P450.</strong>
+</div>
+<div class="mnemo"><strong>Mnemonik:</strong> <span class="key">I gen</span> = pochodne imidazolu = TYLKO MIEJSCOWO (Enilkonazol, Klotrimazol, Mikonazol, Ekonazol). <span class="key">II gen</span> = ketokonazol (miejscowo+ogólnie). <span class="key">III gen</span> = pochodne triazolu = OGÓLNIE (itrakonazol, flukonazol). <span class="key">IV gen</span> = worykonazol, pozakonazol (ciężkie grzybice).</div>
+<table>
+<tr><th>Lek</th><th>Generacja</th><th>Spektrum</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>enilkonazol</td><td>I (imidazol)</td><td>dermatofity, drożdżaki</td><td>TYLKO MIEJSCOWO — infekcje skórne, dezynfekcja w fermach drobiu</td><td>—</td><td>—</td></tr>
+<tr><td>klotrimazol</td><td>I (imidazol)</td><td>dermatofity, drożdżaki, pleśnie, niekt. G+, pierwotniaki</td><td>MIEJSCOWO — skóra, błony śluzowe, rogówka, pochwa, macica</td><td>—</td><td>—</td></tr>
+<tr><td>mikonazol / ekonazol</td><td>I (imidazol)</td><td>dermatofity, drożdżaki, pleśnie, G+</td><td>MIEJSCOWO — skóra, błony śluzowe, uszy</td><td>—</td><td>—</td></tr>
+<tr><td>ketokonazol</td><td>II (imidazol)</td><td>dermatofity, drożdżaki, dimorficzne, pleśnie</td><td>OGÓLNIE + MIEJSCOWO — grzybice skóry, <strong>nadczynność kory nadnerczy</strong></td><td>KOTY, wątroba, trombocytopenia, nadwrażliwość</td><td>pp, hepatotoksyczność, trombocytopenia, neurologiczne, zaburzenia hormonalne (↓testosteron, ↑progesteron), zaćma, teratogenny</td></tr>
+<tr><td>itrakonazol</td><td>III (triazol)</td><td>jak ketokonazol</td><td>OGÓLNIE — dermatofitozy; aspergiloza u ptaków, blastomykoza, kryptokokoza</td><td>wątroba, nerki, ciąża, laktacja, niewydolność serca</td><td>pp, ślinotok, depresja, apatia, hepatotoksyczność, owrzodzenia skóry; działa inotropowo (-)</td></tr>
+<tr><td>flukonazol</td><td>III (triazol)</td><td>głównie drożdżaki, dermatofity, grzyby dimorficzne</td><td>OGÓLNIE doustnie/dożylnie — grzybice układowe i skóry</td><td>papużki faliste, wątroba, nerki, ciąża</td><td>brak apetytu, wymioty, biegunka, hiperadrenokortycyzm, hepatotoksyczność, wyłysienia</td></tr>
+<tr><td>worykonazol</td><td>IV (triazol)</td><td>pleśnie, dimorficzne, drożdżaki, dermatofity</td><td>OGÓLNIE — ciężkie grzybice, głównie aspergiloza</td><td>koty, wątroba, arytmie, ciąża</td><td>brak apetytu, ↓masy, apatia, hepatomegalia, wysypka (droga terapia)</td></tr>
+<tr><td>pozakonazol</td><td>IV (triazol)</td><td>jak worykonazol</td><td>OGÓLNIE + MIEJSCOWO — ciężkie grzybice</td><td>brak danych</td><td>świąd, rumień, brak apetytu, wymioty, polidypsja</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g2">2. Przeciwgrzybicze: pozostałe inhibitory ergosterolu</h2>
+<div class="grupa-info">Też uderzają w ergosterol, ale <strong>inny etap szlaku</strong> niż azole.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Spektrum</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>terbinafina, naftifina, butenafina</td><td>alliloaminy</td><td>hamują przekształcanie skwalenu do steroli → akumulacja skwalenu w komórce; grzybobójczy</td><td>głównie dermatofity, drożdżaki, dimorficzne, pleśnie</td><td>OGÓLNIE + MIEJSCOWO — infekcje dermatofitami</td><td>nadwrażliwość, wątroba, nerki, ciąża, laktacja</td><td>wymioty, biegunki, nadmierne ziajanie, ↑enzymy wątrobowe, letarg, świąd</td></tr>
+<tr><td>amorolfina</td><td>morfoliny</td><td>hamują enzymy syntetyzujące ergosterol; statyczno/bójczo</td><td>dermatofity, drożdżaki, dimorficzne, pleśnie</td><td>TYLKO MIEJSCOWO — grzybice skóry, dermatofitozy powierzchowne</td><td>—</td><td>podrażnienie skóry, zaczerwienienie, świąd (długo utrzymuje się w keratynie)</td></tr>
+<tr><td>cyklopiroks</td><td>pochodne pirydynonu</td><td>zaburzenia transportu błonowego; grzybobójczo</td><td>dermatofity, drożdżaki</td><td>TYLKO MIEJSCOWO</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g3">3. Przeciwgrzybicze: POLIENY — tworzą pory w błonie</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> wiążą ergosterol → wbudowują się w błonę → tworzą pory → utrata Na+/K+ → śmierć komórki.
+</div>
+<table>
+<tr><th>Lek</th><th>Spektrum</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>nystatyna</td><td>Candida spp.</td><td>TYLKO MIEJSCOWO — zapalenie ucha zewn., kandydoza; doustnie w drożdżycach pp (nie wchłania się)</td><td>—</td><td>utrata łaknienia, działanie drażniące na błony śluzowe pp</td></tr>
+<tr><td>natamycyna</td><td>Candida spp., niektóre pleśnie</td><td>MIEJSCOWO — spojówka, pochwa, jama ustna, uszy</td><td>—</td><td>nadwrażliwość na światło, wymioty, brak apetytu</td></tr>
+<tr><td>amfoterycyna B</td><td>szerokie — Candida, Aspergillus, Cryptococcus, Leishmania</td><td>OGÓLNIE — grzybice narządowe zagrażające życiu, kryptokokoza, aspergiloza</td><td>problemy z nerkami, odwodnienie, zaburzenia elektrolitowe</td><td><span class="key">nefrotoksyczność</span>, zapalenie żył, kwasica, hipokaliemia, hipomagnezemia, gorączka, hepatotoksyczność, arytmie — NIE pierwszego wyboru</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g4">4. Przeciwgrzybicze: pozostałe (gryzeofulwina, flucytozyna, echinokandyny)</h2>
+<table>
+<tr><th>Lek</th><th>Grupa / mechanizm</th><th>Spektrum</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>gryzeofulwina</td><td>antybiotyk niepolienowy; zakłóca mikrotubule → hamuje mitozę grzyba</td><td>dermatofity (<strong>NIE Candida, NIE Malassezia</strong>)</td><td>OGÓLNIE doustnie — grzybice skóry/wytworów, łupież pstry; wchłania się lepiej z tłuszczem</td><td>ciąża, FIV, <strong>KOTY!</strong></td><td>teratogenność, mielosupresja, anoreksja, wymioty, hepato-, neurotoksyczność, niedokrwistość, uszkodzenie szpiku</td></tr>
+<tr><td>flucytozyna</td><td>antymetabolit — w komórce grzyba → 5-fluorouracyl → hamuje syntezę białek</td><td>drożdżaki (grzybostatyczna)</td><td>OGÓLNIE — kryptokokowe zapalenie opon mózgowych; łączona z amfoterycyną B i azolami; przenika do OUN</td><td>psy, nerki, szpik, ciąża, laktacja</td><td>zaburzenia pp, zmiany skórne, mielosupresja, owrzodzenia jamy ustnej, ↑enzymy wątrobowe, OUN, supresja szpiku, hepatotoksyczność</td></tr>
+<tr><td>kaspofungina, anidulafungina, mikafungina</td><td>echinokandyny — blok syntezy β-glukanu (ściany komórkowej)</td><td>pleśnie, drożdżaki — grzybobójczo</td><td>OGÓLNIE dożylnie</td><td>wątroba, ciąża</td><td>wysypka, świąd, hepatotoksyczność, gorączka, ból w miejscu iniekcji, objawy hematologiczne</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g5">5. Przeciwwirusowe: analogi nukleozydów — hamują polimerazę DNA</h2>
+<div class="grupa-info">Wszystkie wbudowują się w DNA wirusa zamiast prawidłowych zasad, hamując polimerazę DNA. Większość wymaga aktywacji przez kinazy wirusowe — wyjątek: <strong>cydofowir</strong> (nie wymaga aktywacji) i <strong>foskarnet</strong> (nie analog nukleozydu).</div>
+<table>
+<tr><th>Lek</th><th>Mechanizm szczegółowy</th><th>Spektrum</th><th>Zastosowanie</th><th>Działania niepożądane</th></tr>
+<tr><td>idoksurydyna, tryflurydyna</td><td>analogi pirymidynowe — wbudowują się w DNA zamiast tymidyny</td><td>herpeswirusy</td><td>OKULISTYKA — wirusowe zakażenia rogówki (HSV)</td><td>podrażnienie, ból, świąd, światłowstręt, obrzęk spojówek; idoksurydyna <span class="key">kardiotoksyczna</span></td></tr>
+<tr><td>acyklowir</td><td>analog purynowy; aktywowany przez kinazy wirusowe</td><td>herpeswirusy</td><td>zapalenie rogówki u koni (opryszczka końska), herpeswiroza w nosówce</td><td>nefrotoksyczność, neurologiczne, pp, zapalenie żył; <span class="key">u kotów</span>: supresja szpiku + hepatotoksyczność</td></tr>
+<tr><td>famcyklowir → pencyklowir</td><td>prolek pencyklowiru; aktywowany przez kinazy</td><td>herpeswirusy</td><td>FHV-1, ospa u kotów</td><td>wymioty, letarg</td></tr>
+<tr><td>gancyklowir</td><td>jak acyklowir, aktywacja kinazami</td><td>herpeswirusy</td><td>(rzadko stosowany w wet.)</td><td>mielo-, terato-, mutagenny, nefro-, hepatotoksyczność, pp, neurologiczne</td></tr>
+<tr><td>cydofowir</td><td>hamuje polimerazę DNA, <strong>NIE wymaga aktywacji kinazą</strong></td><td>herpeswirusy</td><td>okulistyka FHV-1</td><td>—</td></tr>
+<tr><td>L-lizyna</td><td>konkuruje z argininą → ↓ biodostępności argininy → hamowanie replikacji</td><td>herpeswirusy</td><td>profilaktycznie w czasie nawrotów FHV-1</td><td>wymioty, biegunka, brak apetytu</td></tr>
+<tr><td>zydowudyna</td><td>analog deoksytymidyny — <strong>inhibitor odwrotnej transkryptazy</strong> (RNA→DNA)</td><td>retrowirusy</td><td>FIV, FeLV</td><td>niedokrwistość, małopłytkowość, granulocytopenia, OUN, wątroba, owrzodzenia przełyku</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g6">6. Przeciwwirusowe: pozostałe mechanizmy</h2>
+<table>
+<tr><th>Lek</th><th>Mechanizm</th><th>Zastosowanie</th><th>Działania niepożądane</th></tr>
+<tr><td>interferon omega / alfa</td><td>nie działa bezpośrednio na wirusa — pobudza komórki do produkcji białek antywirusowych; aktywuje geny przeciwwirusowe</td><td>kocia białaczka, FIV, herpeswirusowe zapalenia oka, chłoniak skórny u psów, parwowiroza, wirusowe zap. żołądka/jelit, wirusowe zap. płuc u bydła</td><td>wymioty, luźne stolce, przejściowe ↓ leukocytów/płytek/erytrocytów u kotów, zmęczenie; alfa może indukować przeciwciała neutralizujące</td></tr>
+<tr><td>foskarnet</td><td>nienukleotydowy analog pirofosforanu — hamuje polimerazę DNA/RNA + odwrotną transkryptazę; <strong>nie wymaga aktywacji</strong></td><td>opryszczka kotów, FIP, FeLV, FIV, chłoniak skórny u psów</td><td>nefro-, neurotoksyczność</td></tr>
+<tr><td>raltegrawir</td><td>inhibitor integrazy wirusowej — blokuje wbudowanie DNA wirusa do genomu</td><td>FIV, FeLV</td><td>—</td></tr>
+<tr><td>amantadyna</td><td>inhibitor białka M2 — blokuje usuwanie płaszcza wirusa (otwieranie kapsydu); unieczynnia hemaglutyninę</td><td>grypa; przewlekły ból</td><td>teratogenność, niepokój</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g7">7. Endopasożyty: BENZIMIDAZOLE — hamują mikrotubule nicieni</h2>
+<div class="grupa-info"><strong>Wspólny mechanizm:</strong> wiążą się z β-tubuliną → hamują polimeryzację → brak mikrotubuli w kom. jelitowych pasożyta → brak wchłaniania glukozy → zużywa endogenny glikogen → wygłodzenie → śmierć. Wszystkie <strong>przeciw nicieniom</strong>.</div>
+<div class="mnemo"><strong>Mnemonik:</strong> wszystkie kończą się na <span class="key">-(en)dazol</span> lub febantel (prolek do fenbendazolu).</div>
+<table>
+<tr><th>Lek</th><th>Spektrum</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>fenbendazol</td><td>nicienie pp i płucne, część tasiemców, giardia</td><td>ciąża</td><td>biegunka, wymioty, reakcje alergiczne</td></tr>
+<tr><td>albendazol</td><td>nicienie, tasiemce, niektóre przywry</td><td>nadwrażliwość</td><td>wymioty, biegunka, zaburzenia rozwoju piór u kur</td></tr>
+<tr><td>flubendazol</td><td>nicienie jelitowe</td><td>gołębie, papugi, nadwrażliwość</td><td>brak</td></tr>
+<tr><td>oksybendazol</td><td>nicienie pp</td><td>brak</td><td>nudności, biegunka</td></tr>
+<tr><td>febantel</td><td>nicienie pp + część tasiemców (PROLEK)</td><td>ciąża, nadwrażliwość</td><td>brak</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g8">8. Endopasożyty: agoniści receptorów cholinergicznych — paraliż spastyczny</h2>
+<div class="grupa-info"><strong>Wspólny mechanizm:</strong> agonizm receptorów nikotynowych/muskarynowych pasożyta → ciągła depolaryzacja → <strong>skurcz i spastyczne porażenie</strong> → śmierć.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Spektrum</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>lewamizol</td><td>imidazotiazole</td><td>nicienie żołądkowo-jelitowe i płucne</td><td>niewydolność wątroby/nerek, wyniszczenie, ciąża</td><td>negatywny wpływ na nasienie, zaburzenia hematologiczne u psów, ślinienie, drżenie, wymioty, bradykardia</td></tr>
+<tr><td>pyrantel, morantel, oksantel</td><td>tetrahydropirymidyny</td><td>nicienie jelitowe, tasiemce</td><td>wyniszczenie</td><td>ślinienie, wymioty</td></tr>
+<tr><td>monepantel</td><td>pochodne amino-acetonitrylu</td><td>nicienie pp (receptor swoisty dla nicieni)</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g9">9. MAKROCYKLICZNE LAKTONY (endektocydy) — paraliż wiotki</h2>
+<div class="grupa-info"><strong>Wspólny mechanizm:</strong> wiążą się z kanałami chlorkowymi zależnymi od glutaminianu (i GABA) w kom. nerwowych/mięśniowych pasożyta → napływ Cl⁻ → <strong>hiperpolaryzacja → porażenie wiotkie</strong> → śmierć. Działają na pasożyty <strong>wewnętrzne ORAZ zewnętrzne</strong>.</div>
+<div class="mnemo"><strong>Mnemonik:</strong> dwie podgrupy: <span class="key">AWERMEKTYNY</span> (iwer-, dora-, eprynom-, selam-ektyna) + <span class="key">MILBEMYCYNY</span> (milbemycyna, moksydektyna). Wspólne DN: <span class="key">nadmierne ślinienie, problemy z widzeniem, ataksja, objawy neurologiczne</span>.</div>
+<table>
+<tr><th>Lek</th><th>Podgrupa</th><th>Spektrum</th><th>Przeciwwskazania</th><th>Dodatkowe</th></tr>
+<tr><td>iwermektyna</td><td>awermektyny</td><td>nicienie pp/płucne, wszy, świerzbowce, larwy much</td><td>młodsze niż 6 tyg.</td><td>przenika przez BBB</td></tr>
+<tr><td>doramektyna</td><td>awermektyny</td><td>nicienie pp/płucne, wszy, świerzbowce, gzy, nużeńce</td><td>cielęta &lt;3 mies., bydło i owce w laktacji</td><td>działa dłużej niż iwermektyna</td></tr>
+<tr><td>eprynomektyna</td><td>awermektyny</td><td>nicienie pp/płuc, wszy, roztocza, gzy</td><td>nadwrażliwość</td><td>—</td></tr>
+<tr><td>selamektyna</td><td>awermektyny</td><td>pchły, świerzbowce, wszy, wszoły, nicienie</td><td>psy &lt;6 tyg., koty &lt;8 tyg.</td><td>+ obszary łysienia, ospałość</td></tr>
+<tr><td>oksym milbemycyny</td><td>milbemycyny</td><td>nicienie pp, dirofilarioza (profilaktyka i leczenie), niektóre roztocza</td><td>ciąża, laktacja</td><td>—</td></tr>
+<tr><td>moksydektyna</td><td>milbemycyny</td><td>nicienie pp/płucne, nużeńce, świerzbowce, wszy, gzy; dirofilarioza</td><td>młode zwierzęta</td><td>+ obniżenie apetytu, wymioty, uszkodzenia skóry</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g10">10. Przeciw TASIEMCOM i PRZYWROM</h2>
+<table>
+<tr><th>Lek</th><th>Mechanizm</th><th>Spektrum</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>prazykwantel</td><td>↑ przepuszczalność błon dla Ca²⁺ → depolaryzacja → skurcz mięśni pasożyta → oderwanie od tkanek</td><td>tasiemce, niektóre przywry</td><td>psy &lt;4 tyg., koty &lt;6 tyg., choroby nerek</td><td>ślinienie, biegunka, wymioty, brak apetytu, ból w iniekcji</td></tr>
+<tr><td>emodepsyd</td><td>depsypeptydy — stymulacja presynaptycznych rec. sekretynowych → porażenie</td><td>nicienie</td><td>kocięta &lt;8 tyg., nadwrażliwość</td><td>łysienie w miejscu podania, świąd, ślinotok, wymioty, biegunka; <strong>UWAGA: psy z mutacją MDR-1!</strong></td></tr>
+<tr><td>niklozamid</td><td>hamuje fosforylację oksydacyjną → ↑ kwas mlekowy + ↓ transport glukozy → spadek ATP → śmierć</td><td>tasiemce</td><td>niewydolność wątroby/nerek</td><td>nudności, wymioty</td></tr>
+<tr><td>klorsulon</td><td>hamuje enzymy szlaku glikolitycznego (główne źródło energii przywr)</td><td>motylice wątrobowe</td><td>—</td><td>—</td></tr>
+<tr><td>oksyklozanid</td><td>zaburza funkcję mitochondriów</td><td>motylica wątrobowa</td><td>—</td><td>przejściowy ↓ produkcji mleka, zmiękczenie kału</td></tr>
+<tr><td>triklabendazol, klozantel, rafoksanid</td><td>(brak preparatów w PL)</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g11">11. Przeciw PIERWOTNIAKOM (kokcydia, babesia, giardia)</h2>
+<table>
+<tr><th>Lek</th><th>Mechanizm</th><th>Spektrum</th><th>Działania niepożądane</th></tr>
+<tr><td>amprolium</td><td>kompetycyjny antagonista tiaminy → zaburza metabolizm węglowodanów kokcydiów</td><td>kokcydia (Eimeria)</td><td>brak (PW: nadwrażliwość)</td></tr>
+<tr><td>diklazuryl</td><td>przerywa cykl rozwojowy kokcydiów i wydalanie oocyst przez 2-3 tyg.</td><td>kokcydia</td><td>biegunki, wymioty, ospałość, zaleganie</td></tr>
+<tr><td>toltrazuryl</td><td>zaburza cykl w fazie merogonii i gamogonii — niszczy wszystkie stadia</td><td>kokcydia</td><td>—</td></tr>
+<tr><td>sulfonamidy + trimetoprim</td><td>—</td><td>kokcydia</td><td>—</td></tr>
+<tr><td>halofuginon</td><td>zaburza syntezę białek</td><td>Cryptosporidium parvum</td><td>biegunka (PW: pusty żołądek)</td></tr>
+<tr><td>imidokarb</td><td>inhibitor topoizomerazy II → hamuje replikację DNA</td><td>babesia, anaplasma</td><td>wymioty, gorączka, niepokój, drżenia (PW: dożylnie)</td></tr>
+<tr><td>doksycyklina, klindamycyna</td><td>—</td><td>babesia</td><td>—</td></tr>
+<tr><td>metronidazol, ronidazol, tynidazol</td><td>nitroimidazole — biernie wnikają, redukują się do aktywnych metabolitów, uszkadzają DNA niezależnie od fazy wzrostu</td><td>pierwotniaki: giardia, rzęsistki</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g12">12. Ektopasożyty: IZOKSAZOLINY — kanały Cl⁻/GABA, paraliż</h2>
+<div class="grupa-info"><strong>Wspólny mechanizm:</strong> blokują kanały chlorkowe zależne od glutaminianu i GABA → nadmierne pobudzenie ukł. nerwowego pasożyta → porażenie, śmierć. Wszystkie kończą się na <span class="key">-laner</span>.</div>
+<div class="mnemo"><strong>Wspólne PW:</strong> padaczka. <strong>Wspólne DN:</strong> wymioty, biegunka, anoreksja, letarg.</div>
+<table>
+<tr><th>Lek</th><th>Spektrum</th></tr>
+<tr><td>afoksolaner</td><td>pchły, nużeńce, kleszcze, świerzbowce</td></tr>
+<tr><td>esafoksolaner</td><td>pchły, kleszcze, roztocza</td></tr>
+<tr><td>sarolaner</td><td>pchły, nużeńce, kleszcze, świerzbowce</td></tr>
+<tr><td>fluralaner</td><td>pchły, kleszcze, świerzbowce, ptaszyniec kurzy</td></tr>
+<tr><td>lotilaner</td><td>pchły, kleszcze</td></tr>
+<tr><td>tigolaner</td><td>pchły, kleszcze</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g13">13. Ektopasożyty: pozostałe neurotoksyny</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Spektrum</th><th>Przeciwwskazania</th><th>DN</th></tr>
+<tr><td>imidaklopryd, dinotefuran</td><td>neonikotynoidy</td><td>agoniści rec. nikotynowych → nadmierna depolaryzacja → porażenie</td><td>dorosłe pchły</td><td>młode, rekonwalescenci</td><td rowspan="5">świąd, wymioty, ślinienie</td></tr>
+<tr><td>fipronil, pyriprol</td><td>fenylopirazole</td><td>blokowanie kanałów Cl⁻ (zwł. zależnych od GABA) → niekontrolowana aktywność OUN</td><td>pchły, kleszcze, (wszy)</td><td>króliki, młode, chore, osłabione</td></tr>
+<tr><td>permetryna, deltametryna, flumetryna</td><td>pyretroidy</td><td>blokery otwartych kanałów Na⁺ — depolaryzacja długotrwała</td><td>pchły, kleszcze, komary, muchy, wszy</td><td><strong>KOTY!</strong>, osłabione, chore</td></tr>
+<tr><td>propoksur</td><td>karbaminiany</td><td>hamują acetylocholinoesterazę → nagromadzenie ACh → porażenie</td><td>pchły, wszy, wszoły, muchy, kleszcze (częściowo)</td><td>młode, osłabione, choroby układu oddechowego</td></tr>
+<tr><td>amitraza</td><td>formamidyny</td><td>agonista rec. α2-adrenergicznych u pasożyta → zaburzenie przewodnictwa</td><td>(toksyczna dla pszczół)</td><td>koty, konie, chihuahua</td></tr>
+</table>
+<div class="grupa-info"><strong>Amitraza dodatkowo:</strong> sedacja psów, poliuria, polidypsja, bradykardia, hipotermia.</div>
+
+<!-- ============================================ -->
+<h2 id="g14">14. Ektopasożyty: IGR — regulatory wzrostu owadów</h2>
+<div class="grupa-info">Analogi <strong>hormonu juwenilnego</strong> — blokują przejście larw w kolejne stadia (metamorfozę), zaburzają rozwój jaj. <strong>NIE działają na postaci dorosłe</strong> — łączone z lekami zabijającymi dorosłe pchły.</div>
+<table>
+<tr><th>Lek</th><th>Spektrum</th><th>Przeciwwskazania</th><th>DN</th></tr>
+<tr><td>pyriproksyfen</td><td>jaja, larwy pcheł</td><td>koty</td><td>wymioty, ślinienie, świąd</td></tr>
+<tr><td>metopren</td><td>jaja, larwy pcheł</td><td>szczenięta, zwierzęta w rekonwalescencji</td><td>wymioty, ślinienie, świąd</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g15">15. GLIKOKORTYKOSTEROIDY</h2>
+<div class="grupa-info"><strong>Wspólny mechanizm:</strong> receptor cytoplazmatyczny → pobudzają/hamują ekspresję genów → nasilają syntezę <strong>lipokortyny</strong> → hamuje fosfolipazę A2 → blokuje kaskadę kwasu arachidonowego (cała kaskada).</div>
+<table>
+<tr><th>Lek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>prednizon / prednizolon</td><td>stany zapalne, alergie, atopowe zapalenie skóry</td><td>zapalenie tworzywa kopytowego, infekcje, wrzody, ciąża, infekcje oka, jaskra, zaćma, cukrzyca, gojenie, nefropatie, nadciśnienie</td><td><strong>jatrogenny zespół Cushinga</strong>, czynnościowy zanik kory nadnerczy, hiperglikemia, nadciśnienie, obrzęki, hipokaliemia, wrzody, osteoporoza, jaskra/zaćma, poronienia, drgawki</td><td>prednizon → psy; prednizolon → koty (lepiej się wchłania)</td></tr>
+<tr><td>octan prednizolonu, deksametazon</td><td>OCZNE: alergiczne zap. spojówek, powierzchowne punktowate zap. rogówki</td><td>infekcje wirusowe/grzybicze/bakteryjne, owrzodzenia, oparzenia, jaskra</td><td>immunosupresja, hamowanie reparacji, destrukcja rogówki, zaćma, jaskra</td><td>na rogówkę i do worka spojówkowego</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g16">16. Cytostatyki: leki ALKILUJĄCE</h2>
+<div class="grupa-info"><strong>Wspólny mechanizm:</strong> alkilacja grup funkcyjnych DNA o ujemnym ładunku — wymiana atomu wodoru w DNA rodnikiem alkilowym w cząsteczce guaniny → uszkodzenie DNA uniemożliwia podział komórek.</div>
+<table>
+<tr><th>Lek</th><th>Zastosowanie</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>cyklofosfamid</td><td>nowotwory ukł. chłonnego, mięsaki, płuc, sutka; choroby autoimmunologiczne</td><td>depresja szpiku, <strong>krwotoczne zap. pęcherza (akroleina!)</strong>, nudności, wymioty, ↓łaknienia, mielosupresja</td><td>prolek aktywowany w wątrobie; <strong>akroleina = metabolit</strong>; swoiste dla cyklu</td></tr>
+<tr><td>ifosfamid</td><td>mięsaki</td><td>jw.</td><td>akroleina</td></tr>
+<tr><td>chlorambucyl</td><td>białaczka limfatyczna, chłoniaki, mastocytoma, nowotwory krwi</td><td>mielotoksyczność (mielosupresja)</td><td>może być podawany z GKS</td></tr>
+<tr><td>mefalan</td><td>szpiczak</td><td>—</td><td>—</td></tr>
+<tr><td>busulfan</td><td>przewlekła białaczka szpikowa, czerwienica</td><td>—</td><td>hamuje rozplem granulocytów</td></tr>
+<tr><td>karmustyna</td><td>nowotwory OUN</td><td>nefro-, neurotoksyczność</td><td><strong>przenika do OUN</strong></td></tr>
+<tr><td>streptozocyna</td><td>nowotwory trzustki</td><td>nieodwracalne uszkodzenie trzustki, nefro-, neurotoksyczność</td><td>—</td></tr>
+<tr><td>lomustyna</td><td>guzy mózgu, białaczka, mastocytoma</td><td>hepatotoksyczność</td><td>—</td></tr>
+<tr><td>dakarbazyna</td><td>chłoniaki u psów</td><td>wymioty, brak apetytu, mielosupresja, niepokój</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g17">17. Cytostatyki: ANTYMETABOLITY</h2>
+<table>
+<tr><th>Lek</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>metotreksat</td><td>antagonista kw. foliowego</td><td>nowotwory ukł. chłonnego</td><td>—</td><td>+ immunosupresja</td></tr>
+<tr><td>fluorouracyl</td><td>blokuje syntetazę tymidylową → hamuje syntezę DNA i RNA</td><td>nowotwory pp, płuc, wątroby, gruczołu mlekowego, skóry</td><td><strong>KOTY!</strong></td><td>neurotoksyczność dla kotów, utrata wzroku, pobudzenie, drżenia mięśni, niezborność móżdżkowa</td></tr>
+<tr><td>cytarabina</td><td>antymetabolit</td><td>białaczki</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g18">18. Cytostatyki: INHIBITORY MITOZY</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>paklitaksel</td><td>taksany</td><td>nowotwory jajnika, sutka, płuc, głowy/szyi, jąder</td><td><strong>KOTY!</strong>; u psów ostatnia opcja</td><td>mielosupresja, wymioty, biegunka, neuro-, kardiotoksyczność, neuropatie</td><td>neutralizować doustnym prednizonem</td></tr>
+<tr><td>winblastyna</td><td>alkaloid Vinca</td><td>mastocytoza</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>winkrystyna</td><td>alkaloid Vinca</td><td>nowotwory limfoproliferacyjne, guzy weneryczne, małopłytkowość</td><td>choroby wątroby</td><td><strong>NEUROTOKSYCZNOŚĆ</strong>, neuropatie, ból neuropatyczny, mielotoksyczność, odparzenia skóry, zaparcia</td><td>—</td></tr>
+<tr><td>winorelbina</td><td>alkaloid Vinca</td><td>nowotwory płuc</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g19">19. Cytostatyki: antybiotyki przeciwnowotworowe (interkalujące DNA)</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Działania niepożądane</th></tr>
+<tr><td>daktynomycyna</td><td>aktynomycyny</td><td>wiąże DNA, hamuje syntezę DNA, wytwarza wolne rodniki, hamuje topoizomerazę II</td><td>chłoniaki, nowotwory jąder, mięśniakomięsaki</td><td>—</td></tr>
+<tr><td>doksorubicyna</td><td>antracykliny I gen.</td><td>wytwarza wolne rodniki → stres oksydacyjny</td><td>białaczki, chłoniaki, nowotwory jajnika, płuc, jąder, wątroby</td><td><strong>kardiotoksyczność</strong>, nudności, wymioty, nefrotoksyczność, mielosupresja</td></tr>
+<tr><td>epirubycyna</td><td>antracykliny II gen.</td><td>zaburza gospodarkę żelaza → wolne rodniki</td><td>—</td><td>mniej kardiotoksyczna niż doksorubicyna</td></tr>
+<tr><td>L-asparaginaza</td><td>enzym</td><td>rozkłada asparaginę (niezbędną do syntezy białek); faza G1</td><td>ostra białaczka limfatyczna</td><td>—</td></tr>
+<tr><td>talidomid</td><td>—</td><td>hamuje TNF-α, stymuluje limfocyty T, <strong>hamuje angiogenezę</strong></td><td>szpiczak mnogi</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g20">20. Cytostatyki: pochodne PLATYNY</h2>
+<div class="grupa-info">Hamują syntezę DNA przez tworzenie <strong>wiązań krzyżowych</strong> w obrębie i pomiędzy nićmi DNA — "spinają" fragmenty materiału genetycznego.</div>
+<table>
+<tr><th>Lek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>cisplatyna</td><td>płaskokomórkowy, mięsak kości, gruczolakorak</td><td><strong>KOTY (zejście śmiertelne!)</strong></td><td>nefro-, oto-, neuro-, gastrotoksyczność, niewydolność krążenia, wymioty</td><td>przed podaniem nawodnienie pacjenta</td></tr>
+<tr><td>karboplatyna</td><td>—</td><td>—</td><td>—</td><td>mniej toksyczna alternatywa</td></tr>
+</table>
+<div class="grupa-info"><strong>Cytostatyki — działania niepożądane wspólne:</strong> zaburzenia pp (nudności, wymioty), niepłodność, mielotoksyczność (anemia, trombocytopenia, neutropenia), kardio-, pneumo-, neuro-, nefro-, hepatotoksyczność, drażniące miejscowo, łysienie, immunosupresja, embriotoksyczność/teratogenność.<br>
+<strong>Nefrotoksyczne (zaburzenia dróg moczowych):</strong> cisplatyna, doksorubicyna, mitoksantron, metotreksat.</div>
+
+<!-- ============================================ -->
+<h2 id="g21">21. INHIBITORY KINAZ</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>tokeranib</td><td>inhibitor kinazy tyrozynowej</td><td>hamuje VEGFR2, PDGFR, c-Kit — działanie przeciwnowotworowe i antyangiogenne</td><td>nieoperacyjne, nawracające guzy komórek tucznych II/III u psów</td><td>ciąża, laktacja, psy &lt;2 lat lub &lt;3 kg, psy do hodowli; <strong>NIE z NLPZ ani GKS</strong></td><td>anoreksja, biegunka, krwawienia z pp, hipoalbuminemia, neutropenia, niedokrwistość, nefro-/hepatotoksyczność, kulawizny, wyłysienia, wstrząs</td></tr>
+<tr><td>masytynib (Masivet)</td><td>inhibitor kinazy białkowo-tyrozynowej</td><td>blokuje c-KIT, PDGF, FGFR3 → hamuje podziały kom. tucznych</td><td>guzy komórek tucznych u psów</td><td>ciąża/laktacja, psy &lt;6 mż lub &lt;4 kg, niewydolność wątroby (AST/ALT ×3), nerek, niedokrwistość, neutropenia</td><td>pp (biegunka/wymioty), wypadanie sierści, uszkodzenie nerek, niedokrwistość aplastyczna, neutropenia, ↑ALT/AST, senność, ↓apetytu, kaszel, ↑węzłów, obrzęk, tłuszczak</td></tr>
+<tr><td>oklacytynib</td><td>inhibitor kinaz janusowych (JAK)</td><td>hamuje cytokiny zależne od JAK (IL-2, IL-4, IL-6)</td><td>leczenie świądu w alergicznym/atopowym zapaleniu skóry u psów</td><td>psy z immunosupresją, nowotworami, &lt;1 roku, &lt;3 kg</td><td>biegunka, wymioty, polidypsja, letarg, tłuszczaki, histiocytoma, zap. ucha, zap. pęcherza, ↑węzłów, agresja</td></tr>
+<tr><td>ilunocytynib</td><td>inhibitor JAK</td><td>jw. — świąd, alergie, proces zapalny</td><td>AZS</td><td>jw. + psy z nużycą</td><td>biegunka, wymioty, apatia, brodawczaki, torbiele międzypalcowe</td></tr>
+<tr><td>atynwicytynib</td><td>selektywny inhibitor JAK1</td><td>hamuje cytokiny → ↓ krwinek białych zw. ze stanem zapalnym</td><td>AZS</td><td>nadwrażliwość</td><td>biegunka, wymioty, anoreksja, apatia</td></tr>
+<tr><td>lokiwetmab</td><td>przeciwciało monoklonalne (NIE jest inhibitorem kinaz, ale obok JAK)</td><td>psie przeciwciało przeciw IL-31 (cytokina świądu w AZS)</td><td>atopowe zapalenie skóry</td><td>—</td><td>anafilaksja, obrzęk pyska, pokrzywka, wymioty, biegunki, drgawki</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g22">22. Immunosupresyjne selektywne (limfocyty T/B)</h2>
+<table>
+<tr><th>Lek</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>cyklosporyna</td><td>hamuje aktywację limfocytów T → ↓ produkcji cytokin prozapalnych (gł. IL-2); hamuje wzrost limf. B, degranulację bazofili/eozynofili; hamuje podziały naskórka</td><td>zapobieganie odrzucaniu przeszczepów, rybia łuska, <strong>AZS</strong>, pęcherzyca, łysienie plackowate, suche zap. spojówki i rogówki</td><td>cukrzyca, chore nerki, ciąża, laktacja, FeLV, FIV, psy &lt;6 mż lub &lt;2 kg</td><td>toksoplazmoza, przerost dziąseł, nefro-, hepatotoksyczność, zakrzepy, wymioty, biegunki, ↑ podatność na infekcje</td><td>wysokie stężenie w skórze; podawać na czczo; łączona z inhibitorami P450 (taniej)</td></tr>
+<tr><td>azatiopryna</td><td>uwalnia 6-merkaptopurynę → antymetabolit zasad purynowych → zaburza syntezę DNA, blokuje proliferację limfocytów</td><td>toczeń rumieniowaty układowy, ciężkie RZS</td><td>leukopenia, ciąża, laktacja</td><td>hepato-, mielotoksyczność, ryzyko zap. trzustki</td><td>dodawana do GKS; <strong>NIE U KOTÓW!</strong></td></tr>
+<tr><td>mykofenolan mofetylu (MM)</td><td>prolek → kwas mykofenolowy → hamuje dehydrogenazę monofosforanu inozyny (izoforma II w szybko dzielących się komórkach, m.in. limfocytach) → hamuje proliferację limf. T i B</td><td>transplantologia, IMHA, kłębuszkowe zap. nerek, miastenia, łuszczyca, zap. naczyń, wrzodziejące zap. okrężnicy</td><td>laktacja</td><td>biegunki, supresja szpiku, apatia, podatność na zakażenia, kancerogenny</td><td>ostrożnie u kotów</td></tr>
+<tr><td>pentoksyfilina</td><td>metyloksantyna; inhibitor fosfodiesteraz → ↑ cAMP/cGMP w komórce</td><td>toczeń, AZS, zapalenia naczyń, alergie kontaktowe, czyraki międzypalcowe, łojotok</td><td>przebyty krwotok mózgowy/siatkówkowy</td><td>zaburzenia pp, pobudzenie OUN, rumień u koni, fascykulacje</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g23">23. IMMUNOMODULATORY — stymulujące odporność</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Działania niepożądane</th></tr>
+<tr><td>parapoxvirus ovis</td><td>adiuwanty wirusowe</td><td>nieswoiście stymuluje odporność wrodzoną: aktywuje fagocyty, proliferację limfocytów, produkcję IFN, kom. NK</td><td>profilaktyka i leczenie chorób infekcyjnych, stres (NIE prowadzi do wyleczenia)</td><td>obrzęk w miejscu, nadwrażliwość, kolka u koni</td></tr>
+<tr><td>propionibacterium (cutibacterium)</td><td>inaktywowane bakterie</td><td>jw.</td><td>ogranicza śmiertelność w chorobie Mareka, Gumboro, białaczce drobiu; PRRS, choroba Aujeszkyego, dyzenteria świń</td><td>brak / ból w iniekcji, ↑ temperatury</td></tr>
+<tr><td>mieszanina inaktywowanych bakterii</td><td>inaktywowane bakterie</td><td>antygeny → stymulacja swoistej i nieswoistej odpowiedzi komórkowej, ↑ fagocytoza</td><td>profilaktyka w niedostatecznej odporności, mieszane infekcje DO, układu rozrodczego</td><td>przejściowe nasilenie objawów, ↑ temperatury</td></tr>
+<tr><td>β-1,3/1,6-glukan z S. cerevisiae</td><td>—</td><td>rozpoznawany przez makrofagi/neutrofile/kom. dendrytyczne → ↑ fagocytoza + produkcja IL-1, IL-6, TNF-α</td><td>—</td><td>—</td></tr>
+<tr><td>pegbowigrastym</td><td>bG-CSF</td><td>↑ liczba i aktywność neutrofilów krążących</td><td>pomocniczo w programie zarządzania stadem — ↓ ryzyka klinicznego zap. gruczołu mlekowego u krów okołoporodowych</td><td>anafilaksja, obrzęk błon śluzowych, przyspieszony oddech, ślinotok</td></tr>
+<tr><td>dimer lizozymu</td><td>—</td><td>białko przeciwbakteryjne i przeciwwirusowe → ↑ fagocytoza, proliferacja limf. T i B, ↑ IL-2, IL-6</td><td>wspomagająco w infekcjach bakteryjnych/wirusowych pp, dróg odd., skóry, ucha</td><td>—</td></tr>
+<tr><td>lewamizol</td><td>lek przeciwpasożytniczy = tymomimetyk</td><td>działanie immunorekonstrukcyjne na limf. T, stymuluje fagocytozę, normalizuje cytokiny</td><td>toczeń rumieniowaty (wspomag.), niektóre nowotwory</td><td>wymioty, biegunki, neurotoksyczność (NIE u koni!), anemia hemolityczna, agranulocytoza, zmiany skórne</td></tr>
+<tr><td>kocia interleukina-2</td><td>rekombinant wirusa canarypox</td><td>ekspresja kociej IL-2 w miejscu inokulacji → lokalna stymulacja odporności przeciwnowotworowej</td><td>immunoterapia, uzupełnienie radioterapii, ↓ ryzyka nawrotu</td><td>miejscowo ból, świąd, apatia, gorączka</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g24">24. Okulistyka: antybiotyki</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>cyprofloksacyna</td><td>fluorochinolony</td><td>hamują topoizomerazę II (gyraza DNA) i IV → ↓ replikacji DNA</td><td>poważne zakażenia bakteryjne, zap. rogówki, zakażenia wewnątrzgałkowe, wrzody rogówki</td><td>młode psy/koty/konie, ciąża, laktacja, padaczka</td><td>uszkodzenie chrząstek stawowych u młodych, pp, <span class="key">degeneracja siatkówki u kotów</span></td></tr>
+<tr><td>chloramfenikol</td><td>fenikole</td><td>hamuje 50S rybosom → synteza białka</td><td>bakteryjne zap. spojówek, powiek, niewrzodziejące i wrzodziejące zap. rogówki</td><td>choroby wątroby</td><td>stany zapalne pp, wymioty u mięsożernych, <span class="key">niedokrwistość aplastyczna (szpik)</span></td></tr>
+<tr><td>gentamycyna, tobramycyna</td><td>aminoglikozydy</td><td>wiązanie z podjednostką 30S → blok translacji</td><td>bakteryjne zakażenia rogówki</td><td>zaburzenia nerek</td><td>oto-, nefrotoksyczność, blok nerwowo-mięśniowy, hipomagnezemia</td></tr>
+<tr><td>bacytracyna, gramicydyna, polimyksyna B</td><td>polimyksyny i peptydowe</td><td>kationowe związki amfipatyczne → zakłócają fosfolipidy błony bakteryjnej (wypierają Ca²⁺/Mg²⁺) → rozpad komórki</td><td>powierzchowne wrzody rogówki</td><td>choroby nerek</td><td>uszkodzenie nerek</td></tr>
+<tr><td>kwas fusydowy</td><td>—</td><td>blokuje biosyntezę białka</td><td>zakażenia bakteryjne powiek i spojówki</td><td>—</td><td>reakcje alergiczne</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g25">25. Okulistyka: JASKRA — obniżenie ciśnienia śródgałkowego</h2>
+<div class="grupa-info">Cztery strategie: <strong>↓ produkcji cieczy wodnistej</strong> (β-blokery, inh. anhydrazy węglanowej, sympatykolityki) lub <strong>↑ odpływu</strong> (parasympatykomimetyki) — plus neuroprotekcja (amlodypina).</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Działania niepożądane</th></tr>
+<tr><td>timolol</td><td>nieselektywne β-adrenolityki</td><td>blokada rec. β w ciele rzęskowym → ↓ cAMP → ↓ wydzielania jonów i wody → ↓ produkcji cieczy wodnistej</td><td>bradykardia, niemiarowość, ↓ ciśnienia, niewydolność wieńcowa, niedokrwienie mózgu i kończyn, skurcz oskrzeli, bóle głowy</td></tr>
+<tr><td>sympatykolityki</td><td>blokery rec. β</td><td>↓ produkcji cieczy wodnistej (bezpośrednio przez nabłonek rzęskowy + pośrednio przez naczynia)</td><td>—</td></tr>
+<tr><td>dorzolamid</td><td>inhibitory anhydrazy węglanowej</td><td>↓ aktywności anhydrazy w nabłonku barwnikowym → ↓ jonów dwuwęglanowych → ↓ produkcji cieczy wodnistej; działanie moczopędne</td><td>zap. spojówek, ubytki nabłonka rogówki, gorzki smak, pogorszenie widzenia, bóle głowy, osłabienie</td></tr>
+<tr><td>pilokarpina</td><td>parasympatykomimetyki</td><td>otwarcie kąta przesączania + poprawa odpływu konwencjonalnego</td><td>—</td></tr>
+<tr><td>amlodypina</td><td>antagoniści kanałów Ca²⁺</td><td>neuroprotekcja: pośrednio (wazodylatacja → normalizacja mikrokrążenia siatkówki) + bezpośrednio (↓ Ca²⁺ wewnątrzkomórkowego)</td><td>hipotensja, osłabienie kurczliwości serca</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g26">26. Okulistyka: NLPZ + inhibitory metaloproteinaz</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>karprofen, meloksykam, ketoprofen, ASA</td><td>NLPZ</td><td>hamują COX-2 → ↓ prostaglandyn (mediatorów zapalenia i bólu)</td><td>infekcyjne zap. spojówek, końcowy okres leczenia wrzodu rogówki, operacja zaćmy, zap. tęczówki/ciała rzęskowego (z GKS)</td><td>krwotoki do komory przedniej</td><td>↓ agregacji płytek</td></tr>
+<tr><td>N-acetylocysteina + tetracykliny</td><td>inhibitory metaloproteinaz (IMP)</td><td>acetylocysteina bogata w grupy -SH wiąże nieodwracalnie Zn²⁺ w centrach aktywnych MMPs → unieczynnia</td><td>owrzodzenia rogówki</td><td>niewydolność nerek, zaburzenia wątroby</td><td>nefro-, hepatotoksyczne, pp, nadwrażliwość na światło, reakcje alergiczne</td></tr>
+</table>
+
+<hr style="margin-top: 40px;">
+<p style="text-align:center; color:#7f8c8d; font-size:0.85em;">
+Plik wygenerowany na potrzeby nauki farmakologii weterynaryjnej. Grupowanie: według mechanizmu działania, a w obrębie grupy — według podobieństwa spektrum/zastosowania.
+</p>
+
+</body>
+</html>
