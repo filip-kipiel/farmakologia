@@ -21,6 +21,53 @@
   .toc a:hover { text-decoration: underline; }
   .key { color: #c0392b; font-weight: bold; }
   @media print { h2 { page-break-before: always; } h2:first-of-type { page-break-before: avoid; } }
+
+  /* === KOLOROWANE POWTARZAJĄCE SIĘ SŁOWA KLUCZOWE === */
+  .kw { padding: 0 3px; border-radius: 3px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* Toksyczności narządowe + odpowiadające PW */
+  .kw-watroba { background: #ffe0c2; border-bottom: 2px solid #c2410c; }   /* wątroba PW + hepatotoksyczność */
+  .kw-nerki   { background: #cfe5ff; border-bottom: 2px solid #1d4ed8; }   /* nerki PW + nefrotoksyczność */
+  .kw-neuro   { background: #e8d2f5; border-bottom: 2px solid #7c3aed; }   /* neuro/OUN */
+  .kw-kardio  { background: #ffcccc; border-bottom: 2px solid #b91c1c; }   /* kardio */
+  .kw-mielo   { background: #e8d5b0; border-bottom: 2px solid #78350f; }   /* mielosupresja/szpik */
+
+  /* PW gatunkowe / fizjologiczne */
+  .kw-koty    { background: #ffd3e3; border-bottom: 2px solid #db2777; }
+  .kw-psy     { background: #d9e9ff; border-bottom: 2px dotted #2563eb; }
+  .kw-ciaza   { background: #f5cce5; border-bottom: 2px dashed #c026d3; }
+  .kw-mlode   { background: #fff3b0; border-bottom: 2px solid #d97706; }
+
+  /* Spektrum grzybicze */
+  .kw-dermatofity { background: #c8e6c9; border-bottom: 2px solid #2e7d32; }
+  .kw-drozdzaki   { background: #b2ebf2; border-bottom: 2px solid #00838f; }
+  .kw-plesnie     { background: #dcedc8; border-bottom: 2px solid #558b2f; }
+
+  /* Wirusy */
+  .kw-herpes { background: #e1bee7; border-bottom: 2px solid #6a1b9a; }
+  .kw-retro  { background: #f8bbd0; border-bottom: 2px solid #ad1457; }
+
+  /* Pasożyty */
+  .kw-nicienie { background: #c5e1a5; border-bottom: 2px solid #33691e; }
+  .kw-tasiemce { background: #bbdefb; border-bottom: 2px solid #0d47a1; }
+  .kw-kokcydia { background: #d1c4e9; border-bottom: 2px solid #4527a0; }
+  .kw-pchly    { background: #ffd180; border-bottom: 2px solid #e65100; }
+  .kw-kleszcze { background: #d7ccc8; border-bottom: 2px solid #4e342e; }
+
+  /* Choroby/zastosowania */
+  .kw-azs    { background: #b2dfdb; border-bottom: 2px solid #00695c; }
+  .kw-jaskra { background: #b3e5fc; border-bottom: 2px solid #01579b; }
+  .kw-asper  { background: #f0e68c; border-bottom: 2px solid #8b6914; }
+
+  /* Specjalne markery */
+  .kw-akroleina { background: #ff6b6b; color: white; font-weight: bold; padding: 1px 5px; }
+  .kw-mdr       { background: #2c3e50; color: white; font-weight: bold; padding: 1px 5px; }
+
+  .legend { background: #fafbfc; border: 2px solid #34495e; padding: 15px 20px; border-radius: 8px; margin: 20px 0 30px 0; }
+  .legend h3 { margin-top: 0; color: #2c3e50; }
+  .legend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 6px 14px; font-size: 0.88em; }
+  .legend-item { padding: 3px 4px; }
+  .legend-section-title { grid-column: 1 / -1; font-weight: bold; color: #555; margin-top: 6px; font-size: 0.9em; border-bottom: 1px dashed #aaa; padding-bottom: 2px; }
 </style>
 </head>
 <body>
@@ -57,6 +104,50 @@
   <li><a href="#g25">Okulistyka: jaskra (obniżenie ciśnienia śródgałkowego)</a></li>
   <li><a href="#g26">Okulistyka: NLPZ + inhibitory metaloproteinaz</a></li>
 </ol>
+</div>
+
+<div class="legend">
+<h3>🎨 Legenda — kolory powtarzających się właściwości</h3>
+<p style="margin: 5px 0 12px 0; font-size: 0.9em; color: #555;">Te same kolory pojawiają się w tabelach poniżej — szukaj wzorców między lekami.</p>
+<div class="legend-grid">
+  <div class="legend-section-title">Toksyczności narządowe (i odpowiadające im PW)</div>
+  <div class="legend-item"><span class="kw kw-watroba">wątroba</span> / <span class="kw kw-watroba">hepatotoksyczność</span></div>
+  <div class="legend-item"><span class="kw kw-nerki">nerki</span> / <span class="kw kw-nerki">nefrotoksyczność</span></div>
+  <div class="legend-item"><span class="kw kw-neuro">neurotoksyczność</span> / <span class="kw kw-neuro">OUN</span></div>
+  <div class="legend-item"><span class="kw kw-kardio">kardiotoksyczność</span></div>
+  <div class="legend-item"><span class="kw kw-mielo">mielosupresja / szpik</span></div>
+
+  <div class="legend-section-title">Przeciwwskazania (PW)</div>
+  <div class="legend-item"><span class="kw kw-koty">koty</span> — toksyczne dla kotów</div>
+  <div class="legend-item"><span class="kw kw-psy">psy</span></div>
+  <div class="legend-item"><span class="kw kw-ciaza">ciąża / laktacja</span></div>
+  <div class="legend-item"><span class="kw kw-mlode">młode zwierzęta</span></div>
+
+  <div class="legend-section-title">Spektrum — grzyby</div>
+  <div class="legend-item"><span class="kw kw-dermatofity">dermatofity</span></div>
+  <div class="legend-item"><span class="kw kw-drozdzaki">drożdżaki / Candida</span></div>
+  <div class="legend-item"><span class="kw kw-plesnie">pleśnie</span></div>
+  <div class="legend-item"><span class="kw kw-asper">aspergiloza</span></div>
+
+  <div class="legend-section-title">Spektrum — wirusy</div>
+  <div class="legend-item"><span class="kw kw-herpes">herpeswirusy / HSV / FHV-1</span></div>
+  <div class="legend-item"><span class="kw kw-retro">FIV / FeLV (retrowirusy)</span></div>
+
+  <div class="legend-section-title">Spektrum — pasożyty</div>
+  <div class="legend-item"><span class="kw kw-nicienie">nicienie</span></div>
+  <div class="legend-item"><span class="kw kw-tasiemce">tasiemce / przywry</span></div>
+  <div class="legend-item"><span class="kw kw-kokcydia">kokcydia / pierwotniaki</span></div>
+  <div class="legend-item"><span class="kw kw-pchly">pchły</span></div>
+  <div class="legend-item"><span class="kw kw-kleszcze">kleszcze</span></div>
+
+  <div class="legend-section-title">Choroby / zastosowania</div>
+  <div class="legend-item"><span class="kw kw-azs">AZS / atopowe zapalenie skóry</span></div>
+  <div class="legend-item"><span class="kw kw-jaskra">jaskra</span></div>
+
+  <div class="legend-section-title">⚠️ Markery specjalne (zapamiętaj!)</div>
+  <div class="legend-item"><span class="kw kw-akroleina">akroleina</span> — metabolit cyklofosfamidu/ifosfamidu (krwotoczne zap. pęcherza)</div>
+  <div class="legend-item"><span class="kw kw-mdr">MDR-1</span> — mutacja u psów, ryzyko ciężkich DN</div>
+</div>
 </div>
 
 <!-- ============================================ -->
@@ -369,5 +460,146 @@
 Plik wygenerowany na potrzeby nauki farmakologii weterynaryjnej. Grupowanie: według mechanizmu działania, a w obrębie grupy — według podobieństwa spektrum/zastosowania.
 </p>
 
+<script>
+(function() {
+  // Kolejność ma znaczenie — bardziej specyficzne wzorce pierwsze, żeby uniknąć nakładania.
+  const RULES = [
+    // Markery specjalne
+    { re: /\bakrolein[a-ząęłńóśźż]*/gi, cls: 'kw kw-akroleina' },
+    { re: /\bMDR-1\b/g, cls: 'kw kw-mdr' },
+
+    // Toksyczności narządowe (DN) i organy (PW)
+    { re: /\bnefrotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-nerki' },
+    { re: /\bhepatotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-watroba' },
+    { re: /\bneurotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-neuro' },
+    { re: /\bkardiotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-kardio' },
+    { re: /\bototoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-neuro' },
+    { re: /\bmielotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-mielo' },
+    { re: /\bmielosupresj[a-ząęłńóśźż]+/gi, cls: 'kw kw-mielo' },
+    { re: /\bszpik[a-ząęłńóśźż]*/gi, cls: 'kw kw-mielo' },
+    { re: /\bobjawy neurologiczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-neuro' },
+    { re: /\bOUN\b/g, cls: 'kw kw-neuro' },
+    { re: /\bwątrob[a-ząęłńóśźż]+/gi, cls: 'kw kw-watroba' },
+    { re: /\bnerk[a-ząęłńóśźż]+/gi, cls: 'kw kw-nerki' },
+
+    // Spektrum grzybicze
+    { re: /\baspergiloz[a-ząęłńóśźż]+/gi, cls: 'kw kw-asper' },
+    { re: /\bAspergillus\b/g, cls: 'kw kw-asper' },
+    { re: /\bdermatofit[a-ząęłńóśźż]+/gi, cls: 'kw kw-dermatofity' },
+    { re: /\bdrożdżak[a-ząęłńóśźż]+/gi, cls: 'kw kw-drozdzaki' },
+    { re: /\bCandida\b/g, cls: 'kw kw-drozdzaki' },
+    { re: /\bpleśni[a-ząęłńóśźż]+/gi, cls: 'kw kw-plesnie' },
+
+    // Wirusy
+    { re: /\bherpeswirus[a-ząęłńóśźż]+/gi, cls: 'kw kw-herpes' },
+    { re: /\bFHV-1\b/gi, cls: 'kw kw-herpes' },
+    { re: /\bHSV\b/g, cls: 'kw kw-herpes' },
+    { re: /\bFIV\b/g, cls: 'kw kw-retro' },
+    { re: /\bFeLV\b/g, cls: 'kw kw-retro' },
+
+    // Pasożyty
+    { re: /\bnicieni[a-ząęłńóśźż]+/gi, cls: 'kw kw-nicienie' },
+    { re: /\btasiemc[a-ząęłńóśźż]+/gi, cls: 'kw kw-tasiemce' },
+    { re: /\bprzywr[a-ząęłńóśźż]+/gi, cls: 'kw kw-tasiemce' },
+    { re: /\bmotylic[a-ząęłńóśźż]+/gi, cls: 'kw kw-tasiemce' },
+    { re: /\bkokcydi[a-ząęłńóśźż]+/gi, cls: 'kw kw-kokcydia' },
+    { re: /\bpchł[a-ząęłńóśźż]+/gi, cls: 'kw kw-pchly' },
+    { re: /\bkleszcz[a-ząęłńóśźż]+/gi, cls: 'kw kw-kleszcze' },
+    { re: /\bświerzbowc[a-ząęłńóśźż]+/gi, cls: 'kw kw-kleszcze' },
+
+    // Choroby / zastosowania
+    { re: /\batopow(e|ego|ym) zapaleni[a-ząęłńóśźż]+ skóry/gi, cls: 'kw kw-azs' },
+    { re: /\bAZS\b/g, cls: 'kw kw-azs' },
+    { re: /\bjaskr[a-ząęłńóśźż]+/gi, cls: 'kw kw-jaskra' },
+
+    // Wiek / fizjologia / gatunki
+    { re: /\bkocięt[a-ząęłńóśźż]+/gi, cls: 'kw kw-mlode' },
+    { re: /\bszczeniąt[a-ząęłńóśźż]+/gi, cls: 'kw kw-mlode' },
+    { re: /\bmłod(e|ych|ym|ymi|ego)\b/gi, cls: 'kw kw-mlode' },
+    { re: /\bciąż[a-ząęłńóśźż]+/gi, cls: 'kw kw-ciaza' },
+    { re: /\blaktacj[a-ząęłńóśźż]+/gi, cls: 'kw kw-ciaza' },
+    { re: /\bkot(y|ów|om|ach|a|u)\b/gi, cls: 'kw kw-koty' },
+    { re: /\bKOTY\b/g, cls: 'kw kw-koty' },
+    { re: /\bps(y|ów|om|ach|a)\b/gi, cls: 'kw kw-psy' },
+  ];
+
+  function escapeHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function shouldSkip(node) {
+    let el = node.parentElement;
+    while (el) {
+      const tag = el.tagName;
+      if (tag === 'H1' || tag === 'H2' || tag === 'H3' || tag === 'TH' ||
+          tag === 'SCRIPT' || tag === 'STYLE' || tag === 'A') return true;
+      if (el.classList && (el.classList.contains('toc') ||
+          el.classList.contains('legend') ||
+          el.classList.contains('key') ||
+          (el.tagName === 'SPAN' && el.className && el.className.indexOf('kw') === 0))) return true;
+      el = el.parentElement;
+    }
+    return false;
+  }
+
+  function processTextNode(node) {
+    const text = node.textContent;
+    if (!text.trim()) return;
+    const matches = [];
+    RULES.forEach(rule => {
+      rule.re.lastIndex = 0;
+      let m;
+      while ((m = rule.re.exec(text)) !== null) {
+        matches.push({ start: m.index, end: m.index + m[0].length, cls: rule.cls, text: m[0] });
+        if (m[0].length === 0) rule.re.lastIndex++;
+      }
+    });
+    if (!matches.length) return;
+    matches.sort((a, b) => a.start - b.start || (b.end - b.start) - (a.end - a.start));
+
+    const filtered = [];
+    let lastEnd = 0;
+    for (const m of matches) {
+      if (m.start >= lastEnd) {
+        filtered.push(m);
+        lastEnd = m.end;
+      }
+    }
+
+    let html = '';
+    let pos = 0;
+    for (const m of filtered) {
+      html += escapeHtml(text.substring(pos, m.start));
+      html += '<span class="' + m.cls + '">' + escapeHtml(m.text) + '</span>';
+      pos = m.end;
+    }
+    html += escapeHtml(text.substring(pos));
+
+    const tmp = document.createElement('span');
+    tmp.innerHTML = html;
+    const parent = node.parentNode;
+    while (tmp.firstChild) parent.insertBefore(tmp.firstChild, node);
+    parent.removeChild(node);
+  }
+
+  function run() {
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      { acceptNode: function(n) { return shouldSkip(n) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } }
+    );
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(processTextNode);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
+</script>
 </body>
 </html>
