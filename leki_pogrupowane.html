@@ -20,7 +20,18 @@
   .toc a { color: #2980b9; text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
   .key { color: #c0392b; font-weight: bold; }
-  @media print { h2 { page-break-before: always; } h2:first-of-type { page-break-before: avoid; } }
+  @page { size: A4; margin: 1.2cm; }
+  @media print {
+    body { print-color-adjust: exact; -webkit-print-color-adjust: exact; color-adjust: exact; max-width: 100%; margin: 0; padding: 0; font-size: 10pt; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; font-size: 8pt; }
+    tr { page-break-inside: avoid; }
+    .toc { page-break-after: always; }
+    .legend { page-break-after: always; }
+    .kw, .key, .legend, .grupa-info, .mnemo { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    a { color: inherit; text-decoration: none; }
+  }
 
   /* === KOLOROWANE POWTARZAJĄCE SIĘ SŁOWA KLUCZOWE === */
   .kw { padding: 0 3px; border-radius: 3px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
