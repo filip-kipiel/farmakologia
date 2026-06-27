@@ -27,7 +27,7 @@
   }
   .card {
     background: #fff; border-radius: 14px; padding: 26px 26px 22px 26px;
-    text-decoration: none; color: inherit;
+    color: inherit;
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
     border-top: 6px solid var(--accent);
     transition: transform 0.16s ease, box-shadow 0.16s ease;
@@ -44,7 +44,18 @@
   .card .subtitle { color: #7f8c8d; font-size: 0.9em; margin-bottom: 14px; font-weight: 600; }
   .card ul { margin: 0; padding-left: 18px; color: #444; font-size: 0.88em; line-height: 1.5; }
   .card li { margin-bottom: 2px; }
-  .card .go { margin-top: 16px; color: var(--accent); font-weight: 700; font-size: 0.95em; }
+
+  .actions { margin-top: 18px; display: flex; gap: 10px; align-items: center; }
+  .btn {
+    text-decoration: none; font-weight: 700; font-size: 0.92em;
+    padding: 9px 16px; border-radius: 8px; transition: filter 0.15s ease, background 0.15s ease;
+  }
+  .btn-open { background: var(--accent); color: #fff; flex: 1; text-align: center; }
+  .btn-open:hover { filter: brightness(1.1); }
+  .btn-pdf {
+    background: #fff; color: var(--accent); border: 2px solid var(--accent);
+  }
+  .btn-pdf:hover { background: var(--accent); color: #fff; }
 
   .c1 { --accent: #8e44ad; }
   .c2 { --accent: #c0392b; }
@@ -59,12 +70,12 @@
 <header>
   <h1>🐾 Farmakologia weterynaryjna</h1>
   <p>Leki pogrupowane według mechanizmu działania — materiał do nauki.</p>
-  <p class="hint">Wybierz kolokwium, do którego chcesz przejść:</p>
+  <p class="hint">Wybierz kolokwium — otwórz stronę lub pobierz PDF:</p>
 </header>
 
 <div class="grid">
 
-  <a class="card c1" href="kolokwium1.html">
+  <div class="card c1">
     <span class="num">1</span>
     <h2>OUN i układ autonomiczny</h2>
     <div class="subtitle">Leki działające na układ nerwowy</div>
@@ -76,10 +87,13 @@
       <li>Znieczulenie ogólne</li>
       <li>Układ autonomiczny (cholinergiczne / adrenergiczne)</li>
     </ul>
-    <span class="go">Przejdź →</span>
-  </a>
+    <div class="actions">
+      <a class="btn btn-open" href="kolokwium1.html">Otwórz →</a>
+      <a class="btn btn-pdf" href="kolokwium1.pdf" download>⬇ PDF</a>
+    </div>
+  </div>
 
-  <a class="card c2" href="kolokwium2.html">
+  <div class="card c2">
     <span class="num">2</span>
     <h2>Krążenie, hormony, przewód pokarmowy</h2>
     <div class="subtitle">Układy: krążenia, endokrynny, pokarmowy, oddechowy</div>
@@ -91,10 +105,13 @@
       <li>Układ oddechowy i pokarmowy</li>
       <li>Leki znieczulające miejscowo</li>
     </ul>
-    <span class="go">Przejdź →</span>
-  </a>
+    <div class="actions">
+      <a class="btn btn-open" href="kolokwium2.html">Otwórz →</a>
+      <a class="btn btn-pdf" href="kolokwium2.pdf" download>⬇ PDF</a>
+    </div>
+  </div>
 
-  <a class="card c3" href="kolokwium3.html">
+  <div class="card c3">
     <span class="num">3</span>
     <h2>Antybiotyki</h2>
     <div class="subtitle">Chemioterapeutyki przeciwbakteryjne</div>
@@ -106,10 +123,13 @@
       <li>Sulfonamidy + trimetoprim</li>
       <li>Nitroimidazole, polimyksyny</li>
     </ul>
-    <span class="go">Przejdź →</span>
-  </a>
+    <div class="actions">
+      <a class="btn btn-open" href="kolokwium3.html">Otwórz →</a>
+      <a class="btn btn-pdf" href="kolokwium3.pdf" download>⬇ PDF</a>
+    </div>
+  </div>
 
-  <a class="card c4" href="leki_pogrupowane.html">
+  <div class="card c4">
     <span class="num">4</span>
     <h2>Przeciwdrobnoustrojowe i onkologia</h2>
     <div class="subtitle">Grzybice, wirusy, pasożyty, cytostatyki</div>
@@ -121,8 +141,11 @@
       <li>Immunosupresanty i immunomodulatory</li>
       <li>Okulistyka</li>
     </ul>
-    <span class="go">Przejdź →</span>
-  </a>
+    <div class="actions">
+      <a class="btn btn-open" href="leki_pogrupowane.html">Otwórz →</a>
+      <a class="btn btn-pdf" href="leki_pogrupowane.pdf" download>⬇ PDF</a>
+    </div>
+  </div>
 
 </div>
 
