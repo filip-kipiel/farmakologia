@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmakologia weterynaryjna — leki pogrupowane</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin: 0; padding: 0; color: #222;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  header { text-align: center; color: #fff; padding: 50px 20px 10px 20px; max-width: 900px; }
+  header h1 { font-size: 2.1em; margin: 0 0 10px 0; letter-spacing: 0.5px; }
+  header p { font-size: 1.05em; color: #cfd8dc; margin: 6px 0; line-height: 1.5; }
+  .hint { font-size: 0.95em; color: #aebfc9; margin-top: 16px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    width: 100%; max-width: 1100px;
+    padding: 30px 25px 50px 25px;
+  }
+  .card {
+    background: #fff; border-radius: 14px; padding: 26px 26px 22px 26px;
+    text-decoration: none; color: inherit;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    border-top: 6px solid var(--accent);
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
+    display: flex; flex-direction: column;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 14px 34px rgba(0,0,0,0.38); }
+  .card .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-size: 1.7em; font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .card h2 { margin: 0 0 6px 0; color: #2c3e50; font-size: 1.25em; }
+  .card .subtitle { color: #7f8c8d; font-size: 0.9em; margin-bottom: 14px; font-weight: 600; }
+  .card ul { margin: 0; padding-left: 18px; color: #444; font-size: 0.88em; line-height: 1.5; }
+  .card li { margin-bottom: 2px; }
+  .card .go { margin-top: 16px; color: var(--accent); font-weight: 700; font-size: 0.95em; }
+
+  .c1 { --accent: #8e44ad; }
+  .c2 { --accent: #c0392b; }
+  .c3 { --accent: #16a085; }
+  .c4 { --accent: #d68910; }
+
+  footer { color: #aebfc9; font-size: 0.82em; text-align: center; padding: 0 20px 40px 20px; max-width: 800px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🐾 Farmakologia weterynaryjna</h1>
+  <p>Leki pogrupowane według mechanizmu działania — materiał do nauki.</p>
+  <p class="hint">Wybierz kolokwium, do którego chcesz przejść:</p>
+</header>
+
+<div class="grid">
+
+  <a class="card c1" href="kolokwium1.html">
+    <span class="num">1</span>
+    <h2>OUN i układ autonomiczny</h2>
+    <div class="subtitle">Leki działające na układ nerwowy</div>
+    <ul>
+      <li>Przeciwdrgawkowe</li>
+      <li>Anksjolityki i nasenne</li>
+      <li>Neuroleptyki, przeciwdepresyjne</li>
+      <li>Opioidy</li>
+      <li>Znieczulenie ogólne</li>
+      <li>Układ autonomiczny (cholinergiczne / adrenergiczne)</li>
+    </ul>
+    <span class="go">Przejdź →</span>
+  </a>
+
+  <a class="card c2" href="kolokwium2.html">
+    <span class="num">2</span>
+    <h2>Krążenie, hormony, przewód pokarmowy</h2>
+    <div class="subtitle">Układy: krążenia, endokrynny, pokarmowy, oddechowy</div>
+    <ul>
+      <li>Leki nasercowe i antyarytmiczne</li>
+      <li>Diuretyki</li>
+      <li>Hormony, tarczyca, nadnercza, GKS</li>
+      <li>Krzepnięcie</li>
+      <li>Układ oddechowy i pokarmowy</li>
+      <li>Leki znieczulające miejscowo</li>
+    </ul>
+    <span class="go">Przejdź →</span>
+  </a>
+
+  <a class="card c3" href="kolokwium3.html">
+    <span class="num">3</span>
+    <h2>Antybiotyki</h2>
+    <div class="subtitle">Chemioterapeutyki przeciwbakteryjne</div>
+    <ul>
+      <li>Betalaktamy (ściana komórkowa)</li>
+      <li>Makrolidy, linkozamidy, fenikole (50S)</li>
+      <li>Aminoglikozydy, tetracykliny (30S)</li>
+      <li>Chinolony i fluorochinolony</li>
+      <li>Sulfonamidy + trimetoprim</li>
+      <li>Nitroimidazole, polimyksyny</li>
+    </ul>
+    <span class="go">Przejdź →</span>
+  </a>
+
+  <a class="card c4" href="leki_pogrupowane.html">
+    <span class="num">4</span>
+    <h2>Przeciwdrobnoustrojowe i onkologia</h2>
+    <div class="subtitle">Grzybice, wirusy, pasożyty, cytostatyki</div>
+    <ul>
+      <li>Przeciwgrzybicze i przeciwwirusowe</li>
+      <li>Przeciwpasożytnicze (endo- i ekto-)</li>
+      <li>Glikokortykosteroidy</li>
+      <li>Cytostatyki i inhibitory kinaz</li>
+      <li>Immunosupresanty i immunomodulatory</li>
+      <li>Okulistyka</li>
+    </ul>
+    <span class="go">Przejdź →</span>
+  </a>
+
+</div>
+
+<footer>
+  Grupowanie: według mechanizmu działania, a w obrębie grupy — według podobieństwa spektrum / zastosowania.
+  Każda strona ma spis treści, legendę kolorów i automatyczne podświetlanie powtarzających się pojęć.
+</footer>
+
+</body>
+</html>

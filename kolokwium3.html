@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Kolokwium 3 — Antybiotyki i chemioterapeutyki przeciwbakteryjne</title>
+<style>
+  @media print { .nodruk { display: none !important; } }
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; max-width: 1400px; margin: 20px auto; padding: 0 20px; color: #222; line-height: 1.35; }
+  h1 { text-align: center; color: #2c3e50; border-bottom: 3px solid #2c3e50; padding-bottom: 10px; }
+  h2 { color: #fff; background: #2c3e50; padding: 10px 15px; margin-top: 40px; border-radius: 6px; font-size: 1.15em; }
+  h3 { color: #2c3e50; margin-top: 25px; border-left: 5px solid #e74c3c; padding-left: 10px; }
+  .grupa-info { background: #fff8dc; border-left: 5px solid #f39c12; padding: 10px 15px; margin: 10px 0 15px 0; font-size: 0.95em; }
+  .mnemo { background: #e8f5e9; border-left: 5px solid #27ae60; padding: 8px 15px; margin: 10px 0; font-style: italic; font-size: 0.95em; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 15px; font-size: 0.83em; }
+  th, td { border: 1px solid #bbb; padding: 6px 8px; vertical-align: top; text-align: left; }
+  th { background: #34495e; color: white; font-weight: 600; }
+  td:first-child { font-weight: bold; background: #f4f6f7; width: 130px; }
+  tr:nth-child(even) td:not(:first-child) { background: #fafbfc; }
+  .toc { background: #ecf0f1; padding: 15px 25px; border-radius: 8px; margin-bottom: 30px; }
+  .toc ol { columns: 2; column-gap: 30px; }
+  .toc a { color: #2980b9; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .key { color: #c0392b; font-weight: bold; }
+  @page { size: A4; margin: 1.2cm; }
+  @media print {
+    body { print-color-adjust: exact; -webkit-print-color-adjust: exact; color-adjust: exact; max-width: 100%; margin: 0; padding: 0; font-size: 10pt; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; font-size: 8pt; }
+    tr { page-break-inside: avoid; }
+    .toc { page-break-after: always; }
+    .legend { page-break-after: always; }
+    .kw, .key, .legend, .grupa-info, .mnemo { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    a { color: inherit; text-decoration: none; }
+  }
+
+  /* === KOLOROWANE POWTARZAJĄCE SIĘ SŁOWA KLUCZOWE === */
+  .kw { padding: 0 3px; border-radius: 3px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* Toksyczności narządowe + odpowiadające PW */
+  .kw-watroba { background: #ffe0c2; border-bottom: 2px solid #c2410c; }   /* wątroba PW + hepatotoksyczność */
+  .kw-nerki   { background: #cfe5ff; border-bottom: 2px solid #1d4ed8; }   /* nerki PW + nefrotoksyczność */
+  .kw-neuro   { background: #e8d2f5; border-bottom: 2px solid #7c3aed; }   /* neuro/OUN/oto */
+  .kw-kardio  { background: #ffcccc; border-bottom: 2px solid #b91c1c; }   /* kardio */
+  .kw-mielo   { background: #e8d5b0; border-bottom: 2px solid #78350f; }   /* mielosupresja/szpik */
+
+  /* PW gatunkowe / fizjologiczne */
+  .kw-koty    { background: #ffd3e3; border-bottom: 2px solid #db2777; }
+  .kw-psy     { background: #d9e9ff; border-bottom: 2px dotted #2563eb; }
+  .kw-konie   { background: #d7ccc8; border-bottom: 2px solid #5d4037; }
+  .kw-ciaza   { background: #f5cce5; border-bottom: 2px dashed #c026d3; }
+  .kw-mlode   { background: #fff3b0; border-bottom: 2px solid #d97706; }   /* młode / chrząstki / przeżuwacze */
+
+  /* Spektrum bakteryjne */
+  .kw-gplus    { background: #c8e6c9; border-bottom: 2px solid #2e7d32; }  /* G+ */
+  .kw-gminus   { background: #b3e5fc; border-bottom: 2px solid #01579b; }  /* G- */
+  .kw-beztlen  { background: #d1c4e9; border-bottom: 2px solid #4527a0; }  /* beztlenowce */
+  .kw-atyp     { background: #f0e68c; border-bottom: 2px solid #8b6914; }  /* atypowe / wewnątrzkomórkowe / mykoplazmy */
+  .kw-pierwot  { background: #c5e1a5; border-bottom: 2px solid #33691e; }  /* pierwotniaki */
+
+  /* Charakter działania */
+  .kw-bojcze { background: #ffd180; border-bottom: 2px solid #e65100; }    /* bakteriobójcze */
+  .kw-statycz { background: #b2dfdb; border-bottom: 2px solid #00695c; }   /* bakteriostatyczne */
+
+  /* Miejsce na rybosomie */
+  .kw-r50 { background: #2c3e50; color: white; font-weight: bold; padding: 1px 5px; }  /* 50S */
+  .kw-r30 { background: #00838f; color: white; font-weight: bold; padding: 1px 5px; }  /* 30S */
+
+  /* Kategorie EMA ryzyka oporności (A najwyższe ryzyko) */
+  .kw-katA { background: #ff6b6b; color: white; font-weight: bold; padding: 1px 5px; }
+  .kw-katB { background: #ffb74d; color: #4a2500; font-weight: bold; padding: 1px 5px; }
+
+  .legend { background: #fafbfc; border: 2px solid #34495e; padding: 15px 20px; border-radius: 8px; margin: 20px 0 30px 0; }
+  .legend h3 { margin-top: 0; color: #2c3e50; }
+  .legend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 6px 14px; font-size: 0.88em; }
+  .legend-item { padding: 3px 4px; }
+  .legend-section-title { grid-column: 1 / -1; font-weight: bold; color: #555; margin-top: 6px; font-size: 0.9em; border-bottom: 1px dashed #aaa; padding-bottom: 2px; }
+</style>
+</head>
+<body>
+<p style="margin:0 0 10px 0;"><a href="index.html" style="color:#2980b9; text-decoration:none; font-weight:600;" class="nodruk">← Powrót do wyboru kolokwium</a></p>
+
+<h1>Kolokwium 3 — Antybiotyki i chemioterapeutyki przeciwbakteryjne<br><small style="font-size:0.55em; color:#555;">(pogrupowane wg mechanizmu działania)</small></h1>
+
+<div class="toc">
+<strong>Spis treści (mechanizm → grupa leków):</strong>
+<ol>
+  <li><a href="#g1">Inhibitory syntezy ściany komórkowej — BETALAKTAMY + inhibitory β-laktamaz</a></li>
+  <li><a href="#g2">Inhibitory syntezy ściany komórkowej — pozostałe (glikopeptydy, bacytracyna, fosfomycyna)</a></li>
+  <li><a href="#g3">Inhibitory syntezy białka — podjednostka 50S (makrolidy, linkozamidy, fenikole, pleuromutyliny, streptograminy, linezolid)</a></li>
+  <li><a href="#g4">Inhibitory syntezy białka — podjednostka 30S (aminoglikozydy, tetracykliny)</a></li>
+  <li><a href="#g5">Inhibitory syntezy kwasów nukleinowych / gyrazy — CHINOLONY i FLUOROCHINOLONY</a></li>
+  <li><a href="#g6">Inhibitory szlaku kwasu foliowego — SULFONAMIDY + trimetoprim (diaminopirymidyny)</a></li>
+  <li><a href="#g7">Leki uszkadzające DNA — NITROIMIDAZOLE i nitrofurany</a></li>
+  <li><a href="#g8">Leki uszkadzające błonę komórkową — POLIMYKSYNY / antybiotyki peptydowe</a></li>
+  <li><a href="#g9">Inhibitory polimerazy RNA / inne (ryfamycyny, nowobiocyna, kwas fusydowy)</a></li>
+</ol>
+</div>
+
+<div class="legend">
+<h3>Legenda kolorów (automatyczne podświetlanie słów kluczowych)</h3>
+<div class="legend-grid">
+  <div class="legend-section-title">Charakter działania</div>
+  <div class="legend-item"><span class="kw kw-bojcze">bakteriobójcze</span></div>
+  <div class="legend-item"><span class="kw kw-statycz">bakteriostatyczne</span></div>
+
+  <div class="legend-section-title">Miejsce na rybosomie</div>
+  <div class="legend-item"><span class="kw kw-r50">50S</span> podjednostka</div>
+  <div class="legend-item"><span class="kw kw-r30">30S</span> podjednostka</div>
+
+  <div class="legend-section-title">Spektrum</div>
+  <div class="legend-item"><span class="kw kw-gplus">G+</span> Gram-dodatnie</div>
+  <div class="legend-item"><span class="kw kw-gminus">G-</span> Gram-ujemne</div>
+  <div class="legend-item"><span class="kw kw-beztlen">beztlenowce</span></div>
+  <div class="legend-item"><span class="kw kw-atyp">atypowe / wewnątrzkomórkowe / mykoplazmy</span></div>
+  <div class="legend-item"><span class="kw kw-pierwot">pierwotniaki</span></div>
+
+  <div class="legend-section-title">Toksyczności narządowe + organy (PW)</div>
+  <div class="legend-item"><span class="kw kw-nerki">nefrotoksyczność / nerki</span></div>
+  <div class="legend-item"><span class="kw kw-watroba">hepatotoksyczność / wątroba</span></div>
+  <div class="legend-item"><span class="kw kw-neuro">neuro / OUN / ototoksyczność</span></div>
+  <div class="legend-item"><span class="kw kw-kardio">kardiotoksyczność</span></div>
+  <div class="legend-item"><span class="kw kw-mielo">szpik / mielosupresja / niedokrwistość</span></div>
+
+  <div class="legend-section-title">Gatunki / fizjologia (przeciwwskazania)</div>
+  <div class="legend-item"><span class="kw kw-koty">koty</span></div>
+  <div class="legend-item"><span class="kw kw-psy">psy</span></div>
+  <div class="legend-item"><span class="kw kw-konie">konie / przeżuwacze</span></div>
+  <div class="legend-item"><span class="kw kw-mlode">młode / chrząstki / kocięta / szczenięta</span></div>
+  <div class="legend-item"><span class="kw kw-ciaza">ciąża / laktacja</span></div>
+
+  <div class="legend-section-title">Kategoria EMA (ryzyko oporności)</div>
+  <div class="legend-item"><span class="kw kw-katA">kat. A</span> (unikać u zwierząt)</div>
+  <div class="legend-item"><span class="kw kw-katB">kat. B</span> (ograniczać)</div>
+</div>
+</div>
+
+<!-- ============================================================= -->
+<!-- GRUPA 1 — ŚCIANA: BETALAKTAMY -->
+<!-- ============================================================= -->
+<h2 id="g1">1. Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> betalaktamy nieodwracalnie wiążą białka wiążące penicylinę (PBP) i hamują transpeptydację (sieciowanie peptydoglikanu) → blokada syntezy ściany komórkowej → liza komórki. Działają <strong>bakteriobójczo</strong>, <strong>czasozależnie</strong>, głównie na dzielące się bakterie. Główny mechanizm oporności: bakteryjne <strong>β-laktamazy</strong> (rozkład pierścienia β-laktamowego) — stąd inhibitory β-laktamaz.
+</div>
+<div class="mnemo">Mnemo: „Ściana pada, gdy PBP zablokowane” — penicyliny → cefalosporyny (I–V) → karbapenemy → monobaktamy. Inhibitory β-laktamaz nie mają własnego działania p/bakteryjnego, tylko chronią partnera.</div>
+<table>
+<tr><th>Lek / podgrupa</th><th>Spektrum</th><th>Zastosowanie</th><th>Oporność</th><th>Uwagi / DN / interakcje</th></tr>
+<tr><td>Penicyliny naturalne (benzylopenicylina / penicylina G, penicylina prokainowa, benzatynowa, fenoksymetylopenicylina = penicylina V)</td><td>wąskie: głównie G+ (ziarniaki), krętki, niektóre beztlenowce</td><td>zakażenia G+, krętkowice; preparaty depot (prokainowa, benzatynowa) dla wydłużonego działania</td><td>wrażliwe na β-laktamazy (penicylinazy)</td><td>penicylina G nietrwała w kwaśnym pH żołądka (podanie pozajelitowe); reakcje alergiczne; penicylina V kwasoodporna (doustnie)</td></tr>
+<tr><td>Penicyliny półsyntetyczne penicylinazooporne (kloksacylina, dikloksacylina, oksacylina, metycylina, nafcylina)</td><td>G+ wytwarzające penicylinazy (gronkowce)</td><td>zakażenia gronkowcowe</td><td>oporne na penicylinazy; MRSA oporne (zmiana PBP)</td><td>—</td></tr>
+<tr><td>Aminopenicyliny (ampicylina, amoksycylina)</td><td>poszerzone: G+ i część G- (E. coli, Proteus, Salmonella)</td><td>szerokie zakażenia, układ moczowy, pokarmowy, oddechowy</td><td>wrażliwe na β-laktamazy (stąd łączone z inhibitorami)</td><td>amoksycylina lepiej wchłaniana doustnie niż ampicylina</td></tr>
+<tr><td>Karboksypenicyliny / ureidopenicyliny (karbenicylina, tikarcylina, piperacylina, azlocylina)</td><td>poszerzone o Pseudomonas i inne G-</td><td>ciężkie zakażenia G- (w tym Pseudomonas)</td><td>wrażliwe na β-laktamazy</td><td>często łączone z inhibitorami β-laktamaz</td></tr>
+<tr><td><strong>Inhibitory β-laktamaz</strong> (kwas klawulanowy, sulbaktam, tazobaktam)</td><td>brak własnego istotnego spektrum</td><td>łączone z penicylinami (np. amoksycylina + kwas klawulanowy; ampicylina + sulbaktam; piperacylina + tazobaktam) — przywracają aktywność wobec szczepów β-laktamazo-dodatnich</td><td>—</td><td>nieodwracalnie wiążą i inaktywują β-laktamazy („samobójcze” inhibitory)</td></tr>
+<tr><td>Cefalosporyny I generacji (cefaleksyna, cefadroksyl, cefazolina, cefapiryna, cefadroksyl)</td><td>głównie G+, słabiej G-</td><td>zakażenia skóry i tkanek miękkich, profilaktyka chirurgiczna</td><td>β-laktamazy</td><td>reakcje alergiczne (krzyżowe z penicylinami); wzrost aktywności od I do III gen. wobec G-, spadek wobec G+</td></tr>
+<tr><td>Cefalosporyny II generacji (cefuroksym, cefaklor) + cefamycyny (cefoksytyna)</td><td>G+ i poszerzone G-; cefamycyny dodatkowo beztlenowce</td><td>zakażenia mieszane</td><td>cefamycyny bardziej oporne na β-laktamazy</td><td>—</td></tr>
+<tr><td>Cefalosporyny III generacji (cefotaksym, ceftriakson, ceftazydym, cefovecyna, cefpodoksym, ceftiofur)</td><td>szerokie G-, słabiej G+; ceftazydym aktywny wobec Pseudomonas</td><td>ciężkie zakażenia G-; ceftiofur/cefovecyna — weterynaryjne</td><td>β-laktamazy o rozszerzonym spektrum (ESBL)</td><td>cefovecyna — długie działanie (PLW dla psów/kotów); dobra penetracja do OUN (cefotaksym, ceftriakson)</td></tr>
+<tr><td>Cefalosporyny IV generacji (cefepim, cefquinom)</td><td>bardzo szerokie: G+ i G- (w tym Pseudomonas)</td><td>ciężkie zakażenia szpitalne / weterynaryjne (cefquinom)</td><td>oporne na wiele β-laktamaz</td><td>—</td></tr>
+<tr><td>Cefalosporyny V generacji (ceftarolina, ceftobiprol)</td><td>szerokie + MRSA</td><td>zakażenia MRSA</td><td>—</td><td>—</td></tr>
+<tr><td>Karbapenemy (imipenem, meropenem, ertapenem, dorypenem)</td><td>bardzo szerokie: G+, G-, beztlenowce</td><td>ciężkie zakażenia wielolekooporne („antybiotyki ostatniej szansy”)</td><td>karbapenemazy</td><td>imipenem podawany z cylastatyną (hamuje dehydropeptydazę nerkową); ryzyko drgawek</td></tr>
+<tr><td>Monobaktamy (aztreonam)</td><td>tylko tlenowe G- (w tym Pseudomonas)</td><td>zakażenia G- u uczulonych na inne β-laktamy</td><td>—</td><td>brak reaktywności krzyżowej alergicznej z penicylinami</td></tr>
+</table>
+
+<!-- ============================================================= -->
+<!-- GRUPA 2 — ŚCIANA: pozostałe -->
+<!-- ============================================================= -->
+<h2 id="g2">2. Inhibitory syntezy ściany komórkowej — pozostałe mechanizmy (glikopeptydy, bacytracyna, fosfomycyna)</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> hamowanie syntezy peptydoglikanu na innym etapie niż betalaktamy — wiązanie prekursorów ściany (glikopeptydy), blok transportu przezbłonowego nośnika lipidowego (bacytracyna) lub blok wczesnego etapu (fosfomycyna). Działają <strong>bakteriobójczo</strong>.
+</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Efekt</th><th>Spektrum</th><th>Zastosowanie</th><th>Uwagi / DN / interakcje / kat.</th></tr>
+<tr><td>wankomycyna</td><td>glikopeptydy</td><td>blokuje ostatni etap syntezy ściany komórkowej — procesy transglikozylacji i transpeptydacji</td><td>bakteriobójczy, czasozależny</td><td>tlenowe ziarenkowce G+, beztlenowe laseczki Clostridium, MRSA</td><td>rzekomobłoniaste zapalenie jelit</td><td><span class="kw kw-katA">kat. A</span> — głównie dla ludzi, brak danych o działaniu u zwierząt</td></tr>
+<tr><td>bacytracyna, gramicydyna</td><td>cykliczne (peptydowe)</td><td>punkt uchwytu w błonie komórkowej i wpływ na transport przezbłonowy; hamowanie biosyntezy ściany komórkowej (zapobiega tworzeniu nici peptydoglikanu); działanie bakteriobójcze wymaga obecności kationów dwuwartościowych (cynk)</td><td>bakteriobójcze (oporność rozwija się powoli)</td><td>G+; gramicydyna ma poszerzone spektrum o mycobacterium i candida</td><td>zakażenia skóry, owrzodzenia, zakażenia ucha zewnętrznego, zakażenia spojówki, rogówki i wymienia</td><td>nie wchłania się z pp; PW: choroby nerek; DN: nefrotoksyczne, reakcje nadwrażliwości; <strong>kat. D</strong></td></tr>
+<tr><td>fosfomycyna</td><td>—</td><td>hamowanie syntezy ściany komórkowej bakterii poprzez inaktywację transferazy fosfoenolopirogronianowej — hamuje nieodwracalnie kondensację pochodnych N-acetyloglukozaminy z fosfoenolopirogronianem</td><td>bakteriobójczo</td><td>G+, G-</td><td>zakażenia DM niepowikłane, zapalenie pęcherza moczowego, bezobjawowy bakteriomocz (np. w ciąży), profilaktyka zakażeń układu moczowego przed zabiegami chirurgicznymi, przezcewkowymi i diagnostycznymi</td><td>DN: nudności, biegunka, zgaga, bóle brzucha, osłabienie, bóle i zawroty głowy</td></tr>
+</table>
+
+<!-- ============================================================= -->
+<!-- GRUPA 3 — BIAŁKO 50S -->
+<!-- ============================================================= -->
+<h2 id="g3">3. Inhibitory syntezy białka — podjednostka 50S rybosomu</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> wiązanie z podjednostką <strong>50S</strong> rybosomu bakteryjnego → blok transferazy peptydylowej / translokacji / wydłużania łańcucha peptydowego → zahamowanie syntezy białka. Większość działa <strong>bakteriostatycznie</strong>. Makrolidy, linkozamidy i streptograminy mają wspólny region wiązania → krzyżowa oporność <strong>MLSB</strong> (metylacja adeniny rRNA 50S).
+</div>
+<div class="mnemo">Mnemo MLS<sub>B</sub>: <strong>M</strong>akrolidy + <strong>L</strong>inkozamidy + <strong>S</strong>treptograminy<sub>B</sub> — jedna metylaza, wspólna oporność. Pleuromutyliny i fenikole też celują w 50S (stąd wzajemny antagonizm o miejsce wiązania).</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Efekt / spektrum</th><th>Oporność</th><th>Zastosowanie</th><th>DN / PW</th><th>Interakcje / uwagi</th></tr>
+<tr><td>erytromycyna</td><td>makrolidy C14</td><td>bakteriostatyczny (50S); G+, atypowe, część G-, Campylobacter</td><td>fenotyp MLSB (metylacja 50S)</td><td>zakażenia G+, DO, mykoplazmy, kampylobakterioza</td><td>zaburzenia pp (prokinetyk — pobudza receptory motyliny); u koni/przeżuwaczy ryzyko ciężkich zaburzeń pp</td><td>inhibitor cytochromu P450 (interakcje)</td></tr>
+<tr><td>roksytromycyna, klarytromycyna</td><td>makrolidy C14</td><td>bakteriostatyczny (50S); lepsza biodostępność i tolerancja niż erytromycyna</td><td>MLSB</td><td>zakażenia G+, atypowe, DO</td><td>mniej zaburzeń pp niż erytromycyna</td><td>klarytromycyna — silny inhibitor P450</td></tr>
+<tr><td>azytromycyna</td><td>makrolidy C15 (azalidy)</td><td>bakteriostatyczny (50S); poszerzone o G-, długi t½, kumulacja w tkankach</td><td>MLSB</td><td>zakażenia tkankowe, wewnątrzkomórkowe</td><td>dobra tolerancja</td><td>długie działanie tkankowe (dawkowanie rzadkie)</td></tr>
+<tr><td>spiramycyna, jozamycyna</td><td>makrolidy C16</td><td>bakteriostatyczny (50S); G+, atypowe</td><td>MLSB (C16 częściowo wymyka się indukcyjnej oporności)</td><td>zakażenia G+, jamy ustnej, toksoplazmoza (spiramycyna)</td><td>—</td><td>synergizm spiramycyna + metronidazol (stomatologia)</td></tr>
+<tr><td>tylozyna, tilmikozyna, gamitromycyna, tulatromycyna</td><td>makrolidy weterynaryjne</td><td>bakteriostatyczny (50S); G+, mykoplazmy</td><td>MLSB</td><td>zakażenia DO i mykoplazmozy bydła/świń/drobiu; gamitromycyna — długodziałający</td><td>tilmikozyna — kardiotoksyczna (przy podaniu dożylnym/iniekcji ryzyko zgonu, zwłaszcza świnie)</td><td>synergizm tylozyna + oksytetracyklina</td></tr>
+<tr><td>linkomycyna</td><td>linkozamidy</td><td>bakteriostatyczny (50S); G+, beztlenowce</td><td>MLSB (krzyżowa z makrolidami)</td><td>zakażenia G+, beztlenowcowe, kości/stawy</td><td>u koni, królików, przeżuwaczy, chomików — ciężkie, śmiertelne zaburzenia pp (zapalenie jelit)</td><td>antagonizm z makrolidami (wspólne miejsce 50S)</td></tr>
+<tr><td>klindamycyna</td><td>linkozamidy</td><td>bakteriostatyczny (50S); G+, beztlenowce, niektóre pierwotniaki (Toxoplasma)</td><td>MLSB</td><td>zakażenia skóry, kości, jamy ustnej, ropnie, toksoplazmoza, beztlenowce</td><td>jw. ryzyko zaburzeń pp u gatunków wrażliwych (koń, królik)</td><td>antagonizm z makrolidami</td></tr>
+<tr><td>chloramfenikol (detreomycyna, chloromycetyna)</td><td>fenikole</td><td>bakteriostatyczny; hamuje biosyntezę białka na 50S; G+, G-, riketsje</td><td>acetylotransferaza (acetylacja leku), zmiany przepuszczalności błony, redukcja grupy nitrowej, hydroliza wiązania amidowego</td><td>ograniczone ze względu na toksyczność: zakażenia PP i DM, stany zapalne macicy i pęcherza, zakażenia DO, biegunki (E. coli, Salmonella, Proteus); miejscowo — zakażenia gałki ocznej, ucha, skóry</td><td>PW: choroby wątroby; DN: stany zapalne PP, zaburzenia trawienia (przeżuwacze), wymioty (mięsożerne), niedokrwistość aplastyczna (szpik kostny)</td><td>przechodzi przez łożysko i do mleka; inhibitor cyt. P-450; przechodzi do płynu mózgowo-rdzeniowego; może opóźniać gojenie (nie szczepić podczas leczenia)</td></tr>
+<tr><td>tiamfenikol</td><td>fenikole</td><td>bakteriostatyczny; 50S; mniej aktywny na G+ i G-; beztlenowce, Mycoplasma, Chlamydia, Riketsje</td><td>jw. fenikole; nie ma grupy nitrowej</td><td>zakażenia PP, DO, DM, zapalenie macicy, zapalenie gruczołu mlekowego, ropnie</td><td>DN: biegunki, hamuje szpik kostny</td><td>nie ma grupy nitrowej</td></tr>
+<tr><td>florfenikol</td><td>fenikole</td><td>50S; G+, G-, Haemophilus, Pasteurella (przez bakterie)</td><td>jw.</td><td>zakażenia moczowo-płciowego</td><td>DN: wysokie dawki — wpływ na układ krwiotwórczy; u bydła biegunki</td><td>fluor zamiast chloru</td></tr>
+<tr><td>tiamulina, walnemulina</td><td>pochodne pleuromutyliny</td><td>bakteriostatyczny; wiązanie z podjednostką 50S — blokują transferazę peptydylową i hamują tworzenie wiązania peptydowego między aminokwasami → zahamowanie syntezy białek; spektrum: tlenowe G+, tlenowe G-, bakterie beztlenowe, atypowe</td><td>modyfikacja peptydylotransferazy (uniemożliwia przyłączenie antybiotyku)</td><td>dyzenteria świń, zakażenia DO, zakaźne zapalenie ucha u królików, zakażenia wywołane przez mykoplazmy, leptospiroza świń, rozrostowe zapalenie jelit świń, enzootyczne zapalenie płuc; walnemulina — świnie, króliki (tylko doustnie/miejscowo)</td><td>PW: konie (zaburzenia mikroflory); DN: odczyny poiniekcyjne, rumień, obrzęk, u koni zaburzenia mikroflory; świnie, króliki — hipertermia</td><td>antagonizm z makrolidami, linkozamidami i fenikolami (wspólne miejsce wiązania); interakcja z jonoforami (tiamulina + sulfonamidy/jonofory — neurotoksyczne; konkurują o miejsce metabolizmu w nerkach); tiamulina 2× zwiększa biodostępność; <strong>kat. C</strong></td></tr>
+<tr><td>wirginiamycyna M, pristynamycyna (grupa A); wirginiamycyna S (grupa B); SYNERCID (chinuprystyna/dalfoprystyna)</td><td>streptograminy (należą do MLS)</td><td>nieodwracalnie wiążą podjednostkę 50S i hamują syntezę białka; A+B — bakteriobójcze, A lub B osobno — bakteriostatyczne; tlenowe i beztlenowe G+, niektóre atypowe</td><td>oporność chromosomowa i plazmidowa; aktywne usuwanie leku; modyfikacja przez acetylotransferazy (gr. A); metylacja adeniny 50S (MLSB, gr. B); rozerwanie cyklicznej struktury przez liazy</td><td>—</td><td>SYNERCID: bóle stawów i mięśni, nudność, wymioty, biegunka, hiperalbuminemia, świąd</td><td>grupa A: budowa makrolaktonowa; grupa B: cykliczne heksadepsipeptydy; SYNERCID wykazuje PAE, działa na tlenowe G+, bakteriobójczy, hamuje cyt. P450; <strong>kat. A</strong>, brak PLW, nie wchłania się z pp</td></tr>
+<tr><td>linezolid</td><td>oksazolidynony</td><td>bakteriostatycznie; miejsce docelowe to obie podjednostki rybosomu — hamuje przyłączanie kompleksu mRNA-tRNA do pj 70S, blokując powstawanie kompleksu inicjującego syntezę; G+</td><td>—</td><td>—</td><td>morfologia krwi, zwłaszcza trombocytopenia; neuropatie obwodowe i oczne</td><td>hamowanie MAO — interakcje; raczej się go nie zaleca u zwierząt</td></tr>
+</table>
+
+<!-- ============================================================= -->
+<!-- GRUPA 4 — BIAŁKO 30S -->
+<!-- ============================================================= -->
+<h2 id="g4">4. Inhibitory syntezy białka — podjednostka 30S rybosomu</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> wiązanie z podjednostką <strong>30S</strong> rybosomu. <strong>Aminoglikozydy</strong> — błędny odczyt kodu mRNA (działają bakteriobójczo, stężeniozależnie); <strong>tetracykliny</strong> — blokują wiązanie aminoacylo-tRNA i hamują elongację (bakteriostatyczne).
+</div>
+<div class="mnemo">Mnemo aminoglikozydy: „<strong>nefro + oto</strong> = wąski margines” — wymagają transportu tlenowego do komórki (nieskuteczne na beztlenowce), kationy/ropa je inaktywują. Tetracykliny: chelatują Ca²⁺/Mg²⁺/Fe³⁺ (nie z mlekiem/Fe), przebarwiają zęby i kości.</div>
+<h3>Aminoglikozydy</h3>
+<table>
+<tr><th>Lek</th><th>Spektrum / efekt</th><th>Zastosowanie</th><th>DN / PW</th><th>Interakcje / uwagi</th></tr>
+<tr><td>streptomycyna, dihydrostreptomycyna</td><td>bakteriobójcze, stężeniozależne (30S); tlenowe G- + prątki gruźlicy</td><td>gruźlica, zakażenia G-, leptospiroza</td><td>ototoksyczność (przedsionkowa/słuchowa), nefrotoksyczność, blok nerwowo-mięśniowy</td><td>nie łączyć z innymi nefro-/ototoksycznymi; nieaktywne wobec beztlenowców</td></tr>
+<tr><td>neomycyna</td><td>bakteriobójcze (30S); G-, G+</td><td>głównie doustnie (wyjaławianie jelit) i miejscowo (zbyt toksyczna ogólnie)</td><td>silna nefro- i ototoksyczność</td><td>synergizm neomycyna + oksytetracyklina; neomycyna + bacytracyna + prednizolon (maści)</td></tr>
+<tr><td>gentamycyna</td><td>bakteriobójcze, stężeniozależne (30S); szerokie G- (w tym Pseudomonas), G+</td><td>ciężkie zakażenia G-, posocznice, zakażenia miejscowe</td><td>nefrotoksyczność, ototoksyczność, blok nerwowo-mięśniowy</td><td>synergizm z β-laktamami; nie mieszać w jednej strzykawce z penicylinami (inaktywacja)</td></tr>
+<tr><td>tobramycyna, amikacyna</td><td>bakteriobójcze (30S); szerokie G- (w tym Pseudomonas)</td><td>ciężkie zakażenia G-, szczepy oporne na gentamycynę (amikacyna)</td><td>nefro- i ototoksyczność (amikacyna nieco mniejsza oto)</td><td>amikacyna oporna na wiele enzymów modyfikujących</td></tr>
+<tr><td>paromomycyna</td><td>30S; G-, pierwotniaki (Cryptosporidium, Leishmania, ameby)</td><td>kryptosporydioza, leiszmanioza, pierwotniakowe zakażenia jelit</td><td>jw. aminoglikozydy (słabo wchłaniany doustnie → działanie głównie jelitowe)</td><td>—</td></tr>
+<tr><td>spektynomycyna</td><td>aminocyklitol; bakteriostatyczny (30S); G-</td><td>zakażenia G- (np. drób, świnie), mykoplazmy</td><td>mniej nefro-/ototoksyczna niż klasyczne aminoglikozydy</td><td>często łączona z linkomycyną</td></tr>
+</table>
+<h3>Tetracykliny</h3>
+<div class="grupa-info">Mechanizm: blokowanie biosyntezy białka na poziomie rybosomu (30S) — blokują wiązanie aminoacylo-tRNA i hamują elongację. Efekt <strong>bakteriostatyczny</strong>. Spektrum szerokie: G+ i G-, tlenowe i beztlenowe, atypowe, pierwotniaki, krętki (Borrelia/borelioza, bruceloza, listerioza, hemoplazmy). Oporność: pompa wyrzutu (efflux). Wszystkie <strong>kat. D</strong>. Wchłanianie z pp: oksytetracyklina ~30%, tetracyklina ~60%, doksycyklina ~90%; pokarm (zwłaszcza mleko) zmniejsza wchłanianie. Dobra penetracja do OUN (zwłaszcza minocyklina), doksycyklina/minocyklina lipofilne.</div>
+<table>
+<tr><th>Lek</th><th>Podgrupa (t½)</th><th>Zastosowanie / cechy</th><th>DN / PW</th><th>Interakcje</th></tr>
+<tr><td>oksytetracyklina, tetracyklina, chlorotetracyklina</td><td>krótko działające (6–8 h)</td><td>zakażenia DO, układu moczowego, zapalenie ucha, zakażone rany, borelioza, bruceloza, listerioza; chlorotetracyklina — pierwszy odkryty, słabo wchłaniana z pp, głównie miejscowo (rany, skóra); oksytetracyklina dostępna doustnie, parenteralnie, aerozole na skórę, preparaty LA (bydło — leczenie w stadzie)</td><td>nefrotoksyczne, hepatotoksyczne, zaburzenia pp, nadwrażliwość na światło (fotouczulenie), reakcje alergiczne, przebarwienia szkliwa i kości u młodych, hipoplazja szkliwa; PW: panleukopenia u kotów, niewydolność nerek, zaburzenia wątroby, konie i przeżuwacze z wykształconą funkcją przedżołądków; kardiotoksyczność — szybkie podanie iv może spowodować zgon (konie — arytmia; bydło — hipotensja); cielęta — uszkodzenie mięśnia sercowego</td><td>antagonizm z penicylinami i cefalosporynami; preparaty z Fe, Mg, Ca obniżają wchłanianie (nieaktywne chelaty); nie łączyć z aminoglikozydami; synergizm: + makrolidy (tylozyna + oksytetracyklina), + polimyksyny, + aminoglikozydy, + NLPZ, + pleuromutyliny (tiamulina + oksytetracyklina)</td></tr>
+<tr><td>demeklocyklina, metacyklina</td><td>pośrednie (12 h)</td><td>—</td><td>jw.; kat. D</td><td>jw.</td></tr>
+<tr><td>doksycyklina</td><td>o przedłużonym działaniu (16–18 h)</td><td>lepsza penetracja przez błony, mniejsza tendencja do chelatów (można z pokarmem), niski potencjał nefrotoksyczności, eliminacja nienerkowa (wydalana gł. z kałem) → można przy chorobach nerek; konie — brak zarejestrowanych PLW (tylko doustnie, słaba biodostępność, możliwe biegunki); najbezpieczniejsza pod względem przebarwień zębów</td><td>uszkodzenie przełyku u psów/kotów (podać z wodą/pokarmem); jw. mniejsza hepato-/nefrotoksyczność</td><td>+ rifampicyna/streptomycyna (synergizm)</td></tr>
+<tr><td>minocyklina</td><td>o przedłużonym działaniu</td><td>bardzo dobra rozpuszczalność w tłuszczach, dobra penetracja do OUN i prostaty; brak PLW w Polsce; opisana u psów i kotów</td><td>jw.</td><td>jw.</td></tr>
+</table>
+
+<!-- ============================================================= -->
+<!-- GRUPA 5 — KWASY NUKLEINOWE / GYRAZA -->
+<!-- ============================================================= -->
+<h2 id="g5">5. Inhibitory syntezy kwasów nukleinowych — CHINOLONY i FLUOROCHINOLONY (gyraza/topoizomerazy)</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> hamowanie aktywności bakteryjnych topoizomeraz II (<strong>gyraza DNA</strong>) i IV. Topoizomerazy odpowiadają za rozplatanie/zwijanie nici DNA podczas replikacji; ich zahamowanie powoduje rozpad rozplecionej nici → blok replikacji DNA → blok syntezy RNA i białek. Efekt <strong>bakteriobójczy</strong>, <strong>stężeniozależny</strong>, z efektem poantybiotykowym (PAE). Gyraza — punkt uchwytu dla G- (przed replikacją); topoizomeraza IV — dla G+ (po replikacji). Wnikają do makrofagów (dobre na atypowe/wewnątrzkomórkowe). Większość — <strong>kat. B</strong>.
+</div>
+<div class="mnemo">Mnemo PW: „<strong>chrząstki + padaczka</strong>” — uszkodzenie chrząstek stawowych u młodych rosnących; obniżają próg drgawkowy. Koty: degeneracja siatkówki przy enrofloksacynie (wysokie dawki).</div>
+<table>
+<tr><th>Lek</th><th>Generacja</th><th>Spektrum</th><th>Zastosowanie</th><th>PW</th><th>DN</th><th>Oporność / interakcje / uwagi</th></tr>
+<tr><td>kwas nalidyksowy, kwas oksolinowy</td><td>I generacja</td><td>G-, niska aktywność</td><td>leczenie zakażeń układu moczowego — psy, koty, drób, ryby</td><td>młode, rosnące psy, koty, konie; ciąża; laktacja; padaczka; zaburzenia wątroby i nerek</td><td>toksyczne uszkodzenie chrząstek stawowych u młodych, nudności, wymioty, drgawki, nadciśnienie, reakcje alergiczne</td><td>niska wchłanialność z pp, silne wiązanie z białkami osocza</td></tr>
+<tr><td>flumechina</td><td>II generacja = fluorochinolony</td><td>tlenowe G-, atypowe</td><td>infekcje układu moczowego, oddechowego, pp, zakażenia skóry i tkanek miękkich, zapalenie ucha zewnętrznego</td><td>jw. (młode, rosnące, ciąża, laktacja, padaczka)</td><td>uszkodzenie chrząstek stawowych u młodych, zaburzenia pp, degeneracja siatkówki u kotów, zwiększenie ataków padaczkowych</td><td>aktywne usuwanie leku z komórki, zmniejszona przepuszczalność błony, modyfikacje gyrazy/topoizomerazy IV (mechanizmy transmisyjne); preparaty z Fe, Mg, Ca obniżają wchłanianie (chelaty); inhibitory cyt. P450 (hamują metabolizm innych leków, np. teofiliny); <span class="kw kw-katB">kat. B</span>; osiągają wysokie stężenia w oskrzelach, płucach, wątrobie, żółci, nerkach, prostacie, chrząstkach, kościach i mleku</td></tr>
+<tr><td>norfloksacyna, enrofloksacyna, marbofloksacyna, danofloksacyna, orbifloksacyna</td><td>II–III generacja (fluorochinolony)</td><td>szerokie: tlenowe G+ i G- (gronkowce, słabiej paciorkowce), atypowe/wewnątrzkomórkowe; pradofloksacyna też na beztlenowce</td><td>infekcje pp, dróg moczowych, rodnych, układu oddechowego, skóry, ucha, gruczołu mlekowego, posocznice — ważne bo tylko w weterynarii (enro-, marbo-, dano-, orbi-)</td><td>młode, rosnące psy, koty, konie; ciąża; laktacja; padaczka</td><td>uszkodzenie chrząstek u młodych, zaburzenia pp, degeneracja siatkówki u kotów, zwiększenie ataków padaczkowych</td><td>synergizm: β-laktamy, aminoglikozydy, polipeptydowe, metronidazol; antagonizm: makrolidy, tetracykliny, fenikole, nitrofurany; oporność krzyżowa w grupie</td></tr>
+<tr><td>pradofloksacyna</td><td>III generacja = polifluorochinolony</td><td>+ beztlenowce</td><td>zakażenia skóry, choroby przyzębia, zakażenia DO, DM</td><td>młode, rosnące psy, koty, konie; ciąża; laktacja</td><td>biegunka</td><td>jw.</td></tr>
+<tr><td>difloksacyna</td><td>III generacja</td><td>jw.</td><td>zakażenia skóry</td><td>młode, rosnące psy, koty, konie</td><td>biegunka, wymioty</td><td>jw.</td></tr>
+<tr><td>moksyfloksacyna, ibafloksacyna</td><td>IV generacja</td><td>jw.</td><td>zakażenia skóry i tkanek miękkich, zapalenie płuc</td><td>młode, rosnące psy, koty, konie</td><td>biegunka, wymioty</td><td>jw.</td></tr>
+</table>
+
+<!-- ============================================================= -->
+<!-- GRUPA 6 — SZLAK FOLIOWY -->
+<!-- ============================================================= -->
+<h2 id="g6">6. Inhibitory szlaku kwasu foliowego — SULFONAMIDY + trimetoprim (diaminopirymidyny)</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> blokada kolejnych etapów syntezy kwasu foliowego (niezbędnego do syntezy prekursorów DNA/RNA). <strong>Sulfonamidy</strong> hamują dihydropteroinian syntetazę (naśladują PABA — antymetabolity). <strong>Trimetoprim</strong> hamuje reduktazę dihydrofolianową. Razem = <strong>sulfonamidy potencjonowane</strong> (sekwencyjna blokada szlaku → działanie bakteriobójcze). Same sulfonamidy działają bakteriostatycznie (po zużyciu zapasów PABA bakterii).
+</div>
+<div class="mnemo">Mnemo: „<strong>PABA + ropa znoszą działanie</strong>” — krew, ropa, prokaina, penicylina prokainowa, witaminy B osłabiają sulfonamidy. Słabo rozpuszczalne sulfonamidy krystalizują w niskim pH → nefrotoksyczne (kamica moczanowa).</div>
+<table>
+<tr><th>Lek / podgrupa</th><th>Mechanizm / efekt</th><th>Spektrum</th><th>Zastosowanie</th><th>PW / DN</th><th>Oporność / interakcje / uwagi</th></tr>
+<tr><td>sulfatiazol, sulfacetamid, sulfafurazol (krótko działające 4–6 h); sulfadymidyna, sulfadiazyna, sulfametoksazol, sulfachloropirydazyna (średnio długo 8–12 h); sulfadoksyna, sulfamerazyna, sulfadimetoksyna, sulfametoksydiazyna, sulfapirazol, sulfametoksypirydazyna (długo działające 16–40 h)</td><td>hamują syntetazę dihydropterydynową — blok przekształcania PABA (który naśladują) w kwas foliowy; bakteriostatyczne (po zużyciu zapasów PABA bakterii)</td><td>G+, G- (Enterobacteriaceae), chlamydie, H. influenzae, pierwotniaki, Actinomyces (beztlenowiec)</td><td>promienica/aktynomykoza, kokcydioza, kolibakterioza, zanokcica, nekrobacyloza, infekcje DO, zołzy, zapalenie płuc/stawów/wymienia, toksoplazmoza, salmonelloza; sulfacetamid — okulistyka; sulfafurazol — z wyboru przy zakażeniach DM; sulfachloropirazyna — zapalenie jelit świń i cieląt; długodziałające — kokcydioza królików (z trimetoprimem), zakażenia DO/zatok/macicy/skóry psów i kotów</td><td>PW: uszkodzenie nerek, wątroby, odwodnienie, kamica moczanowa, niedokrwistość, ciąża, noworodki, dysfunkcja układu immunologicznego; DN: pobudzenie, zaburzenie koordynacji, zwiotczenie mięśni, zapaść, zaburzenia obrazu krwi, zapalenie nerwów obwodowych, zmiany mikroflory, niedobór witaminy K, krwawienia, hamowanie fermentacji i apetytu (bydło), biegunki (kozy), reakcje uczuleniowe (wstrząs anafilaktyczny, pokrzywka, astma), DRESS (gorączka, eozynofilia, zapalenie wątroby/serca/nerek/płuc); słabo rozpuszczalne (sulfatiazol, sulfanilamid) — nefrotoksyczne (krystalizacja w niskim pH)</td><td>oporność: wytwarzanie endogennego PABA innymi szlakami, zmiana struktury syntetazy, blok transportu sulfonamidu, aktywne usuwanie z komórki; osłabiają działanie: witaminy B, PABA, prokaina, penicylina prokainowa, krew, ropa (dużo PABA), albuminy; synergizm z inhibitorami reduktazy kwasu dihydrofoliowego; NLPZ potęgują DN; nefrotoksyczny</td></tr>
+<tr><td>ftaliosulfacetamid, formosulfatiazol</td><td>trudno wchłaniają się z jelit; hydroliza w jelicie (do sulfacetamidu / sulfatiazolu)</td><td>jw.</td><td>działanie miejscowe w jelicie (świnie, psy)</td><td>—</td><td>—</td></tr>
+<tr><td>salazosulfapirydyna (sulfasalazyna)</td><td>rozpad w jelicie do sulfapirydyny (część toksyczna) i kwasu 5-aminosalicylowego; działa przeciwzapalnie</td><td>jw.</td><td>wrzodziejące zapalenie jelita grubego psów (nie u kotów)</td><td>—</td><td>—</td></tr>
+<tr><td>sulfanilamid, sól srebrowa sulfadiazyny, sulfacetamid, mafenid</td><td>stosowane miejscowo</td><td>jw.; mafenid działa na beztlenowce</td><td>zakażenia ran (krótkie, słabe działanie); sól srebrowa — rany pooparzeniowe i zakażone (Ps. aeruginosa); sulfacetamid — okulistyka; mafenid — zakażenia ran ropnych (zwłaszcza beztlenowce)</td><td>nie stosować na niezakażone rany ani z obfitą ropą; mafenid — opóźnia gojenie ran (więc się go łączy z sulfonamidami), nietoksyczny</td><td>PABA nie znosi działania mafenidu</td></tr>
+<tr><td>trimetoprim</td><td>antagonista kwasu foliowego — hamuje reduktazę dihydrofolianową (przemiana kwasu dihydrofoliowego w tetrahydrofoliowy); może być bakteriobójczy w połączeniu z sulfonamidem</td><td>tlenowe G+, G-, pierwotniaki (oprócz Pseudomonas i Mycobacterium)</td><td>łączony z sulfonamidami — sulfonamidy potencjonowane</td><td>DN (u koni po podaniu doustnym): biegunki, neurotoksyczność, nieprawidłowy chód</td><td>oporność: synteza reduktazy niewrażliwej na inhibitory, zmniejszenie przepuszczalności</td></tr>
+<tr><td>diawerdyna</td><td>inhibitor przemian kwasu foliowego</td><td>—</td><td>z sulfachinoksaliną — leczenie kokcydiozy</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================================= -->
+<!-- GRUPA 7 — DNA-DAMAGING -->
+<!-- ============================================================= -->
+<h2 id="g7">7. Leki uszkadzające DNA — NITROIMIDAZOLE i nitrofurany</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> wewnątrz komórki bakteryjnej ulegają redukcji do aktywnych metabolitów, które bezpośrednio uszkadzają DNA / hamują syntezę kwasów nukleinowych. <strong>Nitrofurany</strong> — nitroreduktazy redukują lek; metabolity wiążą się z rybosomami/rRNA i zaburzają enzymy (Pseudomonas i Proteus oporne — brak reduktaz). <strong>Nitroimidazole</strong> — wymagają niskiego potencjału redoks → działają na beztlenowce i pierwotniaki. Efekt <strong>bakteriobójczy</strong>.
+</div>
+<div class="mnemo">Mnemo: „<strong>beztlenowce + pierwotniaki</strong> + uwaga na mutagenność/kancerogenność” — produkty rozkładu nitrofuranów mogą być mutagenne/kancerogenne (zakazane u zwierząt rzeźnych). Metronidazol — najlepsza penetracja (OUN, kości, ropnie).</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / efekt / spektrum</th><th>Zastosowanie</th><th>PW</th><th>DN</th><th>Oporność / interakcje / uwagi</th></tr>
+<tr><td>furazolidon, nitrofurazon, nitrofurantoina, nifuroksazyd, nifuratel</td><td>nitrofurany</td><td>nitroreduktazy bakteryjne redukują lek do aktywnych metabolitów wiążących się z rybosomami i rRNA → blok syntezy białek; zaburzenia reakcji enzymatycznych przemian węglowodanów → blok biosyntezy DNA; utlenienie lipidów i uszkodzenie błon; bakteriostatyczne, w większych stężeniach bakteriobójcze; tlenowe G+/G-, beztlenowce, niektóre pierwotniaki, wirusy, grzyby</td><td>zakażenia pp, skóry i oczu, macicy; nitrofurazon — miejscowo, duża toksyczność; nitrofurantoina — zakażenia DM (doustnie, max 14 dni); nifuroksazyd — biegunki bakteryjne (nie wchłania się z pp); nifuratel — infekcje DM, PP (ogólnie, miejscowo, dopochwowo)</td><td>ciąża, szczenięta <5–6 tygodnia, niewydolność nerek i wątroby</td><td>wąski margines bezpieczeństwa; produkty rozkładu mutagenne i kancerogenne; nowotwory gruczołu sutkowego i jajników po nitrofurazonie (stymuluje proliferację komórek estrogenozależnych); drżenia, drgawki, neuropatie, zaburzenia pp, czerwone zabarwienie moczu, niedokrwistość hemolityczna noworodków</td><td>oporność rozwija się powoli, krzyżowa (Pseudomonas i Proteus oporne — brak reduktaz); <strong>kat. D</strong>, zakazane u zwierząt rzeźnych, brak PLW; podane ogólnie nie osiągają stężenia terapeutycznego w osoczu/tkankach</td></tr>
+<tr><td>metronidazol</td><td>nitroimidazole</td><td>biernie wnika do komórki, gdzie redukuje się do aktywnych metabolitów uszkadzających DNA niezależnie od fazy wzrostu drobnoustrojów; bakteriobójcze; bakterie beztlenowe (wymagają niskiego potencjału redoks), pierwotniaki</td><td>choroby przyzębia, zapalenie jamy otrzewnowej / narządów rodnych / ucha środkowego / kości / stawów / opon mózgowych, ropnie jamy brzusznej, leczenie RZJ i biegunek wywołanych przez Clostridium difficile</td><td>ciąża; konie — brak apetytu</td><td>wysokie dawki neurotoksyczne — depresja OUN, ataksja, drżenia, hipertermia, napady padaczkowe, zaburzenia świadomości, mielotoksyczne; psy i koty — zaburzenia ze strony pp</td><td>oporność rzadko (obniżenie wewnątrzkomórkowej redukcji leku; oporność u Clostridium difficile i perfringens u koni i psów; krzyżowa); może nasilać działanie warfaryny i cyklosporyny; <strong>kat. D</strong>; per os, IV, doodbytniczo; szybko się wchłania, lipofilny — łatwo penetruje do OUN, kości, ropni, przez łożysko i do mleka; najbardziej aktywny</td></tr>
+<tr><td>dimetronidazol, ronidazol, karnidazol, ipronidazol</td><td>nitroimidazole</td><td>jw.</td><td>trychomonadoza, histomonadoza, giardioza, kokcydioza</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>tynidazol</td><td>nitroimidazole</td><td>jw.; giardia</td><td>giardioza</td><td>—</td><td>biegunka, wymioty, zaburzenia neurologiczne</td><td>brak PLW</td></tr>
+</table>
+
+<!-- ============================================================= -->
+<!-- GRUPA 8 — BŁONA -->
+<!-- ============================================================= -->
+<h2 id="g8">8. Leki uszkadzające błonę komórkową — POLIMYKSYNY i pozostałe peptydowe</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> kationowe detergenty / środki powierzchniowo czynne o właściwościach amfipatycznych — wypierają jony Ca²⁺ i Mg²⁺, atakują grupy fosforanowe błony fosfolipidowej, zwiększają przepuszczalność i zaburzają funkcję błony → wyciek zawartości cytoplazmy → rozpad i śmierć komórki. Polimyksyny wiążą lipid A LPS (neutralizują endotoksynę). Efekt <strong>bakteriobójczy</strong>, <strong>stężeniozależny</strong>; głównie G-.
+</div>
+<div class="mnemo">Mnemo: „<strong>nefro + neuro</strong> + endotoksyna” — polimyksyny toksyczne (nerki, OUN, blok nerwowo-mięśniowy), ale wiążą i neutralizują LPS we wstrząsie septycznym. Daptomycyna — lipopeptyd, tylko G+ (MRSA, VRE), zależna od Ca²⁺.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / efekt / spektrum</th><th>Zastosowanie</th><th>PW</th><th>DN</th><th>Interakcje / uwagi / kat.</th></tr>
+<tr><td>kolistyna (polimyksyna E), polimyksyna B</td><td>polimyksyny</td><td>kationowe detergenty; niszczą błony komórkowe przez atakowanie odsłoniętych grup fosforanowych błony fosfolipidowej → wyciek zawartości cytoplazmy, rozpad i śmierć komórki; w przypadku G- wiążą lipid A LPS (neutralizują endotoksynę); bakteriobójcze, stężeniozależne; bardziej G- niż G+</td><td>stany zapalne uszu i skóry, infekcje pp, wczesne etapy wstrząsu septycznego (endotoksemii) wywołanego przez G-; może być iniekcyjnie (preparat dla bydła); u koni doustnie — kolki/colitis</td><td>choroby nerek; nadwrażliwość; u koni doustnie (kolki)</td><td>neurotoksyczność, nefrotoksyczność, zawroty głowy, blok nerwowo-mięśniowy, uszkodzenie nerek; ototoksyczne przy uszkodzonej błonie bębenkowej</td><td>oporność rzadka, chromosomalna (modyfikacja LPS, aktywne wypompowywanie); nie stosować z aminoglikozydami; synergizm z betalaktamami; <span class="kw kw-katB">kat. B</span></td></tr>
+<tr><td>daptomycyna</td><td>lipopeptydy</td><td>łączy się z błoną komórkową w sposób zależny od wapnia, oligomeryzuje tworząc kanały jonowe → ucieczka jonów potasowych, zaburzenie potencjału, rozpad błony i śmierć komórki; stężeniozależna; wyłącznie G+ (w tym MRSA, VISA, VRSA, VRE)</td><td>—</td><td>—</td><td>osłabienie mięśni szkieletowych (>10 mg/kg u psów), neuropatia obwodowa z degeneracją aksonów</td><td>aktywność wzrasta wprost proporcjonalnie do stężenia Ca²⁺; <span class="kw kw-katA">kat. A</span></td></tr>
+</table>
+
+<!-- ============================================================= -->
+<!-- GRUPA 9 — POLIMERAZA RNA / INNE -->
+<!-- ============================================================= -->
+<h2 id="g9">9. Inhibitory polimerazy RNA i inne (ryfamycyny, nowobiocyna, kwas fusydowy)</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> leki nienależące do głównych grup — hamują polimerazę RNA (ryfamycyny), syntezę kwasów nukleinowych i oddychanie komórkowe (nowobiocyna) lub biosyntezę białka (kwas fusydowy). Zestawione razem jako „inne”.
+</div>
+<table>
+<tr><th>Lek</th><th>Mechanizm / efekt</th><th>Spektrum</th><th>Zastosowanie</th><th>DN</th><th>Oporność / interakcje</th></tr>
+<tr><td>ryfamycyna (ryfampicyna)</td><td>hamują aktywność polimerazy RNA → blok syntezy kwasów nukleinowych; bakteriobójczy</td><td>G+</td><td>stosowana w połączeniu z innymi lekami (oporność szybko się rozwija)</td><td>mocz, kał, ślina zabarwiają się na czerwono-pomarańczowo; u koni depresja OUN, zmniejszony apetyt</td><td>szybko rozwijająca się oporność (stąd terapia skojarzona)</td></tr>
+<tr><td>nowobiocyna</td><td>hamuje syntezę kwasów nukleinowych i procesy oddychania komórkowego, uszkadza błony komórkowe; bakteriostatyczny</td><td>niektóre G+, nieliczne G-</td><td>zakażenia wymienia; infekcje gronkowcowe u psów i kotów gdy oporność na penicylinę</td><td>—</td><td>—</td></tr>
+<tr><td>kwas fusydowy</td><td>blokowanie biosyntezy białka; bakteriostatyczny, w wysokich stężeniach bakteriobójczy</td><td>G+</td><td>zakażenia skóry (liszajec, zapalenie gruczołów potowych, trądzik pospolity u ludzi)</td><td>reakcje alergiczne</td><td>synergizm z metycyliną, cefalosporynami i wankomycyną</td></tr>
+</table>
+
+<script>
+(function() {
+  // Kolejność ma znaczenie — bardziej specyficzne wzorce pierwsze, żeby uniknąć nakładania.
+  const RULES = [
+    // Miejsce na rybosomie (markery)
+    { re: /\b50S\b/g, cls: 'kw kw-r50' },
+    { re: /\b30S\b/g, cls: 'kw kw-r30' },
+
+    // Kategorie EMA
+    { re: /\bkat\.?\s?A\b/g, cls: 'kw kw-katA' },
+    { re: /\bkategoria A\b/g, cls: 'kw kw-katA' },
+    { re: /\bkat\.?\s?B\b/g, cls: 'kw kw-katB' },
+
+    // Charakter działania
+    { re: /\bbakteriobójcz[a-ząęłńóśźż]+/gi, cls: 'kw kw-bojcze' },
+    { re: /\bbakteriostatyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-statycz' },
+
+    // Toksyczności narządowe (DN) i organy (PW)
+    { re: /\bnefrotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-nerki' },
+    { re: /\bhepatotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-watroba' },
+    { re: /\bneurotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-neuro' },
+    { re: /\bkardiotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-kardio' },
+    { re: /\bototoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-neuro' },
+    { re: /\bmielotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-mielo' },
+    { re: /\bmielosupresj[a-ząęłńóśźż]+/gi, cls: 'kw kw-mielo' },
+    { re: /\bszpik[a-ząęłńóśźż]*/gi, cls: 'kw kw-mielo' },
+    { re: /\bniedokrwistość[a-ząęłńóśźż]*/gi, cls: 'kw kw-mielo' },
+    { re: /\btrombocytopeni[a-ząęłńóśźż]+/gi, cls: 'kw kw-mielo' },
+    { re: /\bOUN\b/g, cls: 'kw kw-neuro' },
+    { re: /\bblok nerwowo-mięśniow[a-ząęłńóśźż]+/gi, cls: 'kw kw-neuro' },
+    { re: /\bdrgawk[a-ząęłńóśźż]+/gi, cls: 'kw kw-neuro' },
+    { re: /\bpadaczk[a-ząęłńóśźż]+/gi, cls: 'kw kw-neuro' },
+    { re: /\bpadaczkow[a-ząęłńóśźż]+/gi, cls: 'kw kw-neuro' },
+    { re: /\bwątrob[a-ząęłńóśźż]+/gi, cls: 'kw kw-watroba' },
+    { re: /\bnerk[a-ząęłńóśźż]+/gi, cls: 'kw kw-nerki' },
+
+    // Spektrum
+    { re: /G\+/g, cls: 'kw kw-gplus' },
+    { re: /G-/g, cls: 'kw kw-gminus' },
+    { re: /\bbeztlenow[a-ząęłńóśźż]+/gi, cls: 'kw kw-beztlen' },
+    { re: /\bbeztlenowc[a-ząęłńóśźż]+/gi, cls: 'kw kw-beztlen' },
+    { re: /\batypow[a-ząęłńóśźż]+/gi, cls: 'kw kw-atyp' },
+    { re: /\bwewnątrzkomórkow[a-ząęłńóśźż]+/gi, cls: 'kw kw-atyp' },
+    { re: /\bmykoplazm[a-ząęłńóśźż]+/gi, cls: 'kw kw-atyp' },
+    { re: /\bMycoplasma\b/g, cls: 'kw kw-atyp' },
+    { re: /\bChlamydia\b/g, cls: 'kw kw-atyp' },
+    { re: /\bchlamydi[a-ząęłńóśźż]+/gi, cls: 'kw kw-atyp' },
+    { re: /\bpierwotniak[a-ząęłńóśźż]+/gi, cls: 'kw kw-pierwot' },
+
+    // Wiek / fizjologia / gatunki
+    { re: /\bchrząstek[a-ząęłńóśźż]*/gi, cls: 'kw kw-mlode' },
+    { re: /\bchrząstk[a-ząęłńóśźż]+/gi, cls: 'kw kw-mlode' },
+    { re: /\bkocięt[a-ząęłńóśźż]+/gi, cls: 'kw kw-mlode' },
+    { re: /\bszczeniąt[a-ząęłńóśźż]+/gi, cls: 'kw kw-mlode' },
+    { re: /\bszczenięt[a-ząęłńóśźż]+/gi, cls: 'kw kw-mlode' },
+    { re: /\bmłod(e|ych|ym|ymi|ego)\b/gi, cls: 'kw kw-mlode' },
+    { re: /\bprzeżuwacz[a-ząęłńóśźż]+/gi, cls: 'kw kw-konie' },
+    { re: /\bciąż[a-ząęłńóśźż]+/gi, cls: 'kw kw-ciaza' },
+    { re: /\blaktacj[a-ząęłńóśźż]+/gi, cls: 'kw kw-ciaza' },
+    { re: /\bkot(y|ów|om|ach|a|u)\b/gi, cls: 'kw kw-koty' },
+    { re: /\bKOTY\b/g, cls: 'kw kw-koty' },
+    { re: /\bkoni(e|a|om|ach|i)\b/gi, cls: 'kw kw-konie' },
+    { re: /\bps(y|ów|om|ach|a)\b/gi, cls: 'kw kw-psy' },
+  ];
+
+  function escapeHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function shouldSkip(node) {
+    let el = node.parentElement;
+    while (el) {
+      const tag = el.tagName;
+      if (tag === 'H1' || tag === 'H2' || tag === 'H3' || tag === 'TH' ||
+          tag === 'SCRIPT' || tag === 'STYLE' || tag === 'A') return true;
+      if (el.classList && (el.classList.contains('toc') ||
+          el.classList.contains('legend') ||
+          el.classList.contains('key') ||
+          (el.tagName === 'SPAN' && el.className && el.className.indexOf('kw') === 0))) return true;
+      el = el.parentElement;
+    }
+    return false;
+  }
+
+  function processTextNode(node) {
+    const text = node.textContent;
+    if (!text.trim()) return;
+    const matches = [];
+    RULES.forEach(rule => {
+      rule.re.lastIndex = 0;
+      let m;
+      while ((m = rule.re.exec(text)) !== null) {
+        matches.push({ start: m.index, end: m.index + m[0].length, cls: rule.cls, text: m[0] });
+        if (m[0].length === 0) rule.re.lastIndex++;
+      }
+    });
+    if (!matches.length) return;
+    matches.sort((a, b) => a.start - b.start || (b.end - b.start) - (a.end - a.start));
+
+    const filtered = [];
+    let lastEnd = 0;
+    for (const m of matches) {
+      if (m.start >= lastEnd) {
+        filtered.push(m);
+        lastEnd = m.end;
+      }
+    }
+
+    let html = '';
+    let pos = 0;
+    for (const m of filtered) {
+      html += escapeHtml(text.substring(pos, m.start));
+      html += '<span class="' + m.cls + '">' + escapeHtml(m.text) + '</span>';
+      pos = m.end;
+    }
+    html += escapeHtml(text.substring(pos));
+
+    const tmp = document.createElement('span');
+    tmp.innerHTML = html;
+    const parent = node.parentNode;
+    while (tmp.firstChild) parent.insertBefore(tmp.firstChild, node);
+    parent.removeChild(node);
+  }
+
+  function run() {
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      { acceptNode: function(n) { return shouldSkip(n) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } }
+    );
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(processTextNode);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
+</script>
+</body>
+</html>

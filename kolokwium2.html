@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Kolokwium 2 — krążenie, endokrynologia, pokarmowy, oddechowy</title>
+<style>
+  @media print { .nodruk { display: none !important; } }
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; max-width: 1400px; margin: 20px auto; padding: 0 20px; color: #222; line-height: 1.35; }
+  h1 { text-align: center; color: #2c3e50; border-bottom: 3px solid #2c3e50; padding-bottom: 10px; }
+  h2 { color: #fff; background: #2c3e50; padding: 10px 15px; margin-top: 40px; border-radius: 6px; font-size: 1.15em; }
+  h3 { color: #2c3e50; margin-top: 25px; border-left: 5px solid #e74c3c; padding-left: 10px; }
+  .grupa-info { background: #fff8dc; border-left: 5px solid #f39c12; padding: 10px 15px; margin: 10px 0 15px 0; font-size: 0.95em; }
+  .mnemo { background: #e8f5e9; border-left: 5px solid #27ae60; padding: 8px 15px; margin: 10px 0; font-style: italic; font-size: 0.95em; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 15px; font-size: 0.83em; }
+  th, td { border: 1px solid #bbb; padding: 6px 8px; vertical-align: top; text-align: left; }
+  th { background: #34495e; color: white; font-weight: 600; }
+  td:first-child { font-weight: bold; background: #f4f6f7; width: 130px; }
+  tr:nth-child(even) td:not(:first-child) { background: #fafbfc; }
+  .toc { background: #ecf0f1; padding: 15px 25px; border-radius: 8px; margin-bottom: 30px; }
+  .toc ol { columns: 2; column-gap: 30px; }
+  .toc a { color: #2980b9; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .key { color: #c0392b; font-weight: bold; }
+  @page { size: A4; margin: 1.2cm; }
+  @media print {
+    body { print-color-adjust: exact; -webkit-print-color-adjust: exact; color-adjust: exact; max-width: 100%; margin: 0; padding: 0; font-size: 10pt; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; font-size: 8pt; }
+    tr { page-break-inside: avoid; }
+    .toc { page-break-after: always; }
+    .legend { page-break-after: always; }
+    .kw, .key, .legend, .grupa-info, .mnemo { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    a { color: inherit; text-decoration: none; }
+  }
+
+  /* === KOLOROWANE POWTARZAJĄCE SIĘ SŁOWA KLUCZOWE === */
+  .kw { padding: 0 3px; border-radius: 3px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* Toksyczności narządowe + odpowiadające PW */
+  .kw-watroba { background: #ffe0c2; border-bottom: 2px solid #c2410c; }   /* wątroba PW + hepatotoksyczność */
+  .kw-nerki   { background: #cfe5ff; border-bottom: 2px solid #1d4ed8; }   /* nerki PW + nefrotoksyczność */
+  .kw-neuro   { background: #e8d2f5; border-bottom: 2px solid #7c3aed; }   /* neuro/OUN */
+  .kw-kardio  { background: #ffcccc; border-bottom: 2px solid #b91c1c; }   /* kardio/serce */
+  .kw-mielo   { background: #e8d5b0; border-bottom: 2px solid #78350f; }   /* mielosupresja/szpik */
+
+  /* Elektrolity / parametry */
+  .kw-hipok   { background: #d1f0e0; border-bottom: 2px solid #047857; }   /* hipokaliemia */
+  .kw-hiperk  { background: #fde2c4; border-bottom: 2px solid #b45309; }   /* hiperkaliemia */
+  .kw-brady   { background: #c8e6ff; border-bottom: 2px solid #0369a1; }   /* bradykardia */
+  .kw-tachy   { background: #ffd6d6; border-bottom: 2px solid #dc2626; }   /* tachykardia/arytmie */
+  .kw-hipoten { background: #e0e7ff; border-bottom: 2px solid #4338ca; }   /* hipotensja/spadek ciśnienia */
+  .kw-nadcis  { background: #ffe4e1; border-bottom: 2px solid #e11d48; }   /* nadciśnienie */
+
+  /* Stany / choroby */
+  .kw-niewyd  { background: #ffe9b0; border-bottom: 2px solid #b8860b; }   /* niewydolność serca/nerek */
+  .kw-cukrzyca{ background: #cfeeff; border-bottom: 2px solid #0e7490; }   /* cukrzyca/hiperglikemia */
+  .kw-astma   { background: #d6f5d6; border-bottom: 2px solid #15803d; }   /* astma/oskrzela */
+  .kw-wrzody  { background: #f3d6c0; border-bottom: 2px solid #9a3412; }   /* wrzody */
+  .kw-cushing { background: #e7d4f7; border-bottom: 2px solid #6d28d9; }   /* zespół Cushinga */
+  .kw-krwaw   { background: #ffc9c9; border-bottom: 2px solid #b91c1c; }   /* krwawienia/zakrzepica */
+
+  /* PW gatunkowe / fizjologiczne */
+  .kw-koty    { background: #ffd3e3; border-bottom: 2px solid #db2777; }
+  .kw-psy     { background: #d9e9ff; border-bottom: 2px dotted #2563eb; }
+  .kw-konie   { background: #e6dcc3; border-bottom: 2px solid #92400e; }
+  .kw-bydlo   { background: #d9f2d0; border-bottom: 2px solid #4d7c0f; }
+  .kw-ciaza   { background: #f5cce5; border-bottom: 2px dashed #c026d3; }
+  .kw-mlode   { background: #fff3b0; border-bottom: 2px solid #d97706; }
+
+  .legend { background: #fafbfc; border: 2px solid #34495e; padding: 15px 20px; border-radius: 8px; margin: 20px 0 30px 0; }
+  .legend h3 { margin-top: 0; color: #2c3e50; }
+  .legend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 6px 14px; font-size: 0.88em; }
+  .legend-item { padding: 3px 4px; }
+  .legend-section-title { grid-column: 1 / -1; font-weight: bold; color: #555; margin-top: 6px; font-size: 0.9em; border-bottom: 1px dashed #aaa; padding-bottom: 2px; }
+</style>
+</head>
+<body>
+<p style="margin:0 0 10px 0;"><a href="index.html" style="color:#2980b9; text-decoration:none; font-weight:600;" class="nodruk">← Powrót do wyboru kolokwium</a></p>
+
+<h1>Kolokwium 2 — Układ krążenia, endokrynologia, układ pokarmowy i oddechowy</h1>
+
+<div class="toc">
+<strong>Spis treści (mechanizm → grupa leków):</strong>
+<ol>
+  <li><a href="#g1">Niewydolność serca: inhibitory ACE i sartany (układ R-A-A)</a></li>
+  <li><a href="#g2">Niewydolność serca / nadciśnienie: β-adrenolityki</a></li>
+  <li><a href="#g3">Glikozydy nasercowe (naparstnica)</a></li>
+  <li><a href="#g4">Leki inotropowe (+): inhibitory PDE3, β-adrenomimetyki, atropina</a></li>
+  <li><a href="#g5">Nadciśnienie płucne: prostacykliny, antag. endoteliny, inh. PDE5</a></li>
+  <li><a href="#g6">Wazodylatatory: blokery kanałów Ca²⁺, azotany, leki hipotensyjne</a></li>
+  <li><a href="#g7">Leki antyarytmiczne (klasyfikacja Vaughana-Williamsa I–IV)</a></li>
+  <li><a href="#g8">DIURETYKI: pętlowe, tiazydowe, oszczędzające potas, IAW, osmotyczne</a></li>
+  <li><a href="#g9">Leki wpływające na KRZEPNIĘCIE: hemostatyki / uszczelniające naczynia</a></li>
+  <li><a href="#g10">Krzepnięcie: antykoagulanty, przeciwpłytkowe, fibrynolityki</a></li>
+  <li><a href="#g11">GLIKOKORTYKOSTEROIDY</a></li>
+  <li><a href="#g12">Hormony: gonadotropiny i ich agoniści/antagoniści (GnRH, LH/FSH)</a></li>
+  <li><a href="#g13">Hormony: inhibitory i induktory prolaktyny (agoniści/antag. D2)</a></li>
+  <li><a href="#g14">Hormony płciowe: estrogeny i antyestrogeny</a></li>
+  <li><a href="#g15">Hormony płciowe: gestageny i antygestageny</a></li>
+  <li><a href="#g16">Hormony płciowe: androgeny i antyandrogeny</a></li>
+  <li><a href="#g17">Prostaglandyny, oksytocyki i tokolityki (poród/macica)</a></li>
+  <li><a href="#g18">Nadnercza: leki na nadczynność/niedoczynność kory</a></li>
+  <li><a href="#g19">Tarczyca i trzustka (insulina)</a></li>
+  <li><a href="#g20">Pokarmowy: leki wymiotne (Emetica)</a></li>
+  <li><a href="#g21">Pokarmowy: leki przeciwwymiotne (Antiemetica)</a></li>
+  <li><a href="#g22">Pokarmowy: choroba wrzodowa (IPP, H2, osłaniające)</a></li>
+  <li><a href="#g23">Pokarmowy: prokinetyki, spazmolityki, na perystaltykę</a></li>
+  <li><a href="#g24">Pokarmowy: przeciwbiegunkowe (zapierające)</a></li>
+  <li><a href="#g25">Pokarmowy: przeczyszczające (na zaparcia)</a></li>
+  <li><a href="#g26">Pokarmowy: wątroba, apetyt, żwacz</a></li>
+  <li><a href="#g27">Oddechowy: przeciwkaszlowe ośrodkowe i obwodowe</a></li>
+  <li><a href="#g28">Oddechowy: wykrztuśne i mukolityki</a></li>
+  <li><a href="#g29">Oddechowy: leki przeciwastmatyczne (GKS, β2, ksantyny, cholinolityki)</a></li>
+  <li><a href="#g30">Leki MIEJSCOWO ZNIECZULAJĄCE</a></li>
+</ol>
+</div>
+
+<div class="legend">
+<h3>🎨 Legenda — kolory powtarzających się właściwości</h3>
+<p style="margin: 5px 0 12px 0; font-size: 0.9em; color: #555;">Te same kolory pojawiają się w tabelach poniżej — szukaj wzorców między lekami.</p>
+<div class="legend-grid">
+  <div class="legend-section-title">Toksyczności narządowe (i odpowiadające im PW)</div>
+  <div class="legend-item"><span class="kw kw-watroba">wątroba</span> / <span class="kw kw-watroba">hepatotoksyczność</span></div>
+  <div class="legend-item"><span class="kw kw-nerki">nerki</span> / <span class="kw kw-nerki">nefrotoksyczność</span></div>
+  <div class="legend-item"><span class="kw kw-neuro">OUN</span> / neuro</div>
+  <div class="legend-item"><span class="kw kw-kardio">serce / kardiotoksyczność</span></div>
+  <div class="legend-item"><span class="kw kw-mielo">mielosupresja / szpik</span></div>
+
+  <div class="legend-section-title">Elektrolity i parametry hemodynamiczne</div>
+  <div class="legend-item"><span class="kw kw-hipok">hipokaliemia</span></div>
+  <div class="legend-item"><span class="kw kw-hiperk">hiperkaliemia</span></div>
+  <div class="legend-item"><span class="kw kw-brady">bradykardia</span></div>
+  <div class="legend-item"><span class="kw kw-tachy">tachykardia / arytmia</span></div>
+  <div class="legend-item"><span class="kw kw-hipoten">hipotensja / ↓ ciśnienia</span></div>
+  <div class="legend-item"><span class="kw kw-nadcis">nadciśnienie</span></div>
+
+  <div class="legend-section-title">Stany / choroby</div>
+  <div class="legend-item"><span class="kw kw-niewyd">niewydolność serca / nerek</span></div>
+  <div class="legend-item"><span class="kw kw-cukrzyca">cukrzyca / hiperglikemia</span></div>
+  <div class="legend-item"><span class="kw kw-astma">astma / oskrzela</span></div>
+  <div class="legend-item"><span class="kw kw-wrzody">wrzody</span></div>
+  <div class="legend-item"><span class="kw kw-cushing">zespół Cushinga</span></div>
+  <div class="legend-item"><span class="kw kw-krwaw">krwawienia / zakrzepica</span></div>
+
+  <div class="legend-section-title">Gatunki / fizjologia (PW)</div>
+  <div class="legend-item"><span class="kw kw-koty">koty</span></div>
+  <div class="legend-item"><span class="kw kw-psy">psy</span></div>
+  <div class="legend-item"><span class="kw kw-konie">konie</span></div>
+  <div class="legend-item"><span class="kw kw-bydlo">bydło / przeżuwacze</span></div>
+  <div class="legend-item"><span class="kw kw-ciaza">ciąża / laktacja</span></div>
+  <div class="legend-item"><span class="kw kw-mlode">młode / niedojrzałość</span></div>
+</div>
+</div>
+
+<!-- ============================================ -->
+<h2 id="g1">1. Niewydolność serca: inhibitory ACE i sartany (układ R-A-A)</h2>
+<div class="grupa-info">
+<strong>Wspólny cel:</strong> blokada układu renina-angiotensyna-aldosteron (R-A-A) → ↓ wazokonstrykcji, ↓ retencji Na⁺ i wody, ↓ przebudowy serca → ↓ obciążenia serca. Korzystny efekt hemodynamiczny i neurohormonalny. <strong>Wspólne PW:</strong> ciąża (teratogenne).
+</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>enalapril</td><td>inhibitor konwertazy angiotensyny (ACE-I)</td><td>hamuje przekształcenie angiotensyny I w II → hamowanie uwalniania aldosteronu (zatrzymanie sodu i wody) + zaburzona degradacja kinin</td><td>rozszerzenie naczyń krwionośnych, zmniejszenie zastoju krwi, ↓ ciśnienia tętniczego</td><td>nadciśnienie, zastoinowa niewydolność serca</td><td>ciąża i laktacja (teratogenny)</td><td>hipotensja, biegunka, brak apetytu, kaszel, obrzęk naczynioruchowy, ataksja, apatia, zmiany skórne i behawioralne, zaburzenia hematologiczne</td><td>osoczowy</td></tr>
+<tr><td>ramipril, benazepril</td><td>ACE-I</td><td>jw.</td><td>jw.</td><td>jw.</td><td>jw.</td><td>jw.</td><td>tkankowy (najważniejszy); benazepril eliminowany przez nerki i wątrobę</td></tr>
+<tr><td>imidapril</td><td>ACE-I</td><td>jw.</td><td>jw.</td><td>jw.</td><td>jw.</td><td>jw.</td><td>tkankowy</td></tr>
+<tr><td>telmisartan</td><td>sartany</td><td>blokowanie receptora dla angiotensyny II (podtyp 1 — AT1); działa bezpośrednio przez blokowanie receptora</td><td>↓ ciśnienia tętniczego</td><td>nadciśnienie tętnicze, białkomocz (przewlekła choroba nerek u kotów)</td><td>nie zgłoszono</td><td>wymioty, nadmierne ślinienie, biegunka</td><td>stosowany u kotów</td></tr>
+<tr><td>spironolakton</td><td>antagonista receptora aldosteronowego</td><td>konkurencyjnie wiąże się z receptorami dla aldosteronu w nerkach, sercu i naczyniach → zaburza zwrotne wchłanianie sodu w dystalnym odcinku → oszczędza potas; hamuje włóknienie i przebudowę serca</td><td>wzrost wydalania sodu i wody, ↓ ciśnienia, hamowanie remodelingu</td><td>zastoinowa niewydolność serca (szczególnie prawokomorowa)</td><td>psy przeznaczone do hodowli, psy z hiperkaliemią lub hiponatremią; nie stosować z NLPZ; psy z uszkodzoną wątrobą</td><td>hiperkaliemia, hiponatremia, efekty antyandrogenne (poronienia u psów rosnących), zaburzenia czynności wątroby</td><td>można łączyć z pimobendanem i furosemidem; z GS lub NLPZ spada jego działanie; z inhibitorami ACE ryzyko hiperkaliemii; stosowany z benazeprilem</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g2">2. Niewydolność serca / nadciśnienie: β-adrenolityki (β-blokery)</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm:</strong> blokowanie receptorów β → <strong>efekt chronotropowy (−)</strong> (↓ częstości), <strong>dromotropowy (−)</strong> (↓ szybkości przewodzenia), <strong>inotropowy (−)</strong> (↓ siły skurczu, oszczędzanie rezerwy energetycznej), <strong>batmotropowy (−)</strong> (↓ pobudliwości). Hamowanie remodelingu lewej komory, ↓ zużycia tlenu, poprawa przepływu wieńcowego.
+</div>
+<div class="mnemo"><strong>Podział:</strong> <span class="key">nieselektywne</span> (β1, β2) — propranolol, sotalol, karazolol — działają też na naczynia, macicę, płuca, oskrzela; <span class="key">selektywne β1</span> — atenolol, esmolol, metoprolol, bisoprolol; <span class="key">naczyniorozszerzające</span> — karwedilol (β-bloker + α1-bloker).</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Niepożądane</th></tr>
+<tr><td>propranolol, sotalol, karazolol</td><td>nieselektywne (β1, β2)</td><td>blokada receptorów β w sercu, naczyniach, płucach (oskrzela), OUN → spowolnienie pracy serca, obniżenie pojemności minutowej</td><td>arytmia, nadciśnienie, niewydolność krążenia</td><td>bradykardia, trudności w oddychaniu, skurcz oskrzeli</td></tr>
+<tr><td>atenolol, esmolol</td><td>selektywne β1</td><td>jw., bez wpływu na β2</td><td>jw.</td><td>bradykardia, spowolnienie pracy serca</td></tr>
+<tr><td>metoprolol, bisoprolol</td><td>selektywne β1</td><td>jw.</td><td>jw.</td><td>bradykardia</td></tr>
+<tr><td>karwedilol</td><td>β-bloker + α1-bloker (naczyniorozszerzający)</td><td>blokada β + α1 → dodatkowo rozszerzenie naczyń</td><td>niewydolność serca, nadciśnienie</td><td>hipotensja, bradykardia</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g3">3. Glikozydy nasercowe (NAPARSTNICA)</h2>
+<div class="grupa-info">
+<strong>Mechanizm:</strong> hamowanie pompy Na⁺/K⁺ → Na⁺ gromadzi się we wnętrzu komórki → zwolnienie repolaryzacji → hamowanie wymiany Na⁺/Ca²⁺ → Ca²⁺ gromadzi się w siateczce wewnątrzplazmatycznej (dostępny do kolejnej depolaryzacji). Dodatkowo hamują zwrotne wchłanianie Na⁺ = działanie moczopędne.<br>
+<strong>Efekt:</strong> inotropowy (+) i batmotropowy (+), chronotropowy (−), dromotropowy (−) — serce kurczy się <strong>silniej, ale wolniej</strong>.
+</div>
+<div class="mnemo"><strong>Interakcje:</strong> <span class="key">Ca²⁺ + glikozydy = synergizm</span> (↑Ca²⁺ nasila); <span class="key">K⁺ + glikozydy = antagonizm</span> (↑K⁺ osłabia, a <strong>hipokaliemia</strong> nasila działanie i toksyczność — uwaga przy diuretykach pętlowych/tiazydowych!). Niski wskaźnik terapeutyczny.</div>
+<table>
+<tr><th>Lek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>digoksyna</td><td>przewlekła niewydolność serca, migotanie przedsionków</td><td>zaburzenia rytmu z bradykardią, bloki serca, zaburzenia rytmu pochodzenia komorowego, kardiomiopatia przerostowa, wczesny okres po zawale</td><td>bradykardia, wymioty, biegunka, apatia, senność, bloki serca, arytmie, migotanie komór</td><td>psy, koty, konie; niski współczynnik terapeutyczny; wchłania się z pp; max działanie po 6–8 h</td></tr>
+<tr><td>digitoksyna</td><td>przewlekła niewydolność serca</td><td>jw.</td><td>jw.</td><td>tylko dla psów; działa długo; szybko i dobrze wchłania się z pp; stałe stężenie po 1–2 dniach (dawka nasycająca)</td></tr>
+<tr><td>proscylarydyna, strofantyna G</td><td>ostra niewydolność serca, migotanie przedsionków</td><td>jw.</td><td>jw.</td><td>strofantyna G: działa szybko i krótko, NIE wchłania się z pp — podawana dożylnie w ostrej niewydolności serca</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g4">4. Leki inotropowe (+): inhibitory PDE3, β-adrenomimetyki, atropina</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Skutek</th><th>Zastosowanie</th><th>Dodatkowe</th></tr>
+<tr><td>pimobendan</td><td>inhibitor PDE3 (inodilator)</td><td>hamuje fosfodiesterazę 3 → ↑ stężenie cAMP; zwiększa wrażliwość mięśnia sercowego na wapń (sensytyzator wapnia)</td><td>inotropowo (+), rozkurcza naczynia krwionośne (↓ opór obwodowy)</td><td>zastoinowa niewydolność serca u psów; przy kardiomiopatii rozstrzeniowej</td><td>skuteczny, bezpieczny, niezbyt arytmogenny; skuteczny we wtórnym nadciśnieniu płucnym od choroby zwyrodnieniowej (degeneracyjnej) płatków zastawki dwudzielnej</td></tr>
+<tr><td>amrinon, milrinon</td><td>inhibitory PDE3</td><td>rozkładają cAMP do 5-AMP — silniejsze od pimobendanu</td><td>inotropowo (+), niewielki chronotropowy (+), ↓ zużycia tlenu</td><td>w ostrej niewydolności serca (dożylnie)</td><td>arytmogenne, ↑ śmiertelności — stosowane doraźnie, NIE przewlekle</td></tr>
+<tr><td>dopamina</td><td>β-adrenomimetyk (amina katecholowa)</td><td>agonista rec. β → pobudzenie czynności serca; wpływa na rec. D w nerkach i naczyniach → ↑ cAMP → rozszerzenie naczyń</td><td>efekt inotropowy (+)</td><td>leczenie niewydolności serca, wstrząs kardiogenny i septyczny</td><td>agoniści β1 = pobudzenie serca, zniesienie bloków</td></tr>
+<tr><td>dobutamina</td><td>β-adrenomimetyk</td><td>agonista rec. β1 → ↑ cAMP</td><td>efekt inotropowy (+)</td><td>krótkotrwałe leczenie niewydolności serca</td><td>—</td></tr>
+<tr><td>atropina</td><td>parasympatykolityk</td><td>blokada rec. muskarynowych → przyspieszenie pracy serca</td><td>↑ częstości pracy serca</td><td>bradykardia, bloki serca</td><td>podawana parenteralnie, przechodzi przez barierę krew-mózg; butylobromek skopolaminy — doustnie, NIE przechodzi bariery</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g5">5. Nadciśnienie płucne: prostacykliny, antagoniści endoteliny, inhibitory PDE5</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Skutek</th><th>Zastosowanie</th><th>Dodatkowe</th></tr>
+<tr><td>epoprostenol, treprostynil, iloprost</td><td>analogi prostacyklin</td><td>rozszerzają naczynia i hamują aktywność płytek krwi; ograniczają proliferację komórek</td><td>↑ objętość minutową serca, rozszerzenie naczyń</td><td>nadciśnienie płucne, niewydolność prawej komory serca</td><td>podawane inhalacyjnie</td></tr>
+<tr><td>bosentan, sytaksentan, ambrisentan</td><td>antagoniści endoteliny</td><td>endotelina-1 powoduje skurcz naczyń, proliferację komórek mięśni gładkich i przebudowę naczyń — lek hamuje jej działanie (rec. ETA, ETB); działa na śródbłonek przy niedokrwieniu</td><td>ograniczenie przebudowy komór serca, zahamowanie skurczu i przebudowy naczyń, poprawa parametrów hemodynamicznych i perfuzji nerkowej u psów</td><td>nadciśnienie płucne</td><td>doustnie</td></tr>
+<tr><td>syldenafil, tadalafil, wardenafil</td><td>inhibitory PDE5</td><td>hamowanie fosfodiesterazy 5 (występuje w dużym stężeniu w naczyniach krążenia płucnego) → ↑ cGMP → rozszerzenie naczyń, ↓ ciśnienia tętniczego</td><td>rozszerzenie naczyń</td><td>nadciśnienie płucne</td><td>syldenafil — lek z wyboru; krótko działający; stosowany też do zaburzeń erekcji; DN: zaczerwienienie skóry, ze strony pp</td></tr>
+<tr><td>teofilina</td><td>inhibitor PDE5 (nieselektywny PDE3, 4, 5)</td><td>nieselektywny inhibitor PDE3, PDE4 i PDE5 → rozluźnia mięśnie gładkie oskrzeli</td><td>rozkurcz oskrzeli</td><td>choroby oskrzeli, astma</td><td>(patrz też leki przeciwastmatyczne)</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g6">6. Wazodylatatory: blokery kanałów Ca²⁺, azotany, leki hipotensyjne</h2>
+<div class="grupa-info">
+<strong>Leki rozszerzające naczynia</strong> zmniejszają obciążenie serca i zapewniają odpowiednią perfuzję. <strong>Leki stosowane w nadciśnieniu:</strong> inhibitory ACE, blokery kanałów wapniowych, α-adrenolityki, β-adrenolityki, leki moczopędne. Dodatkowo: α1-adrenolityki (prazosyna), hydralazyna, propentofilina/pentoksyfilina (poprawa krążenia obwodowego i mózgowego u starszych psów — hamowanie PDE i blok rec. adenozynowych), akwaretyki (antagoniści V1A/V2: koniwaptan, tolwaptan).
+</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Skutek</th><th>Zastosowanie</th><th>Niepożądane</th></tr>
+<tr><td>nifedypina, amlodypina</td><td>blokery kanałów wapniowych (dihydropirydyny)</td><td>blokują potencjałozależne kanały wapniowe w mięśniach gładkich naczyń → rozszerzenie naczyń</td><td>spadek siły skurczu, działanie inotropowe (−)</td><td>amlodypina — leczenie nadciśnienia</td><td>hipotensja, osłabienie kurczliwości</td></tr>
+<tr><td>diltiazem, werapamil</td><td>blokery kanałów wapniowych</td><td>blokują kanały wapniowe w mięśniach gładkich naczyń i mięśniu sercowym → ↓ przewodzenia, ↓ częstotliwości</td><td>chrono-, dromo-, inotropowy (−)</td><td>arytmie serca, choroba niedokrwienna serca, HCM u kotów</td><td>NIE WOLNO przy niewydolności serca</td></tr>
+<tr><td>nitrogliceryna, diazotan/izosorbid (azotany i azotyny)</td><td>azotany i azotyny</td><td>po przejściu do wnętrza komórki odłączają jon azotynowy → powstaje tlenek azotu (NO) → aktywuje cyklazę guanylową → ↑ cGMP (NO powstaje z L-argininy w śródbłonku, podawany egzogennie trafia prosto do mięśniówki)</td><td>rozkurcz mięśni gładkich naczyń, spadek ciśnienia, rozszerzenie naczyń wieńcowych</td><td>leki pomocnicze w ostrej niewydolności serca</td><td>pod język (efekt pierwszego przejścia) — dobrze wchłania się przez śluzówki; bardzo szybko obniża ciśnienie</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g7">7. Leki antyarytmiczne (klasyfikacja Vaughana-Williamsa)</h2>
+<table>
+<tr><th>Klasa</th><th>Leki</th><th>Grupa / mechanizm</th><th>Zastosowanie</th><th>Dodatkowe</th></tr>
+<tr><td>Ia</td><td>chinidyna</td><td>leki stabilizujące błony komórkowe — blokują potencjałozależne kanały sodowe</td><td>arytmie nadkomorowe i komorowe</td><td>i.v. lub p.o.</td></tr>
+<tr><td>Ib</td><td>lidokaina, fenytoina</td><td>jw. (kanały sodowe)</td><td>arytmie komorowe</td><td>lidokaina = znieczulenie miejscowe; i.v.</td></tr>
+<tr><td>Ic</td><td>propafenon</td><td>jw. (kanały sodowe)</td><td>arytmie nadkomorowe i komorowe</td><td>i.v., p.o.</td></tr>
+<tr><td>II</td><td>propranolol, atenolol, metoprolol, karwedilol</td><td>β-adrenolityki — zmniejszenie automatyzmu i zahamowanie przewodnictwa</td><td>arytmie nadkomorowe i komorowe</td><td>lepsze wypełnienie krwią, poprawa przepływu wieńcowego; zapobiega włóknieniu przedsionków</td></tr>
+<tr><td>III</td><td>amiodaron, sotalol</td><td>zwiększające czas trwania potencjału — blokowanie kanałów potasowych; działają też jak β-blokery + agonista kanałów K⁺</td><td>arytmie komorowe</td><td>i.v., p.o.; działają inotropowo (−); amiodaron: hepatotoksyczność, niedoczynność tarczycy</td></tr>
+<tr><td>IV</td><td>werapamil, diltiazem</td><td>blokery kanałów wapniowych</td><td>arytmie nadkomorowe, przewlekłe migotanie przedsionków, kardiomiopatia przerostowa u kotów, poprawa przepływu wieńcowego</td><td>mniejsze działanie inotropowe (−), częściej stosowane</td></tr>
+</table>
+<div class="grupa-info"><strong>Zaburzenia przewodzenia:</strong> zwolnienie częstości impulsów w węźle zatokowym → parasympatykolityki (atropina, glikopyrolat); w blokach serca → izoprenalina, orcyprenalina.</div>
+
+<!-- ============================================ -->
+<h2 id="g8">8. DIURETYKI</h2>
+<div class="grupa-info"><strong>Wspólny cel:</strong> zwiększenie diurezy przez hamowanie wchłaniania zwrotnego jonów (głównie Na⁺) w różnych odcinkach nefronu. <strong>Uwaga:</strong> pętlowe i tiazydowe wywołują <span class="kw kw-hipok">hipokaliemię</span> — nasila to działanie i toksyczność glikozydów nasercowych.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>acetazolamid, metazolamid, dichlorfenamid</td><td>inhibitory anhydrazy węglanowej (IAW)</td><td>hamowanie anhydrazy węglanowej w kanalikach proksymalnych → ↓ jonów wodoru w komórkach kanalików → ↑ objętości moczu (więcej Na⁺, K⁺, HCO₃⁻)</td><td>jaskra, obrzęki pochodzenia sercowego, obrzęki wymienia, padaczka, alkaloza metaboliczna; alkalizacja moczu przy kamicy</td><td>choroby wątroby, kwasica</td><td>hipokaliemia, kwasica metaboliczna, wymioty przy podaniu dożołądkowym</td><td>niewielka siła działania; zmniejszają rezerwy alkaliczne krwi</td></tr>
+<tr><td>furosemid, kwas etakrynowy, bumetanid, piretanid, torasemid</td><td>diuretyki pętlowe (pochodne sulfonamidów)</td><td>wiążą się z symporterem Na-K-2Cl w miejscu wiązania chloru w ramieniu wstępującym pętli Henlego → brak wchłaniania zwrotnego Na⁺, K⁺, Cl⁻ i wody; wtórne usuwanie Mg²⁺ i Ca²⁺</td><td>ostra niewydolność nerek, obrzęki (płuc, serca, naczyń), powysiłkowy krwotok płuc u koni, diureza wymuszona przy zatruciach, hiperkalcemia</td><td>hiperkaliemia (przy nefropatii), choroby wątroby</td><td>hipokaliemia, hipomagnezemia, hiponatremia, hipokalcemia, niewydolność krążenia, hipotensja, aktywacja R-A-A</td><td>działają krótko, ale intensywnie; torasemid — pochodna sulfonylomocznika, inna budowa, ten sam mechanizm</td></tr>
+<tr><td>hydrochlorotiazyd, bendroflumetiazyd, chlorotalidon, metolazon, chlorotiazyd, cyklopentiazyd</td><td>tiazydowe</td><td>hamują symporter Na-Cl w części korowej kanalika dalszego (miejsce wiązania Na i Cl) → zahamowanie wchłaniania zwrotnego NaCl, usuwanie wody i sodu</td><td>leczenie łagodnych obrzęków, kamica szczawianowa, przewlekła niewydolność serca</td><td>jak dla sulfonamidów</td><td>jak sulfonamidy + silniej: hipokaliemia, hiperglikemia, hiperurykemia, hiperkalcemia</td><td>osłabiają przesączanie kłębuszkowe; działają długo</td></tr>
+<tr><td>spironolakton, triamteren, amilorid</td><td>oszczędzające potas</td><td>spironolakton — antagonista aldosteronu; triamteren i amilorid — bezpośrednio na proces wchłaniania; zahamowanie wymiany K⁺ na Na⁺ w kanaliku zbiorczym</td><td>aldosteronizm, niewydolność serca, przekrwienia, wodobrzusze</td><td>zwierzęta odwodnione, hiperkaliemia</td><td>hiperkaliemia, zapalenie skóry pyska, zanik gruczołu krokowego</td><td>nie stosować z innymi diuretykami oszczędzającymi K⁺</td></tr>
+<tr><td>teofilina, teobromina, aminofilina, eufilina</td><td>metyloksantyny</td><td>zwiększają przesączanie kłębuszkowe, zmniejszają wchłanianie zwrotne w kanalikach nerkowych (nieselektywny inhibitor PDE → ↑ cAMP)</td><td>(diureza); stosowane głównie jako leki rozszerzające oskrzela</td><td>—</td><td>—</td><td>niewielka siła działania</td></tr>
+<tr><td>mannitol</td><td>diuretyki osmotyczne</td><td>podwyższają ciśnienie osmotyczne moczu → wtórnie zwiększają ilość wydalanej wody; działają, gdy ich ilość przekracza maksymalną zdolność wchłaniania w kanalikach</td><td>diureza wymuszona przy zatruciach, niewydolność nerek, jaskra, obrzęki mózgu</td><td>—</td><td>—</td><td>można łączyć z furosemidem; ostra niewydolność, hiperwolemia</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g9">9. Leki wpływające na KRZEPNIĘCIE: hemostatyki / uszczelniające naczynia</h2>
+<div class="grupa-info"><strong>Leki wspomagające hemostazę</strong> (przeciwkrwotoczne): uzupełniają czynniki krzepnięcia, uszczelniają naczynia lub hamują fibrynolizę.</div>
+<table>
+<tr><th>Lek</th><th>Mechanizm</th><th>Zwierzę / wskazania</th><th>Przeciwwskazania</th><th>Niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>witamina K1 (fitomenadion)</td><td>kofaktor niezbędny do syntezy K-zależnych czynników krzepnięcia (II, VII, IX, X); umożliwia połączenie białek z Ca; uaktywnia protrombiny</td><td>tabletki dla psów; leczenie zatrucia środkami przeciwzakrzepowymi, zaburzenia krzepnięcia, krwawienia</td><td>alergia, choroby wątroby; ciąża/laktacja (przechodzi przez łożysko) po ocenie korzyści/ryzyka</td><td>wymioty, zaburzenia skórne (rumień, zapalenie), obrzęk alergiczny</td><td>salicylany (NLPZ) i cefalosporyny ograniczają działanie; podawana przez 3 tyg., po 48 h ocena czasu krzepnięcia</td></tr>
+<tr><td>etamsylat</td><td>hamuje syntezę prostacykliny (PGI2) → stymuluje adhezję płytek, skraca czas krwawienia, zmniejsza kruchość i przepuszczalność naczyń; działa na 1 fazę hemostazy</td><td>bydło, owce, kozy, konie, świnie, psy, koty; krwotoki chirurgiczne, pourazowe, położnicze, profilaktyka przedoperacyjna</td><td>nadwrażliwość; przed podaniem konieczne podwiązanie uszkodzonych naczyń; ciąża/laktacja po ocenie</td><td>anafilaksja (substancja pomocnicza), nudności, biegunka, wysypki</td><td>roztwór i.v./i.m.; hemostatyczny i angioprotekcyjny; max efekt 30 min–4 h; eliminowany z moczem</td></tr>
+<tr><td>dobesylan wapnia</td><td>uszczelnia naczynia przez zmniejszenie przepuszczalności śródbłonka, stabilizuje połączenia komórek, poprawia mikrokrążenie, hamuje mediatory zapalne</td><td>psy, konie, rzadziej koty; zaburzenia mikrokrążenia, kruchość naczyń, przewlekłe obrzęki</td><td>nadwrażliwość, niewydolność nerek, ciąża</td><td>zaburzenia żołądkowo-jelitowe, reakcje alergiczne</td><td>nie maskuje stanu zapalnego</td></tr>
+<tr><td>witamina C</td><td>uszczelnia naczynia, niezbędna do syntezy kolagenu (wzmacnia błonę podstawną), chroni śródbłonek (antyoksydacyjnie)</td><td>świnki morskie, małpy; kruchość naczyń, zaburzenia gojenia</td><td>kamica szczawianowa, niewydolność nerek</td><td>biegunka, zakwaszenie moczu</td><td>działa wolno</td></tr>
+<tr><td>glikokortykosteroidy</td><td>uszczelniają naczynia przez ich obkurczenie, zmniejszają obrzęk, zaczerwienienie, wysięk</td><td>psy, koty, konie; ostre zapalenie naczyń, reakcje alergiczne, ostry obrzęk zapalny</td><td>przewlekła kruchość naczyń, wybroczyny bez stanu zapalnego</td><td>po długim stosowaniu ściana naczynia się osłabia (↑ skłonność do wybroczyn)</td><td>nie naprawiają naczyń — działają objawowo</td></tr>
+<tr><td>kwas traneksamowy</td><td>blokuje wiązanie plazminogenu z fibryną (miejsca lizynowe) → ogranicza powstawanie plazminy przez tPA/uPA → hamuje fibrynolizę; nie działa na kaskadę krzepnięcia</td><td>psy, koty (ostrożnie), konie; nadmierna fibrynoliza, krwawienia z błon śluzowych, urazy</td><td>czynna choroba zatorowo-zakrzepowa, DIC, niewydolność nerek</td><td>drgawki, zawroty głowy, ryzyko zakrzepicy, nudności, wymioty, biegunka, nadwrażliwość</td><td>inhibitor plazminogenu; i.v. lub doustnie</td></tr>
+<tr><td>tanina</td><td>środek ściągający, miejscowo przeciwkrwotoczny — denaturuje białka śródbłonka i osocza (warstwa ochronna), obkurcza drobne naczynia, ↓ przepuszczalność</td><td>psy, koty (ostrożnie), konie, bydło, owce, kozy; drobne rany, otarcia, krwawienie z dziąseł, biegunka</td><td>krwawienie głębokie, zaburzenia krzepnięcia, owrzodzenia, odwodnienie, uszkodzenie nerek</td><td>podrażnienie, opóźnienie gojenia, martwica powierzchniowa, zaparcia, nudności</td><td>doustnie (biegunki), miejscowo (rany)</td></tr>
+<tr><td>adrenalina</td><td>małe dawki → rec. β, duże → rec. α (skurcz naczyń, stabilizacja mastocytów)</td><td>psy, koty, konie, bydło (ostrożnie), owce, kozy; wstrząs anafilaktyczny, obrzęk naczynioruchowy, ciężkie reakcje alergiczne</td><td>nadciśnienie, kardiomiopatia, zaburzenia rytmu, choroba naczyń obwodowych</td><td>niedokrwienie, martwica, skurcz naczyń obwodowych, tachykardia, arytmie, kwasica mleczanowa</td><td>nie naprawiają naczyń — wymuszają ich zamknięcie</td></tr>
+<tr><td>noradrenalina</td><td>pobudza rec. α → skurcz tętniczek i żyłek, ↓ przepuszczalności, ↑ ciśnienia i oporu obwodowego, poprawa perfuzji centralnej</td><td>utrata napięcia naczyniowego, wstrząs septyczny, hipotensja, rozszerzenie naczyń w zapaleniu</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g10">10. Krzepnięcie: antykoagulanty, przeciwpłytkowe, fibrynolityki</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zwierzę / wskazania</th><th>Przeciwwskazania</th><th>Niepożądane / dodatkowe</th></tr>
+<tr><td>heparyna niefrakcjonowana</td><td>antykoagulant</td><td>wzmacnia działanie antytrombiny III (wiąże się z nią i zmienia jej kształt) → AT hamuje trombinę (IIa) i czynniki Xa, IXa, XIa, XIIa → brak fibryny → brak skrzepu</td><td>psy, koty, konie, bydło, owce, kozy; zapobieganie i leczenie zakrzepów, zakrzepica żylna, DIC, zatorowość płucna, profilaktyka pooperacyjna</td><td>czynne krwawienie, skazy krwotoczne, trombocytopenia, wrzody, świeże zabiegi, choroby wątroby</td><td>nadmierne działanie, skłonność do krwawień, trombocytopenia; doustnie/i.v./s.c. — NIE i.m.; krótko (co 6–8 h); antidotum: siarczan protaminy</td></tr>
+<tr><td>heparyna drobnocząsteczkowa (enoksaparyna)</td><td>antykoagulant</td><td>aktywuje antytrombinę III, ale słabiej hamuje trombinę, a silniej czynnik Xa</td><td>psy, koty, konie, bydło, owce, kozy; jw. (słabsze, bezpieczniejsze)</td><td>jw.</td><td>mniejsze ryzyko trombocytopenii; małopłytkowość, krwawienia, krwiak w miejscu podania (s.c.); szybki początek, wysoka biodostępność, nie przechodzi przez łożysko</td></tr>
+<tr><td>warfaryna</td><td>antykoagulant (antagonista wit. K)</td><td>blokuje reduktazę epoksydową witaminy K → hamuje syntezę czynników zależnych od wit. K (trombina, VII, IX, X) → ↓ zdolność krzepnięcia</td><td>psy, koty; zapobieganie i leczenie zakrzepów, choroby serca</td><td>czynne krwawienie, skaza krwotoczna, urazy, operacje, choroby wątroby/nerek, ciąża, nadciśnienie</td><td>krwawienia, wybroczyny, reakcje alergiczne</td></tr>
+<tr><td>acenokumarol</td><td>antykoagulant (antagonista wit. K)</td><td>antagonista witaminy K, szybsze działanie</td><td>jw.</td><td>jw.</td><td>jw.</td></tr>
+<tr><td>kwas acetylosalicylowy (ASA)</td><td>przeciwpłytkowy (antyagregacyjny)</td><td>nieodwracalnie hamuje COX-1 w płytkach → nie powstaje tromboksan A2 (agregacja płytek); działa przeciwzakrzepowo, przeciwbólowo, przeciwzapalnie, przeciwgorączkowo</td><td>psy, koty (ostrożnie), konie; nadmierna agregacja płytek, profilaktyka zakrzepów i zatorowości, choroby serca</td><td>aktywne krwawienie, wrzody, skazy krwotoczne, niewydolność nerek, wątroby, ciąża</td><td>zwiększone krwawienie, wybroczyny, nadwrażliwość, nefrotoksyczność, wymioty, biegunka</td></tr>
+<tr><td>klopidogrel</td><td>przeciwpłytkowy</td><td>blokuje receptor ADP na płytkach → uniemożliwia ich aktywację i agregację; nie uszczelnia naczyń</td><td>psy, koty, konie (rzadko), bydło (rzadko); zapobieganie zakrzepom, profilaktyka zatorowości, choroby serca</td><td>czynne krwawienie, skaza krwotoczna, nadwrażliwość, choroby wątroby i nerek</td><td>krwawienia, wybroczyny, wymioty, biegunka; działa systemowo</td></tr>
+<tr><td>urokinaza</td><td>fibrynolityk</td><td>aktywuje plazminogen → plazmina rozpuszcza fibrynę w skrzepach; nie wzmacnia naczyń</td><td>psy, koty (ostrożnie), konie/bydło (rzadko); zakrzepica żylna, zatorowość płucna, rewaskularyzacja</td><td>czynne krwawienie, skaza krwotoczna, udar krwotoczny, nadciśnienie, ciąża, niewydolność nerek i wątroby</td><td>krwawienia, trombocytopenia, reakcje alergiczne, hipotensja, anafilaksja; systemowo lub miejscowo</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g11">11. GLIKOKORTYKOSTEROIDY</h2>
+<div class="grupa-info">
+<strong>Mechanizm:</strong> receptor cytoplazmatyczny → pobudzają/hamują ekspresję genów → nasilają syntezę <strong>lipokortyny</strong> → hamuje fosfolipazę A2 → blokuje całą kaskadę kwasu arachidonowego (↓ prostaglandyn, tromboksanów, leukotrienów); hamują syntezę cytokin prozapalnych → immunosupresja. Wpływ na metabolizm białek, węglowodanów, lipidów i gospodarkę wapniową.
+</div>
+<div class="mnemo"><strong>Czas działania:</strong> <span class="key">krótki &lt;12 h</span> — hydrokortyzon; <span class="key">średni 12–36 h</span> — prednizon, prednizolon, metyloprednizolon; <span class="key">długi 36–48 h</span> — flumetazon, deksametazon, betametazon. Wziewne w astmie: budezonid, cyklezonid, flutikazon, beklometazon.</div>
+<table>
+<tr><th>Lek</th><th>Czas działania</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th></tr>
+<tr><td>hydrokortyzon</td><td>krótki (&lt;12 h)</td><td rowspan="3">niedoczynność kory nadnerczy, stany zapalne, alergiczne i atopowe zapalenia skóry, stany zapalne płuc, ketoza, indukcja porodu u przeżuwaczy, wstrząs</td><td rowspan="3">zapalenie tworzywa kopytowego, choroby infekcyjne, choroby wrzodowe, ciąża, infekcje gałki ocznej, jaskra, zaćma, cukrzyca, okres złamań i gojenia ran, nefropatie, nadciśnienie</td><td rowspan="3">czynnościowy zanik kory nadnerczy, <strong>jatrogenny zespół Cushinga</strong>, hiperglikemia, nadciśnienie, obrzęki, hipokaliemia, zapalenie tworzywa kopytowego, wrzody, osteoporoza, jaskra/zaćma, poronienia, drgawki</td></tr>
+<tr><td>prednizon, prednizolon, metyloprednizolon</td><td>średni (12–36 h)</td></tr>
+<tr><td>flumetazon, deksametazon, betametazon</td><td>długi (36–48 h)</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g12">12. Hormony: gonadotropiny i ich agoniści/antagoniści (GnRH, LH/FSH)</h2>
+<div class="grupa-info"><strong>Oś podwzgórze-przysadka-gonady:</strong> GnRH (gonadoliberyna) → przysadka uwalnia LH i FSH → gonady. Agoniści GnRH krótko stymulują, ale długo podawani powodują desensytyzację przysadki (↓ LH/FSH).</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th></tr>
+<tr><td>gonadorelina, buserelina, peforelina</td><td>agoniści gonadoliberyny — KRÓTKODZIAŁAJĄCE</td><td>aktywacja rec. GnRH → ↑ uwalniania endogennego LH (i mniej FSH)</td><td>indukcja owulacji (niedobór LH / koniec fazy estrus), synchronizacja rui, ↑ płodności, leczenie torbieli jajnika u bydła, u samców ↑ libido i ilości nasienia</td><td>ciąża, niedojrzałość płciowa</td><td>po przedawkowaniu zaburzenia cyklu rujowego</td></tr>
+<tr><td>deslorelina, goserelina, tryptorelina</td><td>agoniści GnRH — DŁUGODZIAŁAJĄCE</td><td>docelowo hamowanie wydzielania LH i FSH (desensytyzacja przysadki)</td><td>odwracalna sterylizacja psów (implant dla samców)</td><td>—</td><td>pobudzenie, zmniejszenie jąder</td></tr>
+<tr><td>cetroreliks, ganireliks</td><td>antagoniści GnRH</td><td>blokują receptory GnRH w przysadce → ↓ wydzielania LH i FSH</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>folitropina (FSH)</td><td>gonadotropiny przysadkowe</td><td>pobudza wzrost pęcherzyków jajnikowych i wydzielanie estrogenów (ruja), u samców spermatogenezę</td><td>indukcja superowulacji u bydła</td><td>ciąża, niedojrzałość płciowa</td><td>obniżenie wydajności mlecznej</td></tr>
+<tr><td>lutropina (LH)</td><td>gonadotropiny przysadkowe</td><td>współdziała z FSH; dojrzewanie pęcherzyków, owulacja, rozwój ciałka żółtego i produkcja progesteronu; u samców produkcja testosteronu</td><td>indukcja superowulacji u bydła, torbiele jajnika, opóźniona ruja</td><td>—</td><td>reakcje nadwrażliwości, skrócenie fazy lutealnej</td></tr>
+<tr><td>gonadotropina kosmówkowa (hCG)</td><td>gonadotropiny pozaprzysadkowe (łożyskowe)</td><td>głównie aktywność LH — utrzymanie ciałka żółtego i produkcja progesteronu</td><td>krowy: poprawa zacieleń, indukcja owulacji, torbielowatość jajników; samce: ↓ libido, wnętrostwo</td><td>—</td><td>reakcje anafilaktyczne; u kotów długotrwała niepłodność</td></tr>
+<tr><td>gonadotropina surowicy źrebnych klaczy (eCG/PMSG)</td><td>gonadotropiny pozaprzysadkowe</td><td>aktywność FSH, ale u klaczy dominuje działanie jak LH</td><td>przeżuwacze: superowulacja; króliki: indukcja i synchronizacja owulacji; samce: spermatogeneza</td><td>ciąża</td><td>reakcje anafilaktyczne; długodziałający</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g13">13. Hormony: inhibitory i induktory prolaktyny (agoniści/antagoniści D2)</h2>
+<div class="grupa-info">Wydzielanie prolaktyny (PRL) hamowane jest przez dopaminę → agoniści D2 hamują PRL, antagoniści D2 ją indukują.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th></tr>
+<tr><td>bromokryptyna</td><td>agonista rec. D2 (inhibitor PRL)</td><td>wiąże rec. D2 w OUN → hamuje uwalnianie PRL → ↓ syntezy progesteronu przez ciałko żółte; ↓ ACTH</td><td>ciąża urojona u suk, zahamowanie laktacji suk i kotek, zespół Cushinga u koni</td><td>ciąża, zwierzęta karmiące</td><td>wymioty, brak apetytu, zmiany zachowania; z dinoprostem — środek poronny</td></tr>
+<tr><td>kabergolina</td><td>agonista rec. D2</td><td>wiąże rec. D2 → hamuje PRL i laktację</td><td>ciąża urojona suk, zahamowanie laktacji, redukcja objętości gruczołu sutkowego przed zabiegiem</td><td>ciąża</td><td>wymioty, brak apetytu, senność</td></tr>
+<tr><td>pergolid</td><td>agonista rec. D1 i D2</td><td>↓ uwalniania ACTH</td><td>leczenie zespołu Cushinga u koni</td><td>—</td><td>↓ apetyt, biegunka, bóle morzyskowe, ospałość</td></tr>
+<tr><td>metergolina</td><td>—</td><td>silne działanie przeciwserotoninowe</td><td>—</td><td>—</td><td>lęk, agresja, nadmierne pobudzenie</td></tr>
+<tr><td>promazyna, haloperidol, sulpiryd, metoklopramid</td><td>antagoniści rec. D2 (induktory PRL)</td><td>blokada rec. D2 → ↑ wydzielania prolaktyny</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g14">14. Hormony płciowe: estrogeny i antyestrogeny</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane / dodatkowe</th></tr>
+<tr><td>estradiol, estron, estry estradiolu (cypionian, benzoesan, walerianian)</td><td>leki o działaniu estrogenowym</td><td>działanie zbliżone do fizjologicznego estrogenu</td><td>indukcja i synchronizacja rui u bydła, przyspieszenie inwolucji macicy po porodzie; psy: gruczolak odbytu, rozrost prostaty, ↓ libido; suki: nietrzymanie moczu po kastracji, po przypadkowym kryciu</td><td>ciąża, przerosty endometrium u suk (ryzyko ropomacicza), guzy gruczołu sutkowego, cysty jajnikowe, zwierzęta do konsumpcji</td><td>leukopenia, ↑ ryzyka nowotworów, feminizacja, obrzęki; silny efekt pierwszego przejścia (metabolizm w wątrobie)</td></tr>
+<tr><td>estriol</td><td>naturalny krótko działający estrogen</td><td>zwiększa wrażliwość rec. α-adrenergicznych → ↑ napięcie zwieracza cewki moczowej</td><td>nietrzymanie moczu suk</td><td>ciąża</td><td>brak wpływu na szpik, ropomacicze, nowotwory</td></tr>
+<tr><td>anty-estrogeny / SERM (np. tamoksyfen)</td><td>antyestrogeny / częściowi agoniści-antagoniści rec. estrogenowych</td><td>hamowanie syntezy receptorów estrogenowych lub antagonizm; działanie na tkanki wrażliwe na estrogeny</td><td>(leczenie przerostu prostaty u psów — tamoksyfen)</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g15">15. Hormony płciowe: gestageny i antygestageny</h2>
+<div class="grupa-info"><strong>Gestageny (progestageny):</strong> hamują pulsacyjne wydzielanie GnRH → ↓ LH i FSH → zahamowanie wzrostu pęcherzyków i owulacji; hamują objawy rui. Stymulują rozwój gruczołu mlekowego.</div>
+<table>
+<tr><th>Lek</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>altrenogest (alternogest)</td><td>syntetyczny progesteron — hamuje pulsacyjne wydzielanie GnRH → ↓ LH/FSH → brak owulacji; hamowanie fazy estrus</td><td>synchronizacja cyklu u świń, regulacja cyklu i ograniczenie zachowań rujowych u klaczy</td><td>niedojrzałość płciowa, zakażenia macicy, samce</td><td>karencja, zatrzymanie rui, zmiany nastroju, letarg, senność, brak apetytu</td><td>doustny, miejscowy; stabilny, wysoka biodostępność</td></tr>
+<tr><td>octan medroksyprogesteronu (MPA), megestrol (MA)</td><td>blokuje GnRH i wyrzut LH/FSH → hamuje rozwój pęcherzyków, owulację i produkcję estrogenów; silne działanie antygonadotropowe</td><td>opóźnianie/zatrzymanie rui (klacze, kotki), synchronizacja rui, terapia behawioralna (znakowanie moczem, nimfomania u kotów), choroby skóry kotów, łagodny przerost prostaty psów</td><td>proestrus/estrus/metaestrus, cukrzyca, niedoczynność kory nadnerczy, guzy gruczołu sutkowego, ciąża, laktacja, ropomacicze, niedojrzałość płciowa</td><td>powiększenie gruczołu mlekowego, ↑ ryzyka guzów sutka, fibroadenomatoza u kotów, przerost i torbielowatość błony śluzowej macicy, akromegalia, ↑ łaknienia i masy ciała, cukrzyca, supresja osi PPN</td><td>preparaty Depo (przedłużone działanie); i.m./s.c.; przenika przez barierę krew-mózg, do łożyska i mleka</td></tr>
+<tr><td>norgestomet, flugeston, proligeston (PGS)</td><td>gestageny</td><td>implant uszny dla krów (9–10 dni) / wkładki dopochwowe dla owiec (12–14 dni); proligeston — suki, kotki do zatrzymania rui</td><td>—</td><td>wyłysienia, zmiany zabarwienia włosów w miejscu podania</td><td>proligeston — podskórnie, na dowolnym etapie cyklu</td></tr>
+<tr><td>octan chlormadinonu (CMA), octan delmadinonu</td><td>gestageny o działaniu antyandrogenowym — konkurują z testosteronem o receptory androgenowe</td><td>suki, kotki — opóźnienie/zatrzymanie rui; psy/kocury — łagodny lub rakowaty przerost prostaty, guzy okołoodbytowe, agresja hormonozależna</td><td>choroby wątroby i nerek, cukrzyca, guzy gruczołu mlekowego, wiek &lt;1 roku</td><td>↓ płodności i libido, polifagia, zmiany koloru włosa, ↑ enzymów wątrobowych, zmiany w tkance jąder</td><td>długodziałający, podskórnie/doustnie</td></tr>
+<tr><td>aglepriston</td><td>antygestagen — antagonista receptora dla progesteronu w macicy (silniejsze powinowactwo niż endogenny)</td><td>terminacja ciąży przed 45. dniem (psy, koty), indukcja porodu, leczenie ropomacicza i fibroadenomatozy u kotek, akromegalia psów</td><td>zaburzenia wątroby i nerek, cukrzyca, niedoczynność kory nadnerczy, zły stan ogólny</td><td>bolesność w miejscu iniekcji, śluzowy wypływ z dróg rodnych, objawy towarzyszące porodowi</td><td>powinowactwo do rec. GKS, ale działa jak antagonista — NIE podawać z GKS</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g16">16. Hormony płciowe: androgeny i antyandrogeny</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th></tr>
+<tr><td>testosteron i estry (propionian, enantan, dekanonian), pochodne (metylotestosteron, nortestosteron); sterydy anaboliczne (nandrolon, boldenon, stanozolol, oksymetolon)</td><td>androgeny / anaboliki</td><td>endogenny, produkowany w komórkach Leydiga pod wpływem LH; rozwój cech płciowych samca, spermatogeneza, libido; działanie anaboliczne (↑ masy mięśniowej, zatrzymanie Na i wody, ↑ erytrocytów)</td><td>niedobory hormonu, hipogonadyzm, ↑ libido, wnętrostwo, wyłysienia, nietrzymanie moczu, feminizacja; u samic — hamowanie rui suk i kotek</td><td>niedojrzałość płciowa, choroby wątroby, serca i krążenia, nowotwory androgenozależne, ciąża, laktacja</td><td>zaburzenia funkcji rozrodczych, hepatotoksyczność, zaburzenie równowagi wodno-elektrolitowej, przerost prostaty, ↑ agresywności</td></tr>
+<tr><td>ozateron, cyproteron</td><td>antyandrogeny</td><td>antagonizm kompetycyjny rec. androgenowych w gruczole krokowym → redukcja objętości, hamuje transport testosteronu do gruczołu (bez wpływu na płodność)</td><td>przerost gruczołu krokowego u psów, leczenie agresji, kontrola zachowań</td><td>choroby wątroby, nerek, ciąża, laktacja, zaburzenia hormonalne, niedojrzałość płciowa</td><td>wzrost apetytu, zmiany zachowania, zaburzenia pp, przejściowy ↓ kortyzolu, senność, ginekomastia</td></tr>
+<tr><td>finasteryd</td><td>antyandrogen</td><td>hamuje 5α-reduktazę testosteronu (↓ konwersji testosteronu do DHT)</td><td>leczenie przerostu prostaty u psów</td><td>choroby wątroby, nerek, ciąża, laktacja, niedojrzałość płciowa</td><td>zaburzenia libido, zmiany w jądrze i wątrobie (bez wpływu na poziom testosteronu i jakość nasienia)</td></tr>
+<tr><td>delmadinon</td><td>antyandrogen (gestagen)</td><td>antagonizm rec. androgenowego + działanie antygonadotropowe (↓ LH i FSH → ↓ testosteronu)</td><td>psy/kocury — łagodny lub rakowaty przerost prostaty, gruczolak okołoodbytowy, agresja hormonozależna, nadpobudliwość płciowa</td><td>cukrzyca, choroby serca, nerek, wątroby, ciąża, laktacja, owrzodzenia żołądka i jelit, niedojrzałość płciowa</td><td>↑ apetytu i masy, wymioty, biegunka, poliuria, polidypsja, ryzyko zapalenia pęcherza, łysienie, retencja Na i wody, ↑ glukozy, osłabienie mięśni, osteoporoza</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g17">17. Prostaglandyny, oksytocyki i tokolityki (poród / macica)</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th></tr>
+<tr><td>dinoprost (+ analogi: alfaprostol, luprostiol, kloprostenol, tiaprost, deksakloprostenol)</td><td>analog prostaglandyny F2α</td><td>wiąże rec. PGF2α na komórkach lutealnych → ↑ Ca, aktywacja enzymów proteolitycznych, apoptoza → ↓ progesteronu, ↑ LH i FSH; luteoliza, skurcz mięśniówki macicy</td><td>indukcja i synchronizacja rui, luteoliza (przetrwałe ciałko żółte, torbiele lutealne), przerwanie ciąży, indukcja porodu</td><td>ciąża (gdy nie zamierzona), astma, choroby układu oddechowego</td><td>skurcze macicy (ból), biegunka, skurcz oskrzeli, ↑ ciśnienia, wymioty u mięsożernych, drżenia mięśniowe, zatrzymanie łożyska</td></tr>
+<tr><td>karbetocyna</td><td>oksytocyk (syntetyczny analog oksytocyny)</td><td>agonista rec. oksytocyny (macica, gruczoł mlekowy) → ↑ Ca → skurcz mięśni gładkich; ↑ wydzielania PGF2α</td><td>pobudzenie i wzmacnianie skurczów macicy podczas porodu, stymulacja uwalniania mleka, inwolucja macicy, wydalanie łożyska, mastitis</td><td>niedrożność dróg rodnych, nieprawidłowe ułożenie płodu, skurcze toniczne, hipoglikemia, hipokaliemia</td><td>nadmierny skurcz macicy, zaburzenia przepływu łożyskowego, niedotlenienie płodu, odklejenie/pęknięcie macicy, zaburzenia rytmu, tachykardia; dłuższy i stabilniejszy od oksytocyny</td></tr>
+<tr><td>denaweryna</td><td>tokolityk (inhibitor PDE)</td><td>hamuje PDE → ↑ cAMP → rozkurcz mięśniówki macicy, rozszerzenie kanału rodnego; słabe działanie znieczulające i uspokajające</td><td>przyspieszenie i ułatwienie akcji porodowej u krów, rozszerzenie kanału rodnego, regulacja skurczów</td><td>mechaniczne przeszkody porodowe, brak rozpoczęcia skurczów</td><td>wzmożony niepokój, obrzęki w miejscu podania</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g18">18. Nadnercza: leki na nadczynność / niedoczynność kory</h2>
+<div class="grupa-info"><strong>Nadczynność (zespół Cushinga):</strong> pergolid, selegilina, bromokryptyna, trilostan, mitotan, ketokonazol. <strong>Niedoczynność:</strong> GKS, agoniści rec. dopaminergicznych.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th></tr>
+<tr><td>pergolid</td><td>agonista dopaminergiczny</td><td>stymuluje postsynaptyczne rec. D1 i D2 → ↓ uwalniania ACTH</td><td>zespół Cushinga (nadczynność kory nadnerczy), głównie u koni</td><td>nadwrażliwość na pochodne sporyszu, konie &lt;2 r.ż.</td><td>brak apetytu, biegunki, ↓ masy ciała, apatia, bóle morzyskowe u koni</td></tr>
+<tr><td>selegilina</td><td>inhibitor MAO-B</td><td>blokowanie MAO-B → hamowanie metabolizmu dopaminy w OUN → ↑ dopaminy → ↓ ACTH → ↓ kortyzolu</td><td>zespół Cushinga (psy, koty, konie)</td><td>guzy nadnerczy</td><td>wymioty, biegunka</td></tr>
+<tr><td>bromokryptyna</td><td>agonista D2</td><td>hamuje uwalnianie prolaktyny → ↓ ACTH</td><td>zespół Cushinga, akromegalia</td><td>ciąża, ropomacicze, powiększenie gruczołu sutkowego</td><td>obniżenie ciśnienia; może być stosowana do przerwania ciąży</td></tr>
+<tr><td>trilostan</td><td>konkurencyjny odwracalny inhibitor dehydrogenazy 3-β-hydroksysteroidowej</td><td>hamowanie enzymu → blok kolejnych etapów syntezy kortyzolu z kory nadnerczy; obniża aldosteron</td><td>zespół Cushinga (głównie psy)</td><td>niedomoga nerek/wątroby, ciąża/laktacja</td><td>ospałość, wymioty, ↓ apetytu, martwica w nadnerczach, odwodnienie, hiponatremia, hipokaliemia</td></tr>
+<tr><td>mitotan</td><td>lek cytostatyczny</td><td>hamuje sterol-O-acetylotransferazę (gromadzi się cholesterol); wiąże się z białkami nadnerczy → czynny metabolit niszczy komórki kory nadnerczy</td><td>zespół Cushinga</td><td>ciąża</td><td>ospałość, anoreksja, ataksja, wymioty</td></tr>
+<tr><td>ketokonazol</td><td>lek przeciwgrzybiczy</td><td>hamuje enzymy cytochromu P450 biorące udział w syntezie hormonów steroidowych</td><td>zespół Cushinga</td><td>ciąża</td><td>wymioty, biegunka, uszkodzenia wątroby, zaćma</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g19">19. Tarczyca i trzustka (insulina)</h2>
+<div class="grupa-info"><strong>Tarczyca:</strong> niedoczynność → lewotyroksyna; nadczynność → tiamazol. <strong>Trzustka:</strong> cukrzyca → insulina (kot = typu II/III, pies = typu I).</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th></tr>
+<tr><td>lewotyroksyna</td><td>hormon tarczycy</td><td>naśladuje działanie tetrajodotyroniny (T4), przekształcana w T3</td><td>terapia zastępcza u zwierząt z niedoborem hormonów tarczycy</td><td>nadczynność tarczycy</td><td>zaburzenia rytmu serca, zapalenie płuc</td></tr>
+<tr><td>tiamazol</td><td>lek tyreostatyczny</td><td>hamuje wiązanie jodu z peroksydazą tarczycową (inaktywuje enzym) → zapobiega jodowaniu tyreoglobuliny i wbudowywaniu jodu do tyrozyny</td><td>nadczynność tarczycy (koty)</td><td>niewydolność nerek, choroby wątroby</td><td>wymioty, jadłowstręt, apatia, świąd; brak apetytu, przedłużone krwawienie, niedokrwistość, żółtaczka, małopłytkowość, eozynofilia, leukopenia, limfocytoza</td></tr>
+<tr><td>insulina</td><td>hormon</td><td>(regulacja gospodarki węglowodanowej)</td><td>cukrzyca</td><td>—</td><td>hipoglikemia</td></tr>
+</table>
+<div class="grupa-info"><strong>Caninsulin</strong> → świńska insulina dla psów i kotów; insulina ludzka protaminowo-cynkowa. Kot — insulina typu III, pies — insulina typu I.</div>
+
+<!-- ============================================ -->
+<h2 id="g20">20. Pokarmowy: leki wymiotne (Emetica)</h2>
+<div class="grupa-info"><strong>Ośrodek wymiotny</strong> (rdzeń przedłużony) + chemoreceptorowa strefa wyzwalająca (CTZ — rec. D2 i 5-HT3) + błędnik (rec. M, H1) + rec. NK1 (neurokininowy). <strong>Emetica</strong> — przy zatruciach, usunięcie ciała obcego (psy, koty).</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th></tr>
+<tr><td>apomorfina</td><td>o działaniu ośrodkowym</td><td>agonista receptorów D2 w CTZ</td><td>jednorazowe podanie podskórne, wymioty po 2–15 min</td><td>połknięcie środków żrących/pieniących/lotnych i ostrych przedmiotów, depresja OUN, drgawki, niewydolność wątroby; NIE u kotów</td><td>senność, ↑ ślinienia, bradykardia/częstoskurcz, ↓ ciśnienia, odwodnienie; opioidy/barbiturany nasilają depresję OUN</td></tr>
+<tr><td>ropinirol</td><td>o działaniu ośrodkowym</td><td>agonista receptorów dopaminergicznych w CTZ</td><td>krople do oczu dla psów; wymioty po 15 min</td><td>połknięcie ostrych/żrących substancji, depresja OUN, padaczka, ciąża, laktacja</td><td>przekrwienie oka, wysunięcie III powieki, ospałość, tachykardia, drgawki, biegunka, przedłużone wymioty</td></tr>
+<tr><td>ksylazyna, deksmedetomidyna, medetomidyna</td><td>o działaniu ośrodkowym</td><td>selektywni agoniści receptorów α2 (uspokajające, przeciwbólowe)</td><td>wymioty po kilku min; leki z wyboru dla kotów</td><td>bradykardia, choroby serca, wstrząs, odwodnienie, ciąża, cukrzyca, niewydolność oddechowa</td><td>bradykardia, hipotensja, depresja oddechu, sedacja, ataksja, hipotermia, hiperglikemia, nadmierne ślinienie</td></tr>
+<tr><td>woda utleniona, chlorek sodu, soda oczyszczona</td><td>o działaniu obwodowym</td><td>drażnienie błony śluzowej pp</td><td>nagłe wymioty wywoływane przez właściciela</td><td>—</td><td>podrażnienia, uszkodzenia błon śluzowych pp</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g21">21. Pokarmowy: leki przeciwwymiotne (Antiemetica)</h2>
+<table>
+<tr><th>Lek</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>maropitant</td><td>antagonista receptora NK1 (dla substancji P) w ośrodku wymiotnym; NIE działa uspokajająco</td><td>hamuje wymioty RÓŻNEGO pochodzenia</td><td>choroby wątroby (metabolizm), choroby serca (powinowactwo do kanałów Ca), ciąża/laktacja po ocenie</td><td>ból w miejscu podania, reakcje alergiczne, letarg, ataksja, drgawki, drżenia mięśni</td><td>tabletki, s.c./i.v. dla psów i kotów; podać godzinę wcześniej, raz dziennie; silnie wiąże się z białkami osocza</td></tr>
+<tr><td>metoklopramid</td><td>ośrodkowo antagonista rec. D2 w CTZ, obwodowo antagonista D2 + agonista 5-HT4 (↑ wydzielania ACh)</td><td>hamuje wymioty pochodzenia GASTRYCZNEGO i TOKSYCZNEGO, NIE pochodzenia błędnikowego; prokinetyk (refluks, zapalenie żołądka)</td><td>perforacja/niedrożność pp, krwawienia w pp, padaczka, urazy głowy, ciąża urojona u suk, guz chromochłonny</td><td>pobudzenie, niezborność ruchów, drżenia, drgawki, agresja, senność, biegunka, ↑ uwalniania prolaktyny</td><td>tabletki, i.m./s.c. dla psów i kotów</td></tr>
+<tr><td>ondansetron</td><td>blokuje receptory 5-HT3 obwodowo i ośrodkowo</td><td>zapobieganie wymiotom po chemioterapii i radioterapii (uwalnianie serotoniny z uszkodzonych tkanek)</td><td>nadwrażliwość, zaburzenia rytmu, hipokaliemia, niewydolność wątroby</td><td>ból głowy, zawroty, senność, zaburzenia rytmu serca, ↓ ciśnienia, zaparcia</td><td>nie znosi niedrożności mechanicznej jelit</td></tr>
+<tr><td>acepromazyna, prometazyna, tietylperazyna, haloperidol</td><td>antagoniści rec. D2, H1 i M w OUN (neuroleptyki — fenotiazyny, butyrofenony)</td><td>hamują wymioty różnego pochodzenia, skuteczne w wymiotach BŁĘDNIKOWYCH; działanie uspokajające</td><td>—</td><td>—</td><td>doustnie, iniekcyjnie dla psów i kotów</td></tr>
+<tr><td>dimenhydrynat, difenhydramina, prometazyna</td><td>antagoniści rec. H1 i M (leki przeciwhistaminowe)</td><td>wymioty pochodzenia BŁĘDNIKOWEGO, indukowane radioterapią, schorzenia żołądka</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>skopolamina</td><td>antagonista rec. M (parasympatykolityk)</td><td>choroba lokomocyjna psów</td><td>nie stosować u kotów</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g22">22. Pokarmowy: choroba wrzodowa (IPP, H2, osłaniające)</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Przeciwwskazania</th><th>Niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>omeprazol</td><td>inhibitor pompy protonowej (IPP)</td><td>hamuje ATP-azę H⁺/K⁺ na komórkach okładzinowych → ↓ wydzielania kwasu solnego niezależnie od bodźca</td><td>choroby wątroby, ciąża i laktacja</td><td>nadwrażliwość, ↓ apetytu i masy, biegunka, wymioty, achylia (brak HCl), przerost błony śluzowej żołądka (↑ gastryny)</td><td>doustnie (psy, koty, konie), i.v. (konie); silny wzrost produkcji HCl po odstawieniu — stopniowe</td></tr>
+<tr><td>ranitydyna, famotydyna</td><td>antagoniści rec. H2</td><td>blokowanie rec. H2 → ↓ produkcji HCl (krócej i mniej stabilnie niż IPP)</td><td>choroby serca, wątroby, nerek, nadwrażliwość</td><td>nudności, brak apetytu, senność, apatia, zaparcia/biegunka, bradykardia, hipotensja, zaburzenia rytmu</td><td>psy, koty, konie — doustnie/i.v./i.m./s.c.; brak działania prokinetycznego</td></tr>
+<tr><td>mizoprostol</td><td>analog PGE1</td><td>pobudza rec. dla PGE → hamuje wydzielanie HCl, nasila produkcję wodorowęglanów i śluzu (cytoprotekcyjnie)</td><td>ciąża (poronienia), laktacja (do mleka)</td><td>wymioty, biegunka, ból brzucha, skurcze macicy, przedwczesny poród, drżenia mięśniowe, napady padaczkowe</td><td>nie łączyć z omeprazolem (osłania jego działanie)</td></tr>
+<tr><td>sukralfat, cytrynian potasowo-bizmutawy, koloidalny bizmut</td><td>selektywne leki osłaniające</td><td>w kontakcie z uszkodzoną błoną (pH&lt;4) tworzą kompleksy wypełniające ubytek (warstwa ochronna przed HCl), nasilają syntezę PG</td><td>—</td><td>—</td><td>cytoprotekcja; nie stosować z lekami neutralizującymi ani mlekiem; mogą ↓ wchłanianie innych leków</td></tr>
+<tr><td>pektyny, śluzy roślinne, siemię lniane</td><td>nieselektywne leki osłaniające</td><td>tworzą warstwę chroniącą błonę śluzową żołądka przed HCl</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>związki glinu, magnezu, wapnia</td><td>leki neutralizujące kwas solny</td><td>↑ pH soku żołądkowego; glin działa zapierająco, magnez przeczyszczająco</td><td>—</td><td>wtórna hipersekrecja HCl, alkalizacja pp, ryzyko infekcji</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g23">23. Pokarmowy: prokinetyki, spazmolityki, na perystaltykę</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th></tr>
+<tr><td>metoklopramid</td><td>prokinetyk</td><td>ośrodkowo antagonista D2, obwodowo antagonista D2 + agonista 5-HT4 → ↑ uwalniania ACh; nasilenie skurczów żołądka, przyspieszenie opróżniania, ↑ napięcia zwieracza wpustu</td><td>leczenie wymiotów, opróżnianie żołądka; bezpiecznie u koni</td><td>padaczka, zaparcia, niedrożność/krwawienia pp, psy z przełykiem olbrzymim</td><td>drżenia, ataksja, zachowania paradoksalne (jak neuroleptyki fenotiazynowe)</td></tr>
+<tr><td>domperydon</td><td>prokinetyk</td><td>antagonista rec. D2; opróżnianie żołądka (nie wpływa na HCl, brak działania przeciwwymiotnego)</td><td>poporodowa bezmleczność u klaczy, leczenie ochwatu</td><td>niedrożność przewodu pokarmowego</td><td>objawy rzadziej niż metoklopramid; ↑ uwalniania prolaktyny</td></tr>
+<tr><td>cyzapryd</td><td>prokinetyk</td><td>agonista rec. 5-HT4 w zwojach śródściennych jelit → ↑ ACh → ↑ napięcia zwieracza wpustu, przyspieszenie opróżniania żołądka, ↑ perystaltyki jelit</td><td>refluks żołądkowo-przełykowy, zaburzenia opróżniania żołądka, zaparcia</td><td>niedrożność przewodu pokarmowego, przełyk olbrzymi</td><td>ból brzucha, agresja, ataksja, gorączka, wymioty; brak hiperprolaktynemii i działania przeciwwymiotnego</td></tr>
+<tr><td>lidokaina</td><td>na perystaltykę</td><td>blokuje kanały sodowe (hamuje przewodzenie nerwowe), pobudza aktywność motoryczną jelit</td><td>przywrócenie motoryki jelit po operacji, wymioty u koni</td><td>—</td><td>—</td></tr>
+<tr><td>papaweryna, drotaweryna</td><td>spazmolityki (papawerynopodobne)</td><td>hamują PDE → ↑ cAMP/cGMP → rozkurcz mięśni gładkich; blokują kanały wapniowe typu L (↓ Ca²⁺)</td><td>stany spastyczne pp, dróg żółciowych, pęcherza, macicy</td><td>—</td><td>zaparcia, nudności, wymioty, brak łaknienia</td></tr>
+<tr><td>butylobromek skopolaminy</td><td>spazmolityk (parasympatykolityk)</td><td>blokada rec. M → rozkurcz mięśni gładkich; nie przechodzi bariery krew-mózg</td><td>stany spastyczne pp</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g24">24. Pokarmowy: przeciwbiegunkowe (zapierające)</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th></tr>
+<tr><td>tanina</td><td>środki ściągające</td><td>denaturacja śluzu i białek na powierzchni błony śluzowej → ↓ przesięku i wysięku, umiarkowany efekt przeciwzapalny</td><td>nieżyty pokarmowe (doustnie), zatrucia alkaloidami i metalami, pędzlowanie błon śluzowych</td><td>—</td><td>długotrwale: ciężkie zaparcia i uszkodzenia wątroby</td></tr>
+<tr><td>związki bizmutu, węgiel leczniczy, kaolin, pektyny (kaopectate), atapulgit</td><td>środki adsorpcyjne i osłaniające</td><td>silnie wiążą substancje w pp (gazy, białka, bakterie, toksyny), zmieniają konsystencję kału</td><td>objawowe leczenie biegunki, szczególnie w zakażeniach bakteryjnych pp</td><td>—</td><td>wymioty (aspiracja do płuc), zaparcia, czarny/zielonoczarny stolec; atapulgit bezpieczny dla kotów (nie wchłania się)</td></tr>
+<tr><td>difenoksylat (+ atropina), loperamid</td><td>hamujące perystaltykę (agoniści rec. opioidowych μ)</td><td>wiążą rec. opioidowe μ w jelitach → ↓ perystaltyki, ↓ uwalniania ACh i PG, ↑ resorpcji wody i elektrolitów, ↑ napięcia zwieracza odbytu</td><td>objawowe leczenie biegunek z dużą utratą płynów</td><td>biegunka infekcyjna (mogą ↑ wchłanianie toksyn), niedrożność jelit, czerwonka, rzekomobłoniaste zapalenie jelit</td><td>zaparcia (duże dawki), wpływ na OUN; loperamid silniejszy, nie przenika do OUN; difenoksylat + atropina — psy i koty</td></tr>
+<tr><td>diosmektyn</td><td>środki osłaniające błonę śluzową jelita</td><td>reaguje z glikoproteinami śluzu → ↑ wytrzymałości na czynniki drażniące; właściwości adsorbujące</td><td>biegunki</td><td>niedrożność jelit</td><td>nie wchłania się z pp</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g25">25. Pokarmowy: przeczyszczające (na zaparcia)</h2>
+<div class="grupa-info"><strong>Ogólne PW środków przeczyszczających:</strong> niedrożność, uchyłki jelita, porażenie perystaltyki, zaburzenia drożności, ciąża.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Niepożądane / PW</th></tr>
+<tr><td>otręby pszenne/żytnie, agar, guma arabska</td><td>zwiększające objętość mas kałowych</td><td>chłoną wodę → ↑ objętość; adsorbują kwasy żółciowe (↓ cholesterolu)</td><td>zatwardzenie stolca</td><td>bezpieczne</td></tr>
+<tr><td>siarczan magnezu, siarczan sodu, laktuloza</td><td>osmotyczne</td><td>↑ ciśnienie osmotyczne treści jelitowej (nie wchłaniane) → zatrzymują wodę → upłynnienie mas kałowych, rozciągnięcie ściany → skurcz; laktuloza obniża pH jelit</td><td>zaparcia, laktuloza: zaparcia nawykowe, encefalopatia wątrobowa (psy)</td><td>odwodnienie; małe zwierzęta/przeżuwacze; laktuloza ostrożnie przy cukrzycy</td></tr>
+<tr><td>olej rycynowy</td><td>środki drażniące</td><td>rozkładany przez kwasy żółciowe i lipazę do glicerolu i kwasu rycynolowego → mydła rycynolowe drażnią jelito cienkie</td><td>zaparcia, opróżnienie jelit przed zabiegiem</td><td>ciąża, wstrząs anafilaktyczny; hamuje wchłanianie wit. A, D, E, K; może wywołać wcześniejszy poród</td></tr>
+<tr><td>glikozydy antrachinonowe</td><td>środki drażniące</td><td>uwalniają emodynę → pobudza sploty śródścienne jelita grubego</td><td>zaparcia (jelito grube)</td><td>przewlekle: zwyrodnienie splotów międzymięśniowych, hamowanie perystaltyki</td></tr>
+<tr><td>bisakodyl</td><td>środki drażniące</td><td>drażni zakończenia neuronów błony śluzowej, ↓ próg pobudliwości → pobudza motorykę jelita grubego i wydzielanie wody/elektrolitów</td><td>zaparcia, opróżnienie jelit</td><td>choroby nerek; przewlekle uszkodzenie splotów jelitowych, utrata płynów; nie łączyć z alkalizującymi/mlekiem</td></tr>
+<tr><td>olej parafinowy</td><td>poślizgowe</td><td>↑ zawartość wody w kale, nadaje poślizg</td><td>sondowanie (duże zwierzęta)</td><td>stłuszczenie wątroby</td></tr>
+<tr><td>gliceryna/glicerol, czopki</td><td>poślizgowe / osmotyczne</td><td>ściąga wodę do treści jelitowej</td><td>zaparcia</td><td>odwodnienie</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g26">26. Pokarmowy: wątroba, apetyt, żwacz</h2>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th></tr>
+<tr><td>menbuton</td><td>żółciotwórczy / żółciopędny</td><td>silnie stymuluje czynności wydzielnicze wątroby, trzustki i gruczołów błony śluzowej pp → ↑ żółci, soku żołądkowego/trzustkowego; pośrednio pobudza motorykę</td><td>zaburzenia trawienia i wydzielania wątroby/trzustki, wspomaganie w ketozie</td><td>ostre zapalenie trzustki, zapalenie wątroby, niedrożność dróg żółciowych, niewydolność serca, gorączka, ostatni trymestr ciąży</td><td>ślinotok, potliwość, łzawienie, wzmożone oddawanie moczu i kału, zaleganie</td></tr>
+<tr><td>laktuloza</td><td>hepatoprotekcyjny</td><td>migracja amoniaku z krwi do okrężnicy → jon amonowy wydalany z kałem (↓ amoniaku); działanie przeczyszczające, obniża pH jelit</td><td>leczenie hiperamonemii (encefalopatia wątrobowa)</td><td>cukrzyca (zawiera laktozę i galaktozę)</td><td>odwodnienie</td></tr>
+<tr><td>tymonacyk</td><td>hepatoprotekcyjny</td><td>metabolizowany w wątrobie do N-formylocysteiny → unieczynnia toksyczne metabolity</td><td>ochrona miąższu wątroby przed toksynami</td><td>—</td><td>—</td></tr>
+<tr><td>metionina, cysteina</td><td>hepatoprotekcyjne</td><td>grupy sulfhydrylowe chronią wątrobę</td><td>ochrona przed działaniem trucizn</td><td>—</td><td>—</td></tr>
+<tr><td>cholina, lecytyna</td><td>hepatoprotekcyjne</td><td>przeciwdziałają stłuszczeniu wątroby</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>mirtazapina, kapromorelina, diazepam, GKS, brotizolam</td><td>pobudzające apetyt</td><td>mirtazapina — maść przezskórna dla kotów; kapromorelina — doustny dla kotów; diazepam — anorektyczne koty; brotizolam — krowy po zabiegach</td><td>pobudzenie apetytu</td><td>—</td><td>—</td></tr>
+<tr><td>monezyna</td><td>na żwacz (jonofor)</td><td>zmiana populacji drobnoustrojów (G+): ↓ bakterii produkujących octany/maślany, ↑ produkujących propioniany (prekursory glukoneogenezy) → ↑ wydajności energetycznej, ↓ ciał ketonowych</td><td>↓ częstotliwości ketozy u krów mlecznych i jałówek okołoporodowych</td><td>—</td><td>—</td></tr>
+<tr><td>dimetykon, oleje roślinne, wodorowęglan Na, tlenek Mg</td><td>przeciwwzdęciowe / na żwacz</td><td>środki przeciwpienne (dimetykon, oleje); neutralizujące kwaśną treść żwacza (wodorowęglan Na, tlenek Mg); zakwaszające (kwas octowy, mlekowy)</td><td>wzdęcia, kwasica/zasadowica żwacza</td><td>—</td><td>parasympatykomimetyki pobudzają ruchy żwacza</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g27">27. Oddechowy: leki przeciwkaszlowe ośrodkowe i obwodowe</h2>
+<div class="grupa-info"><strong>Ośrodkowe</strong> działają przez depresyjny wpływ na ośrodek kaszlu (duża skuteczność, więcej DN) — opioidowe i nieopioidowe. <strong>Obwodowe</strong> wpływają na zakończenia czuciowe w oskrzelach (benzonatat, klofedanol, śluzy roślinne).</div>
+<table>
+<tr><th>Lek</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>morfina</td><td>czysty agonista rec. μ (słaby δ i κ); ↓ cAMP → otwarcie kanałów K⁺, zamknięcie Ca²⁺ → hiperpolaryzacja, ↓ uwalniania neuroprzekaźników; depresyjny wpływ na ośrodek kaszlu</td><td>efekt przeciwkaszlowy (mniejsze dawki niż przeciwbólowe), zranienie opłucnej</td><td>depresja oddechowa, drgawki, padaczka</td><td>wymioty, ślinotok, zaparcia, skurcz oskrzeli, bradykardia, ↓ ciśnienia, depresja oddechowa, sedacja/pobudzenie</td><td>s.c./doustnie/i.m.; gdy kodeina nieskuteczna</td></tr>
+<tr><td>kodeina</td><td>hamuje ośrodek kaszlu (słabiej od morfiny), zwiększa lepkość wydzieliny oskrzelowej</td><td>silny środek przeciwkaszlowy (dawki przeciwkaszlowe niższe od przeciwbólowych)</td><td>kaszel mokry, depresja oddechowa, ciężkie zaparcia</td><td>zaparcia, hamowanie oddychania, uzależnienie</td><td>głównie u psów; często z paracetamolem/ASA; doustnie — wysoka biodostępność</td></tr>
+<tr><td>butorfanol</td><td>agonista κ, antagonista μ</td><td>silnie przeciwkaszlowo (silniej od kodeiny i morfiny), przeciwbólowo, przeciwwymiotnie; przewlekły suchy kaszel u psów</td><td>schorzenia wątroby, choroba Addisona, niewydolność nerek i tarczycy, urazy głowy</td><td>depresja oddechowa, ataksja, nasila działanie histaminy (alergie), anoreksja, biegunka</td><td>doustnie i parenteralnie (psy, koty); szeroki margines bezpieczeństwa</td></tr>
+<tr><td>etylomorfina</td><td>agonista rec. μ (mniej κ i δ) — hamuje ośrodek kaszlu</td><td>działanie przeciwkaszlowe, przeciwbólowe</td><td>niewydolność oddechowa, astma w ostrym napadzie, depresja oddechowa, niewydolność wątroby</td><td>odurzenie, uzależnienia, depresja oddechowa, senność, zawroty głowy, ↓ ciśnienia, nudności</td><td>stosowana u psów</td></tr>
+<tr><td>dekstrometorfan</td><td>hamuje ośrodek kaszlu; antagonista rec. NMDA, hamuje wychwyt zwrotny serotoniny i noradrenaliny; brak działania przeciwbólowego i depresji oddechowej</td><td>suchy kaszel</td><td>astma (uwalnia histaminę), alergia, kaszel z mokrą wydzieliną, niewydolność wątroby</td><td>senność, zawroty głowy, wymioty, tachykardia, świąd, wysypka</td><td>siła jak kodeina, dobrze wchłaniany z pp; psy i koty</td></tr>
+<tr><td>noskapina</td><td>alkaloid izochinolinowy opium — hamuje ośrodek kaszlu (kanały wapniowe), nie hamuje oddechu (nie działa na rec. opioidowe)</td><td>suchy kaszel; przeciwkaszlowo + słabo spazmolitycznie</td><td>nadwrażliwość, ciąża, niewydolność wątroby, niedociśnienie</td><td>sedacja, senność, nudności, ↓ ciśnienia</td><td>tylko u małych zwierząt</td></tr>
+<tr><td>butamirat</td><td>hamuje ośrodek kaszlu (nie opioidowo — brak depresji oddechowej), słabe rozkurczowe na oskrzela, upłynnia wydzielinę</td><td>kaszel suchy i mokry, pooperacyjny</td><td>nadwrażliwość, ciąża, karmienie</td><td>biegunka, senność, wysypka, świąd, ↓ ciśnienia</td><td>3× silniej niż kodeina</td></tr>
+<tr><td>okseladyna</td><td>hamuje ośrodek kaszlu (słabiej niż opioidy), słabe przeciwhistaminowe i cholinolityczne; nie uzależnia, nie działa depresyjnie</td><td>suchy kaszel, alergiczny</td><td>jaskra, przerost prostaty z nietrzymaniem moczu</td><td>senność, suchość w ustach, nudności, tachykardia, zaparcia</td><td>—</td></tr>
+<tr><td>pentoksyweryna</td><td>hamuje ośrodek kaszlu, słabe miejscowo znieczulające i cholinolityczne</td><td>kaszel suchy</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>dimetoksanat, flubron, oksomemazyna (fenotiazyny)</td><td>antagonizm rec. H1 w OUN → ↓ podrażnienia dróg oddechowych, ↓ pobudliwości ośrodka kaszlu</td><td>kaszel alergiczny, katar sienny; przeciwkaszlowe, uspokajające, miejscowo znieczulające</td><td>jaskra, przerost prostaty, padaczka, depresja OUN</td><td>senność, suchość w ustach, zaparcia, zatrzymanie moczu, ↓ ciśnienia</td><td>syrop/tabletki dla psów</td></tr>
+<tr><td>benzonatat, klofedanol</td><td>działanie obwodowe — wpływają na zakończenia czuciowe w oskrzelach</td><td>przed zabiegami</td><td>—</td><td>—</td><td>śluzy roślinne — łagodząco/osłaniająco</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g28">28. Oddechowy: leki wykrztuśne i mukolityki</h2>
+<div class="grupa-info">Oczyszczają drogi oddechowe z zalegającej wydzieliny — zmniejszają jej lepkość. <strong>Odruchowe</strong> (drażnią żołądek → odruchowo ↑ wydzielania), <strong>bezpośrednie</strong> (drażnią oskrzela), <strong>zmieniające pH</strong>, <strong>sekretolityczne / mukolityki</strong> (zmiana składu śluzu — duża skuteczność).</div>
+<table>
+<tr><th>Lek</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>jodek potasu</td><td>drażni błonę śluzową żołądka → odruchowo ↑ wydzielanie gruczołów oskrzelowych; gromadzi się też w tarczycy, śliniankach</td><td>kaszel mokry, przewlekłe zapalenie oskrzeli, stany po zapaleniu płuc z zalegającą wydzieliną</td><td>nadczynność tarczycy, zaawansowana ciąża</td><td>obrzęk ślinianek, jodzica, zaburzenia pp, wpływ na tarczycę</td><td>nie łączyć z innymi lekami wykrztuśnymi</td></tr>
+<tr><td>związki kreozotu (gwajakol)</td><td>drażni śluzówkę żołądka (odruchowo) + po wchłonięciu drażni śluzówkę oskrzeli</td><td>stany zapalne oskrzeli, kaszel mokry</td><td>choroba wrzodowa, zapalenie żołądka, krwawienia z pp, kaszel suchy</td><td>wysypka, świąd, nudności, wymioty, senność, zawroty głowy</td><td>oleisty płyn; nie łączyć z lekami przeciwkaszlowymi</td></tr>
+<tr><td>gwajfenezyna</td><td>pobudza gruczoły oskrzelowe, ↑ ilości wydzieliny, ↓ lepkości, ułatwia transport rzęskowy</td><td>kaszel mokry, przewlekłe zapalenie oskrzeli</td><td>choroby pp</td><td>—</td><td>—</td></tr>
+<tr><td>wodorowęglan sodu</td><td>uwalnia HCO₃⁻ → ↑ pH wydzieliny → upłynnienie, ↓ lepkości</td><td>kaszel mokry, przewlekłe zapalenie oskrzeli, mukowiscydoza</td><td>skłonność do zasadowicy metabolicznej, niewydolność nerek</td><td>wzdęcia, zgaga, nudności, alkaloza metaboliczna</td><td>alkalizuje sok żołądkowy i mocz</td></tr>
+<tr><td>chlorek amonu</td><td>drażni błonę śluzową pp (nerw błędny), ↑ wydzieliny i ją zakwasza; w większych dawkach moczopędnie</td><td>kaszel z gęstą wydzieliną, przewlekłe zapalenie oskrzeli</td><td>choroby pp, niewydolność nerek</td><td>podrażnienie pp, hiperwentylacja, kwasica, obrzęk płuc</td><td>2% roztwory do inhalacji lub doustnie</td></tr>
+<tr><td>acetylocysteina</td><td>rozrywa wiązania dwusiarczkowe w polipeptydach śluzu → ↓ lepkości (z metabolitem cysteiną)</td><td>schorzenia z lepką wydzieliną; antidotum w zatruciu paracetamolem</td><td>wrzody, astma (skurcz oskrzeli)</td><td>nieprzyjemny smak, drażnienie dróg oddechowych, nudności, wymioty</td><td>inhalacje/doustnie; nie przed snem (indukuje kaszel); nie z penicyliną, tetracykliną, cefalosporyną, aminoglikozydami (inaktywuje)</td></tr>
+<tr><td>karbocysteina</td><td>stymuluje wytwarzanie śluzu o niskiej lepkości, hamuje o wysokiej (nie reaguje bezpośrednio ze śluzem)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>mesna</td><td>rozrywa wiązania dwusiarczkowe w mucynie → ↓ lepkości śluzu</td><td>—</td><td>—</td><td>—</td><td>mniej DN niż pochodne cysteiny; aerozol/wlewy; nie z aminoglikozydami</td></tr>
+<tr><td>bromheksyna, dembreksyna, ambroksol</td><td>rozrzedzają śluz, pobudzają rzęski, ↑ syntezę surfaktantu; ambroksol — ↑ penetracji antybiotyku, antyoksydacyjnie</td><td>ostre i przewlekłe zapalenie oskrzeli, mukowiscydoza, stany po zapaleniu płuc, kaszel mokry; ambroksol — zapalenie zatok, ucha</td><td>kaszel suchy, wrzody</td><td>nudności, wymioty, wysypka, świąd, zawroty głowy</td><td>czynny metabolit bromheksyny = ambroksol; dembreksyna — konie; doustnie/pozajelitowo</td></tr>
+<tr><td>tyloksapol, surfaktant, dornaza alfa</td><td>detergenty / enzymy — obniżają napięcie powierzchniowe (tyloksapol); surfaktant naturalny; dornaza hydrolizuje DNA w plwocinie</td><td>torakochirurgia, profilaktyka zaburzeń oddychania, mukowiscydoza</td><td>—</td><td>—</td><td>wziewnie/dotchawiczo; dornaza rzadko stosowana</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g29">29. Oddechowy: leki przeciwastmatyczne</h2>
+<div class="grupa-info"><strong>Astma:</strong> alergen + IgE → mastocyt → mediatory (histamina — natychmiastowa; leukotrieny, PG — opóźniona) → skurcz oskrzeli, ↑ śluzu, zapalenie. <strong>Leki kontrolujące</strong> (GKS wziewne, kromony, LABA, teofilina, antyleukotrienowe) i <strong>doraźne</strong> (SABA, GKS doustne/pozajelitowe, cholinolityki, teofilina i.v.).</div>
+<table>
+<tr><th>Lek / grupa</th><th>Mechanizm</th><th>Skutek</th><th>Przeciwwskazania</th><th>Niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>glikokortykosteroidy (wziewne: flutikazon, beklometazon, budezonid; doustne: prednizolon; szybkie: deksametazon, metyloprednizolon)</td><td>łączą się z rec. cytozolowymi → ekspresja genów; ↑ lipokortyny → hamują fosfolipazę A2 → ↓ PG i leukotrienów; ↑ gęstości rec. β2; hamują cytokiny prozapalne (IL-4,5,13), degranulację mastocytów</td><td>↓ skurczu oskrzeli (nie rozkurczają), hamowanie późnej fazy reakcji alergicznej i nadreaktywności; przeciwdziałają przebudowie oskrzeli</td><td>cukrzyca, aktywne zakażenia grzybicze, zakażenia jamy ustnej/gardła, jaskra, zaćma, osteoporoza, choroba wrzodowa</td><td>kandydoza jamy ustnej, chrypka, zapalenie gardła, kaszel, osteoporoza, zaćma, jaskra, cukrzyca posteroidowa</td><td>najskuteczniejsze; najlepiej wziewnie; podawać rano (pies) / wieczorem (kot); nie powodują trwałego wyleczenia</td></tr>
+<tr><td>cyklezonid</td><td>prolek aktywowany do descyklezonidu w komórkach nabłonka dróg oddechowych — działa przeciwzapalnie tylko miejscowo</td><td>↓ obrzęku śluzówki, produkcji śluzu, nadreaktywności oskrzeli</td><td>jak GKS</td><td>jak GKS (minimalne — działanie miejscowe)</td><td>bardzo bezpieczny, przedłużone działanie, dobrze tolerowany; wziewnie</td></tr>
+<tr><td>β2-sympatykomimetyki — SABA krótkie (salbutamol, klenbuterol, fenoterol, terbutalina, rimiterol); LABA długie (salmeterol, formoterol, bambuterol)</td><td>stymulują rec. β2 → spadek stężenia wapnia → rozkurcz mięśni oskrzeli; hamowanie uwalniania mediatorów; ↑ klirensu śluzowo-rzęskowego</td><td>rozkurcz oskrzeli, pośrednie działanie przeciwzapalne, poprawa czynności przepony</td><td>tachykardia, nadciśnienie, nadczynność tarczycy, cukrzyca, hipokaliemia, ciąża</td><td>hipokaliemia, hiperglikemia, hipomagnezemia, ↑ ciśnienia, tachykardia, martwica mięśnia sercowego, relaksacja macicy</td><td>SABA — doraźnie; LABA — przewlekle; tachyfilaksja (odwracalna) i sekwestracja (nieodwracalna); GKS hamują tachyfilaksję; klenbuterol — konie, bydło</td></tr>
+<tr><td>klenbuterol</td><td>β2-mimetyk</td><td>rozkurcz oskrzeli</td><td>ostre i podostre choroby układu oddechowego ze skurczem oskrzeli, POChP koni; zaawansowana ciąża (osłabia parcia)</td><td>pobudzenie akcji serca, rozszerzenie naczyń, drżenia mięśni, pocenie koni</td><td>konie i bydło; długi czas działania; doustnie/i.v./i.m.</td></tr>
+<tr><td>cholinolityki: bromek ipratropium, bromek oksytropium, tiotropium</td><td>blokują rec. muskarynowe (konkurencja z ACh) → zapobiegają skurczowi oskrzeli wywołanemu ACh</td><td>rozkurcz oskrzeli, ↓ wydzielania śluzu</td><td>jaskra, niedrożność jelit, przerost prostaty, ciąża</td><td>suchość w ustach, kaszel, podrażnienie gardła, tachykardia, zatrzymanie moczu, zaburzenia widzenia</td><td>leki wspomagające</td></tr>
+<tr><td>metyloksantyny: teofilina (jedyna w wet.), aminofilina, diprofilina, etamifilina</td><td>hamowanie PDE → ↑ cAMP w mięśniach gładkich → rozkurcz; blokują rec. adenozynowe A1/A2; hamują gromadzenie wapnia i degranulację komórek tucznych; stymulują uwalnianie katecholamin</td><td>rozszerzenie oskrzeli, słabe przeciwzapalne, ↓ duszności; pobudza ośrodek oddechowy, działanie moczopędne</td><td>nadczynność tarczycy, choroba wrzodowa, niewydolność wątroby, niedokrwienie serca, świeży zawał, tachyarytmie, ciąża</td><td>bezsenność, drżenia, tachykardia, arytmie, wymioty, hipokaliemia, hiperglikemia, drgawki</td><td>niski wskaźnik terapeutyczny; pomocniczo, gdy nie można GKS lub β2; konieczne wysokie stężenie we krwi</td></tr>
+<tr><td>kromoglikan disodowy (kromony)</td><td>hamuje napływ wapnia do mastocytów → stabilizuje je → hamuje degranulację</td><td>profilaktycznie — leczenie pomocnicze w astmie lekkiej</td><td>—</td><td>kaszel (podanie wziewne)</td><td>wziewnie; nie działa w zaawansowanej astmie</td></tr>
+<tr><td>cyproheptadyna</td><td>lek przeciwhistaminowy; w astmie działa przeciwserotoninowo — antagonista rec. 5-HT1A i 5-HT2A (5-HT to główny mediator napadów astmy u kotów)</td><td>przeciwzapalne</td><td>—</td><td>—</td><td>u kotów; gdy nie można użyć GKS; w skojarzeniu z salbutamolem/terbutaliną; zapobiegawczo</td></tr>
+<tr><td>leki przeciwleukotrienowe</td><td>blokują receptor dla leukotrienów cysteinylowych</td><td>(pomocniczo w każdym okresie astmy)</td><td>—</td><td>—</td><td>leczenie kontrolujące</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g30">30. Leki MIEJSCOWO ZNIECZULAJĄCE</h2>
+<div class="grupa-info"><strong>Wspólny mechanizm:</strong> blokowanie potencjałozależnych kanałów sodowych → zwolnienie depolaryzacji błony komórkowej i zatrzymanie rozprzestrzeniania się potencjału czynnościowego. Podział na <strong>estry</strong> i <strong>amidy</strong>.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>prokaina</td><td>estry</td><td>hamuje przewodzenie nerwowe przez blokadę kanałów sodowych → zatrzymanie rozprzestrzeniania potencjału</td><td>znieczulenie nasiękowe, okołonerwowe i rdzeniowe</td><td>podanie dożylne lub dostawowe, zaburzenia krążenia, stan wstrząsu, leczenie sulfonamidami, uszy/ogon/prącie</td><td>pobudzenie OUN (niepokój, drgawki, depresja oddechowa), zaburzenia układu krążenia, działania neurotoksyczne, martwica mięśni</td><td>działa 30–60 min (z adrenaliną nawet 120 min); konie wrażliwe</td></tr>
+<tr><td>lidokaina</td><td>amid</td><td>jw. (blokada kanałów sodowych); także lek przeciwarytmiczny</td><td>znieczulenia powierzchniowe, nasiękowe, okołonerwowe, zewnątrzoponowe, dostawowe</td><td>tkanka zakażona, noworodki, dożylne podanie</td><td>niezborność ruchowa, reakcje nadwrażliwości, zaburzenia przewodzenia serca, ↓ ciśnienia, opóźnione gojenie ran</td><td>czas działania 60–120 min; działa silniej, szybciej i dłużej od prokainy</td></tr>
+<tr><td>mepiwakaina</td><td>amid</td><td>jw. (blokada kanałów sodowych)</td><td>znieczulenia dostawowe i zewnątrzoponowe</td><td>dożylne podanie</td><td>obrzęk tkanek, wpływ na OUN</td><td>działanie ok. 60 min</td></tr>
+</table>
+
+<hr style="margin-top: 40px;">
+<p style="text-align:center; color:#7f8c8d; font-size:0.85em;">
+Plik wygenerowany na potrzeby nauki farmakologii weterynaryjnej (Kolokwium 2). Grupowanie: według mechanizmu działania, a w obrębie grupy — według podobieństwa klasy/zastosowania.
+</p>
+
+<script>
+(function() {
+  // Kolejność ma znaczenie — bardziej specyficzne wzorce pierwsze, żeby uniknąć nakładania.
+  const RULES = [
+    // Toksyczności narządowe (DN) i organy (PW)
+    { re: /\bnefrotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-nerki' },
+    { re: /\bhepatotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-watroba' },
+    { re: /\bneurotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-neuro' },
+    { re: /\bkardiotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-kardio' },
+    { re: /\bmielotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-mielo' },
+    { re: /\bmielosupresj[a-ząęłńóśźż]+/gi, cls: 'kw kw-mielo' },
+    { re: /\bszpik[a-ząęłńóśźż]*/gi, cls: 'kw kw-mielo' },
+    { re: /\bOUN\b/g, cls: 'kw kw-neuro' },
+    { re: /\bwątrob[a-ząęłńóśźż]+/gi, cls: 'kw kw-watroba' },
+    { re: /\bnerk[a-ząęłńóśźż]+/gi, cls: 'kw kw-nerki' },
+
+    // Elektrolity i parametry hemodynamiczne
+    { re: /\bhipokali[ae]mi[a-ząęłńóśźż]*/gi, cls: 'kw kw-hipok' },
+    { re: /\bhiperkali[ae]mi[a-ząęłńóśźż]*/gi, cls: 'kw kw-hiperk' },
+    { re: /\bbradykardi[a-ząęłńóśźż]+/gi, cls: 'kw kw-brady' },
+    { re: /\btachykardi[a-ząęłńóśźż]+/gi, cls: 'kw kw-tachy' },
+    { re: /\barytmi[a-ząęłńóśźż]+/gi, cls: 'kw kw-tachy' },
+    { re: /\bmigotani[a-ząęłńóśźż]+/gi, cls: 'kw kw-tachy' },
+    { re: /\bhipotensj[a-ząęłńóśźż]+/gi, cls: 'kw kw-hipoten' },
+    { re: /\bnadciśnieni[a-ząęłńóśźż]+/gi, cls: 'kw kw-nadcis' },
+
+    // Stany / choroby
+    { re: /\bniewydolnoś[a-ząęłńóśźż]+ serca/gi, cls: 'kw kw-niewyd' },
+    { re: /\bniewydolnoś[a-ząęłńóśźż]+ nerek/gi, cls: 'kw kw-niewyd' },
+    { re: /\bcukrzyc[a-ząęłńóśźż]+/gi, cls: 'kw kw-cukrzyca' },
+    { re: /\bhiperglikemi[a-ząęłńóśźż]+/gi, cls: 'kw kw-cukrzyca' },
+    { re: /\bastm[a-ząęłńóśźż]+/gi, cls: 'kw kw-astma' },
+    { re: /\boskrzel[a-ząęłńóśźż]+/gi, cls: 'kw kw-astma' },
+    { re: /\bwrzod[a-ząęłńóśźż]+/gi, cls: 'kw kw-wrzody' },
+    { re: /\bowrzodzeni[a-ząęłńóśźż]+/gi, cls: 'kw kw-wrzody' },
+    { re: /\bCushing[a-ząęłńóśźż]*/gi, cls: 'kw kw-cushing' },
+    { re: /\bkrwawieni[a-ząęłńóśźż]+/gi, cls: 'kw kw-krwaw' },
+    { re: /\bkrwotok[a-ząęłńóśźż]*/gi, cls: 'kw kw-krwaw' },
+    { re: /\bzakrzep[a-ząęłńóśźż]+/gi, cls: 'kw kw-krwaw' },
+    { re: /\bzatorowoś[a-ząęłńóśźż]+/gi, cls: 'kw kw-krwaw' },
+
+    // Wiek / fizjologia / gatunki
+    { re: /\bniedojrzałoś[a-ząęłńóśźż]+/gi, cls: 'kw kw-mlode' },
+    { re: /\bnoworodk[a-ząęłńóśźż]+/gi, cls: 'kw kw-mlode' },
+    { re: /\bmłod(e|ych|ym|ymi|ego)\b/gi, cls: 'kw kw-mlode' },
+    { re: /\bciąż[a-ząęłńóśźż]+/gi, cls: 'kw kw-ciaza' },
+    { re: /\blaktacj[a-ząęłńóśźż]+/gi, cls: 'kw kw-ciaza' },
+    { re: /\bkot(y|ów|om|ach|a|u|ek|ki)\b/gi, cls: 'kw kw-koty' },
+    { re: /\bKOTY\b/g, cls: 'kw kw-koty' },
+    { re: /\bkocur[a-ząęłńóśźż]*/gi, cls: 'kw kw-koty' },
+    { re: /\bps(y|ów|om|ach|a)\b/gi, cls: 'kw kw-psy' },
+    { re: /\bsuk(a|i|om|ach)\b/gi, cls: 'kw kw-psy' },
+    { re: /\bkoni[a-ząęłńóśźż]*\b/gi, cls: 'kw kw-konie' },
+    { re: /\bklacz[a-ząęłńóśźż]*/gi, cls: 'kw kw-konie' },
+    { re: /\bbydł[a-ząęłńóśźż]+/gi, cls: 'kw kw-bydlo' },
+    { re: /\bkrow[a-ząęłńóśźż]+/gi, cls: 'kw kw-bydlo' },
+    { re: /\bprzeżuwacz[a-ząęłńóśźż]+/gi, cls: 'kw kw-bydlo' },
+  ];
+
+  function escapeHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function shouldSkip(node) {
+    let el = node.parentElement;
+    while (el) {
+      const tag = el.tagName;
+      if (tag === 'H1' || tag === 'H2' || tag === 'H3' || tag === 'TH' ||
+          tag === 'SCRIPT' || tag === 'STYLE' || tag === 'A') return true;
+      if (el.classList && (el.classList.contains('toc') ||
+          el.classList.contains('legend') ||
+          el.classList.contains('key') ||
+          (el.tagName === 'SPAN' && el.className && el.className.indexOf('kw') === 0))) return true;
+      el = el.parentElement;
+    }
+    return false;
+  }
+
+  function processTextNode(node) {
+    const text = node.textContent;
+    if (!text.trim()) return;
+    const matches = [];
+    RULES.forEach(rule => {
+      rule.re.lastIndex = 0;
+      let m;
+      while ((m = rule.re.exec(text)) !== null) {
+        matches.push({ start: m.index, end: m.index + m[0].length, cls: rule.cls, text: m[0] });
+        if (m[0].length === 0) rule.re.lastIndex++;
+      }
+    });
+    if (!matches.length) return;
+    matches.sort((a, b) => a.start - b.start || (b.end - b.start) - (a.end - a.start));
+
+    const filtered = [];
+    let lastEnd = 0;
+    for (const m of matches) {
+      if (m.start >= lastEnd) {
+        filtered.push(m);
+        lastEnd = m.end;
+      }
+    }
+
+    let html = '';
+    let pos = 0;
+    for (const m of filtered) {
+      html += escapeHtml(text.substring(pos, m.start));
+      html += '<span class="' + m.cls + '">' + escapeHtml(m.text) + '</span>';
+      pos = m.end;
+    }
+    html += escapeHtml(text.substring(pos));
+
+    const tmp = document.createElement('span');
+    tmp.innerHTML = html;
+    const parent = node.parentNode;
+    while (tmp.firstChild) parent.insertBefore(tmp.firstChild, node);
+    parent.removeChild(node);
+  }
+
+  function run() {
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      { acceptNode: function(n) { return shouldSkip(n) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } }
+    );
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(processTextNode);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
+</script>
+</body>
+</html>

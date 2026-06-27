@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Kolokwium 1 — Farmakologia OUN i układu autonomicznego</title>
+<style>
+  @media print { .nodruk { display: none !important; } }
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; max-width: 1400px; margin: 20px auto; padding: 0 20px; color: #222; line-height: 1.35; }
+  h1 { text-align: center; color: #2c3e50; border-bottom: 3px solid #2c3e50; padding-bottom: 10px; }
+  h2 { color: #fff; background: #2c3e50; padding: 10px 15px; margin-top: 40px; border-radius: 6px; font-size: 1.15em; }
+  h3 { color: #2c3e50; margin-top: 25px; border-left: 5px solid #e74c3c; padding-left: 10px; }
+  .grupa-info { background: #fff8dc; border-left: 5px solid #f39c12; padding: 10px 15px; margin: 10px 0 15px 0; font-size: 0.95em; }
+  .mnemo { background: #e8f5e9; border-left: 5px solid #27ae60; padding: 8px 15px; margin: 10px 0; font-style: italic; font-size: 0.95em; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 15px; font-size: 0.83em; }
+  th, td { border: 1px solid #bbb; padding: 6px 8px; vertical-align: top; text-align: left; }
+  th { background: #34495e; color: white; font-weight: 600; }
+  td:first-child { font-weight: bold; background: #f4f6f7; width: 130px; }
+  tr:nth-child(even) td:not(:first-child) { background: #fafbfc; }
+  .toc { background: #ecf0f1; padding: 15px 25px; border-radius: 8px; margin-bottom: 30px; }
+  .toc ol { columns: 2; column-gap: 30px; }
+  .toc a { color: #2980b9; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .key { color: #c0392b; font-weight: bold; }
+  @page { size: A4; margin: 1.2cm; }
+  @media print {
+    body { print-color-adjust: exact; -webkit-print-color-adjust: exact; color-adjust: exact; max-width: 100%; margin: 0; padding: 0; font-size: 10pt; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; font-size: 8pt; }
+    tr { page-break-inside: avoid; }
+    .toc { page-break-after: always; }
+    .legend { page-break-after: always; }
+    .kw, .key, .legend, .grupa-info, .mnemo { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    a { color: inherit; text-decoration: none; }
+  }
+
+  /* === KOLOROWANE POWTARZAJĄCE SIĘ SŁOWA KLUCZOWE === */
+  .kw { padding: 0 3px; border-radius: 3px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* Toksyczności / układy narządowe */
+  .kw-watroba { background: #ffe0c2; border-bottom: 2px solid #c2410c; }   /* wątroba / hepatotoksyczność */
+  .kw-nerki   { background: #cfe5ff; border-bottom: 2px solid #1d4ed8; }   /* nerki / nefrotoksyczność */
+  .kw-neuro   { background: #e8d2f5; border-bottom: 2px solid #7c3aed; }   /* OUN / neuro */
+  .kw-kardio  { background: #ffcccc; border-bottom: 2px solid #b91c1c; }   /* serce / kardio / bradykardia */
+  .kw-oddech  { background: #b3e5fc; border-bottom: 2px solid #0277bd; }   /* depresja oddechowa */
+
+  /* Receptory / neuroprzekaźniki — sygnatura mechanizmu */
+  .kw-gaba    { background: #c8e6c9; border-bottom: 2px solid #2e7d32; }   /* GABA */
+  .kw-sero    { background: #f8bbd0; border-bottom: 2px solid #ad1457; }   /* serotonina / 5-HT */
+  .kw-dopa    { background: #d1c4e9; border-bottom: 2px solid #4527a0; }   /* dopamina / D2 */
+  .kw-chol    { background: #b2dfdb; border-bottom: 2px solid #00695c; }   /* ACh / muskaryn / nikotyn */
+  .kw-adren   { background: #ffe0b2; border-bottom: 2px solid #e65100; }   /* adrenergiczne alfa/beta */
+  .kw-opioid  { background: #f0e68c; border-bottom: 2px solid #8b6914; }   /* receptory opioidowe mi/kappa/delta */
+  .kw-kanal   { background: #fff3b0; border-bottom: 2px solid #d97706; }   /* kanały Na/Ca/Cl */
+
+  /* Objawy / efekty kliniczne */
+  .kw-sedacja { background: #d7ccc8; border-bottom: 2px solid #4e342e; }   /* sedacja / senność / uspokojenie */
+  .kw-drgawki { background: #e1bee7; border-bottom: 2px solid #6a1b9a; }   /* padaczka / drgawki */
+  .kw-uzal    { background: #ff6b6b; color: white; font-weight: bold; padding: 1px 5px; } /* uzależnienie */
+
+  /* Gatunki / fizjologia (PW) */
+  .kw-koty    { background: #ffd3e3; border-bottom: 2px solid #db2777; }
+  .kw-psy     { background: #d9e9ff; border-bottom: 2px dotted #2563eb; }
+  .kw-konie   { background: #c5e1a5; border-bottom: 2px solid #33691e; }
+  .kw-ciaza   { background: #f5cce5; border-bottom: 2px dashed #c026d3; }
+
+  /* Marker specjalny */
+  .kw-anti    { background: #2c3e50; color: white; font-weight: bold; padding: 1px 5px; } /* antagonista / antidotum */
+
+  .legend { background: #fafbfc; border: 2px solid #34495e; padding: 15px 20px; border-radius: 8px; margin: 20px 0 30px 0; }
+  .legend h3 { margin-top: 0; color: #2c3e50; }
+  .legend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 6px 14px; font-size: 0.88em; }
+  .legend-item { padding: 3px 4px; }
+  .legend-section-title { grid-column: 1 / -1; font-weight: bold; color: #555; margin-top: 6px; font-size: 0.9em; border-bottom: 1px dashed #aaa; padding-bottom: 2px; }
+</style>
+</head>
+<body>
+<p style="margin:0 0 10px 0;"><a href="index.html" style="color:#2980b9; text-decoration:none; font-weight:600;" class="nodruk">← Powrót do wyboru kolokwium</a></p>
+
+<h1>Kolokwium 1 — Farmakologia OUN i układu autonomicznego</h1>
+
+<div class="toc">
+<strong>Spis treści (mechanizm → grupa leków):</strong>
+<ol>
+  <li><a href="#g1">Przeciwdrgawkowe: BARBITURANY + bromek potasu (nasilenie GABA)</a></li>
+  <li><a href="#g2">Przeciwdrgawkowe: BENZODIAZEPINY i agoniści GABA</a></li>
+  <li><a href="#g3">Przeciwdrgawkowe: blokery kanałów Na⁺ / Ca²⁺ i pozostałe</a></li>
+  <li><a href="#g4">Anksjolityki: benzodiazepiny i pozostałe</a></li>
+  <li><a href="#g5">Anksjolityki / sedacja: agoniści α₂ + buspiron + antidota</a></li>
+  <li><a href="#g6">Leki NASENNE i uspokajające (klasyczne + GABA-A)</a></li>
+  <li><a href="#g7">NEUROLEPTYKI (antagoniści D₂)</a></li>
+  <li><a href="#g8">Przeciwdepresyjne: SSRI / TLPD / IMAO</a></li>
+  <li><a href="#g9">OPIOIDY: agoniści receptora μ</a></li>
+  <li><a href="#g10">OPIOIDY: agoniści/antagoniści częściowi + pozostałe</a></li>
+  <li><a href="#g11">OPIOIDY: antagoniści + nieopioidowe przeciwbólowe</a></li>
+  <li><a href="#g12">ZNIECZULENIE OGÓLNE: wziewne</a></li>
+  <li><a href="#g13">ZNIECZULENIE OGÓLNE: dożylne/infuzyjne</a></li>
+  <li><a href="#g14">AUN — Parasympatykomimetyki (cholinomimetyki)</a></li>
+  <li><a href="#g15">AUN — Inhibitory AChE (cholinomimetyki pośrednie)</a></li>
+  <li><a href="#g16">AUN — Parasympatykolityki (antagoniści M)</a></li>
+  <li><a href="#g17">AUN — Sympatykomimetyki (agoniści α/β)</a></li>
+  <li><a href="#g18">AUN — Sympatykolityki (antagoniści α/β)</a></li>
+  <li><a href="#g19">Podstawy farmakologii (farmakokinetyka / farmakodynamika)</a></li>
+</ol>
+</div>
+
+<div class="legend">
+<h3>🎨 Legenda — kolory powtarzających się pojęć</h3>
+<p style="margin: 5px 0 12px 0; font-size: 0.9em; color: #555;">Te same kolory pojawiają się w tabelach poniżej — szukaj wzorców między lekami.</p>
+<div class="legend-grid">
+  <div class="legend-section-title">Toksyczności / układy narządowe</div>
+  <div class="legend-item"><span class="kw kw-watroba">wątroba</span> / <span class="kw kw-watroba">hepatotoksyczność</span></div>
+  <div class="legend-item"><span class="kw kw-nerki">nerki</span> / <span class="kw kw-nerki">nefrotoksyczność</span></div>
+  <div class="legend-item"><span class="kw kw-neuro">OUN</span> / <span class="kw kw-neuro">neurotoksyczność</span></div>
+  <div class="legend-item"><span class="kw kw-kardio">serce</span> / <span class="kw kw-kardio">bradykardia</span> / arytmia</div>
+  <div class="legend-item"><span class="kw kw-oddech">depresja oddechowa</span></div>
+
+  <div class="legend-section-title">Receptory / neuroprzekaźniki (mechanizm)</div>
+  <div class="legend-item"><span class="kw kw-gaba">GABA</span></div>
+  <div class="legend-item"><span class="kw kw-sero">serotonina / 5-HT</span></div>
+  <div class="legend-item"><span class="kw kw-dopa">dopamina / D₂</span></div>
+  <div class="legend-item"><span class="kw kw-chol">ACh / muskaryn. / nikotyn.</span></div>
+  <div class="legend-item"><span class="kw kw-adren">adrenergiczne (α/β)</span></div>
+  <div class="legend-item"><span class="kw kw-opioid">rec. opioidowe (μ/κ/δ)</span></div>
+  <div class="legend-item"><span class="kw kw-kanal">kanały Na⁺/Ca²⁺/Cl⁻</span></div>
+
+  <div class="legend-section-title">Objawy / efekty kliniczne</div>
+  <div class="legend-item"><span class="kw kw-sedacja">sedacja / senność / uspokojenie</span></div>
+  <div class="legend-item"><span class="kw kw-drgawki">padaczka / drgawki</span></div>
+  <div class="legend-item"><span class="kw kw-uzal">uzależnienie</span></div>
+
+  <div class="legend-section-title">Gatunki / fizjologia (PW)</div>
+  <div class="legend-item"><span class="kw kw-koty">koty</span></div>
+  <div class="legend-item"><span class="kw kw-psy">psy</span></div>
+  <div class="legend-item"><span class="kw kw-konie">konie</span></div>
+  <div class="legend-item"><span class="kw kw-ciaza">ciąża / laktacja</span></div>
+
+  <div class="legend-section-title">⚠️ Marker specjalny</div>
+  <div class="legend-item"><span class="kw kw-anti">antagonista / antidotum</span> (flumazenil, nalokson, atipamezol, atropina…)</div>
+</div>
+</div>
+
+<!-- ============================================ -->
+<h2 id="g1">1. Przeciwdrgawkowe: BARBITURANY + bromek potasu</h2>
+<div class="grupa-info">
+<strong>Wspólny mechanizm (barbiturany):</strong> nasilają układ GABA-ergiczny — fenobarbital ↑ aktywność dekarboksylazy glutaminianu → wzrost GABA w mózgu; otwierają kanały Cl⁻ niezależnie od GABA → hiperpolaryzacja → tłumienie OUN.<br>
+<strong>Bromek potasu:</strong> jon Br⁻ konkuruje z Cl⁻, wnika przez kanały chlorkowe → hiperpolaryzacja błony → neurony mniej pobudliwe.
+</div>
+<div class="mnemo"><strong>Pamiętaj:</strong> fenobarbital = lek z wyboru w padaczce u kotów; prymidon = prekursor fenobarbitalu, u kotów bardziej toksyczny; bromek potasu NIE u kotów (zapalenie płuc).</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>fenobarbital</td><td>barbiturany</td><td>↑ aktywność GABA przez ↑ dekarboksylazy Glu → wzrost GABA w mózgu</td><td>przeciwdrgawkowe i nasenne, skuteczny we wszystkich rodzajach napadów; stan padaczkowy (i.v./i.m.)</td><td>zaburzenia funkcji nerek i wątroby, ciąża, inne leki uspokajająco-nasenne</td><td>nadmierne działanie uspokajające, uzależnienie, ataksja, nadmierne pragnienie, żarłoczność, wielomocz, martwicowe zapalenie skóry</td><td>u kotów lek z wyboru; też u psów, świń, koni; indukuje cytochrom P450</td></tr>
+<tr><td>prymidon</td><td>barbiturany</td><td>prekursor fenobarbitalu</td><td>napady drgawkowe u psów; napady ogniskowe i duże uogólnione jako lek rozpoczynający leczenie</td><td>jw.</td><td>jw.; u kotów bardziej toksyczny</td><td>prekursor fenobarbitalu</td></tr>
+<tr><td>pentobarbital</td><td>barbiturany</td><td>silne tłumienie tworu siatkowatego i kory; skraca fazę REM</td><td>stan padaczkowy (i.v.), znieczulenie ogólne</td><td>ciąża, choroby wątroby i nerek, choroby płuc</td><td>depresja oddechowa, porażenie ośrodka oddechowego i sercowo-naczyniowego, uzależnienie</td><td>najskuteczniejszy w stanie padaczkowym opornym na inne leki</td></tr>
+<tr><td>bromek potasu</td><td>przeciwpadaczkowy</td><td>Br⁻ konkuruje z Cl⁻ → hiperpolaryzacja błony</td><td>padaczka; uspokajająco-nasenny</td><td>niewydolność nerek, ciąża, nadwrażliwość</td><td>sedacja, niezborność, podrażnienie przewodu pokarmowego, zapalenie trzustki</td><td>NIE u kotów (zapalenie płuc)</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g2">2. Przeciwdrgawkowe: BENZODIAZEPINY i agoniści GABA</h2>
+<div class="grupa-info"><strong>Wspólny mechanizm:</strong> działają na receptor GABA-A → zwiększają częstość otwierania kanałów Cl⁻ → hiperpolaryzacja neuronów → hamowanie przekaźnictwa w OUN.</div>
+<table>
+<tr><th>Lek</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>diazepam</td><td>benzodiazepina — GABA-A, ↑ częstość otwierania kanałów Cl⁻</td><td>lek z wyboru w stanach padaczkowych u psów i kotów; tłumienie krótkich napadów u psów i długotrwałych u kotów</td><td>niewydolność oddechowa, niewydolność wątroby, ciąża</td><td>senność, spowolnienie, ataksja, osłabienie mięśni, depresja oddechu, uzależnienie</td><td>—</td></tr>
+<tr><td>klonazepam</td><td>benzodiazepina</td><td>ciężkie, zagrażające życiu stany padaczkowe u psów; u kotów gdy nie działa fenobarbital; u koni i bydła po fenobarbitalu</td><td>jw.</td><td>senność, ataksja, ślinotok, zaburzenia koncentracji, zmiany nastroju</td><td>łączony z fenobarbitalem; działa bardzo krótko</td></tr>
+<tr><td>klorazepat</td><td>benzodiazepina</td><td>długotrwale utrzymujące się napady drgawkowe u psów (w połączeniu z fenobarbitalem)</td><td>jw.</td><td>senność, osłabienie, ataksja, zaburzenia koordynacji, uzależnienie</td><td>—</td></tr>
+<tr><td>imepitoina</td><td>agonista GABA-ergiczny (częściowy agonista rec. GABA-A); słabo blokuje kanały wapniowe</td><td>psy z padaczką idiopatyczną</td><td>zaburzenia wątroby, nerek, układu sercowo-naczyniowego</td><td>polifagia, nadmierna aktywność, wielomocz, polidypsja, senność, ślinienie, wymioty, apatia, biegunki, osłabienie wzroku</td><td>działa jak benzodiazepina, ale słabiej</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g3">3. Przeciwdrgawkowe: blokery kanałów Na⁺/Ca²⁺ i pozostałe</h2>
+<div class="grupa-info">Mechanizmy: blokada zależnych od potencjału kanałów Na⁺ (stabilizacja błon) lub Ca²⁺ (↓ uwalniania glutaminianu), modulacja SV2A, antagonizm NMDA. Łączy je ograniczenie nadmiernego wyładowywania neuronów.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>lewetyracetam</td><td>przeciwpadaczkowy</td><td>moduluje SV2A (białko pęcherzyków synaptycznych) → moduluje uwalnianie neuroprzekaźników, stabilizuje nadmierną aktywność neuronów</td><td>padaczka inna niż idiopatyczna u psów, napady toniczno-kloniczne uogólnione, częściowe</td><td>nadwrażliwość, niewydolność nerek</td><td>senność, zawroty głowy, zmiany nastroju, osłabienie</td><td>—</td></tr>
+<tr><td>pregabalina</td><td>gabapentanoidy</td><td>antagonista zależnych od potencjału kanałów Ca²⁺ → ↓ napływu Ca → ↓ uwalniania Glu, NA (nie działa na GABA-A/B)</td><td>przeciwdrgawkowe, przeciwbólowe, anksjolityczne</td><td>nadwrażliwość, niewydolność nerek, serca, ciąża</td><td>ataksja, podwójne widzenie, zawroty głowy</td><td>—</td></tr>
+<tr><td>zonisamid</td><td>antagonista kanałów Ca²⁺</td><td>blokuje kanały Ca²⁺ → ↓ wydzielania glutaminianu i asparaginianu; ułatwia transmisję DA i 5-HT, zmiata wolne rodniki</td><td>szeroka aktywność przeciwdrgawkowa, neuroprotekcja w hipoksji i niedokrwieniu mózgu</td><td>uczulenie na sulfonamidy, niewydolność nerek i wątroby</td><td>senność, zawroty głowy, spowolnienie, zaburzenia koncentracji</td><td>podanie doustne</td></tr>
+<tr><td>topiramat</td><td>bloker kanałów Na⁺</td><td>wzmacnia przewodnictwo GABA-ergiczne, hamuje rec. AMPA glutaminianu, moduluje kanały Na/Ca, hamuje anhydrazę węglanową</td><td>napady częściowe, toniczno-kloniczne</td><td>niewydolność nerek, ciąża, kwasica metaboliczna</td><td>spowolnienie, senność, zaburzenia koncentracji, zawroty głowy</td><td>działa krótko</td></tr>
+<tr><td>felbamat</td><td>antagonista NMDA</td><td>antagonista rec. NMDA → ↓ glutaminianu, ↑ GABA; blokuje kanały Na⁺; ↓ napływu Ca²⁺ do neuronów</td><td>(rzadko stosowany)</td><td>choroby wątroby</td><td>zmiany obrazu krwi, hepatotoksyczność, niedokrwistość, uszkodzenia wątroby, nudności, wymioty, bóle głowy</td><td>rzadko stosowany</td></tr>
+<tr><td>fenytoina</td><td>antagonista kanałów Na⁺</td><td>blokuje kanały Na⁺ generujące potencjały czynnościowe komórek pobudliwych</td><td>stan padaczkowy</td><td>nadwrażliwość, bradykardia, niewydolność wątroby, serca, ciąża</td><td>ataksja, niestrawność, hepatotoksyczność, rozpulchnianie dziąseł</td><td>rzadko stosowana, niska biodostępność, źle tolerowana przez koty, mało skuteczna u psów; silny induktor P450</td></tr>
+<tr><td>kwas walproinowy</td><td>walproiniany</td><td>wzmacnia funkcję GABA-ergiczną, ↑ GABA w synapsach, wpływa na kanały Na⁺ i Ca²⁺</td><td>napady pierwotnie uogólnione, toniczno-kloniczne, częściowe, nieświadomości, toniczne, atoniczne, miokloniczne</td><td>choroby wątroby</td><td>senność, drżenia, splątanie, nudności</td><td>inhibitor P450; stosowany z fenobarbitalem</td></tr>
+<tr><td>karbamazepina</td><td>—</td><td>blokada bramkowanych napięciem kanałów Na⁺, stabilizuje błony neuronów</td><td>napady toniczno-kloniczne i częściowe</td><td>—</td><td>—</td><td>nie stosowana w weterynarii</td></tr>
+<tr><td>lamotrygina</td><td>—</td><td>blokuje kanały Na⁺ zależne od potencjału</td><td>—</td><td>—</td><td>—</td><td>nie stosowana w wet. (toksyczność)</td></tr>
+<tr><td>propentofilina</td><td>ksantyny</td><td>inhibitor PDE → ↑ cAMP; antagonizm rec. adenozynowych A1/A2 → rozszerza naczynia, poprawa metabolizmu i ukrwienia mózgu (NIE typowy przeciwdrgawkowy)</td><td>u starszych psów (poprawa funkcji poznawczych)</td><td>nadwrażliwość, niewydolność serca, padaczka, niewydolność wątroby i nerek</td><td>pobudzenie, niepokój, bezsenność, drżenia, wymioty, biegunka</td><td>działanie neuroprotekcyjne; hamuje uwalnianie cytokin</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g4">4. Anksjolityki: BENZODIAZEPINY i pozostałe</h2>
+<div class="grupa-info"><strong>Mechanizm benzodiazepin:</strong> zwiększają powinowactwo GABA do rec. GABA-A → nasilają przepływ Cl⁻ → hiperpolaryzacja. Hamowanie jest ograniczone (zależy od obecności GABA).<br>
+<strong>Działanie anksjolityczne</strong> wiąże się z nasileniem hamowania w układzie limbicznym oraz wpływem na przekaźnictwo: GABA-, NA-, 5-HT-ergiczne, glutaminergiczne, CCK.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm / efekt</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>chlordiazepoksyd</td><td>benzodiazepiny</td><td>↑ powinowactwo GABA → ↑ przepływ Cl⁻ → hiperpolaryzacja</td><td>lęk, nerwice, schorzenia somatyczne z zaburzeniami emocjonalnymi, padaczka, wzmożone napięcie mięśniowe, silne uspokajająco-nasenne, fobie burzowe, znakowanie moczem</td><td>niewydolność wątroby, oddechowa, wstrząs, hipotensja, ciąża, nadwrażliwość, pobudzenie</td><td>uzależnienie, objawy abstynencji, ↑ łaknienia, reakcje paradoksalne, osłabienie mięśni, ataksja, drżenia mięśni, tolerancja, hepatotoksyczność, pobudzenie OUN, niezborność</td></tr>
+<tr><td>diazepam</td><td>benzodiazepiny</td><td>jw.</td><td>przeciwdrgawkowy, premedykacja, lekkie zabiegi ze znieczuleniem miejscowym, przed transportem, pobudzenie apetytu u kotów, znakowanie moczem, zatkanie cewki moczowej</td><td>ryzyko zakrzepowego zapalenia żył (wstrzykiwać powoli), zwierzęta wyniszczone/stare, zaburzenia nerek/wątroby/oddychania, wstrząs, śpiączka, agresja, drgawki u kotów, 1. trymestr ciąży, laktacja</td><td>jw.</td></tr>
+<tr><td>oksazepam</td><td>benzodiazepiny</td><td>przeciwlękowy, słabiej nasenny</td><td>uspokajająco, miorelaksacyjnie, pobudzenie apetytu u psów i kotów</td><td>jw.</td><td>jw.</td></tr>
+<tr><td>nitrazepam</td><td>benzodiazepiny</td><td>nasenny</td><td>nasenny</td><td>jw.</td><td>jw.</td></tr>
+<tr><td>zolazepam</td><td>benzodiazepiny</td><td>—</td><td>z ketaminą do znieczulenia kotów</td><td>jw.</td><td>jw.</td></tr>
+<tr><td>klonazepam</td><td>benzodiazepiny</td><td>—</td><td>w stanie padaczkowym</td><td>jw.</td><td>jw.</td></tr>
+<tr><td>meprobamat (tybamat, karyzoprodol, fenoglikodol, fenprobamat, metokarbamol)</td><td>pochodne alkoholi alifatycznych i amidy</td><td>nasila hamujące działanie GABA (przez działanie na GABA-A, ↑ przewodnictwo Cl⁻)</td><td>uspokajający i nasenny, ↓ napięcia mięśni szkieletowych, ↓ lęku i niepokoju, przeciwdrgawkowy</td><td>nadwrażliwość, niewydolność wątroby, nerek, oddechowa</td><td>alergia, skurcz oskrzeli, ↑ temperatury, dreszcze, hipotonia, uzależnienie, tolerancja, uszkodzenie układu krwiotwórczego</td></tr>
+<tr><td>hydroksyzyna</td><td>pochodne difenylometanu</td><td>antagonista rec. H1, słabe działanie cholinolityczne</td><td>przeciwlękowe, przeciwhistaminowe, cholinolityczne; potęguje leki nasenne i przeciwbólowe; słabe miejscowo znieczulające; przeciwwymiotne, alergie</td><td>nadwrażliwość, niewydolność wątroby, ciąża, laktacja</td><td>lekozależność, senność, bóle głowy, zaburzenia koncentracji</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g5">5. Anksjolityki / sedacja: agoniści α₂ + buspiron + antidota</h2>
+<div class="grupa-info"><strong>Agoniści α₂:</strong> pobudzają rec. α₂ → ↓ wydzielania noradrenaliny (↓ pobudzenia części współczulnej) → sedacja, analgezja, miorelaksacja, hipotensja.<br>
+<strong>Buspiron:</strong> agonista rec. 5-HT1A → ↓ aktywności układu serotoninowego; nie uzależnia, nie działa nasennie.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>ksylazyna</td><td>agoniści α₂</td><td>pobudza rec. α₂ → ↓ wydzielania NA (↓ pobudzenia części współczulnej)</td><td>uspokajające, przeciwbólowe, nasenne, miorelaksujące, hipotensyjne; premedykacja; wywołuje wymioty u psów i kotów</td><td>ciąża, zwierzęta odwodnione, cukrzyca, choroby układu oddechowego, nerek, wątroby, serca; nie łączyć z neuroleptykami, ostrożnie z barbituranami</td><td>zaburzenia rytmu serca, odczyny miejscowe, spadek ciśnienia, bradykardia, zwolnienie oddechów, spadek temperatury, pobudzenie, wymioty, biegunka, ślinotok, poronienia (wrażliwe przeżuwacze)</td></tr>
+<tr><td>deksmedetomidyna</td><td>agoniści α₂</td><td>jw.</td><td>sedacja, analgezja, miorelaksacja</td><td>ciąża, łączenie z innymi agonistami adrenergicznymi, choroby układu krążenia</td><td>hipotermia, bradykardia, zaburzenia rytmu serca, poliuria, wymioty, bloki serca (silniejsza u psów i kotów)</td></tr>
+<tr><td>medetomidyna, detomidyna, romifidyna</td><td>agoniści α₂</td><td>jw.</td><td>sedacja / premedykacja</td><td>jw.</td><td>jw.</td></tr>
+<tr><td>buspiron</td><td>azaspirodekanodiony</td><td>agonista rec. 5-HT1A → ↓ aktywności układu serotoninowego</td><td>zaburzenia lękowe u psów i kotów (niepokój 2-3×/dz przez 6-8 tyg.; znakowanie moczem 2×/dz przez 7 dni); nie uzależnia, nie działa uspokajająco/nasennie</td><td>nadwrażliwość, niewydolność wątroby, nerek, padaczka, ciąża</td><td>zawroty głowy, ból głowy, nudności, niepokój, pobudzenie, bezsenność, dolegliwości żołądkowe</td></tr>
+<tr><td>atipamezol</td><td>antagonista α₂ (antidotum)</td><td>blokuje rec. α₂ → odwraca działanie agonistów α₂</td><td>antagonista α₂ — odwracanie sedacji; przy przedawkowaniu ksylazyny</td><td>—</td><td>nadpobudliwość, tachykardia, hipotensja, wymioty, nasilenie oddechów</td></tr>
+<tr><td>johimbina, tolazolina, idazoksan, doksapram, atropina</td><td>antagoniści α₂ / analeptyki</td><td>odwracają działanie agonistów α₂; atropina znosi pobudzenie nerwu błędnego (bradykardia, bloki serca, hipotensja)</td><td>przedawkowanie ksylazyny / agonistów α₂</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g6">6. Leki NASENNE i uspokajające</h2>
+<div class="grupa-info">Grupa zbiorcza: chlorowcopochodne alkoholi/aldehydów, barbiturany, niebarbituranowe (metomidat), benzodiazepiny, agoniści α₂. Łączy je tłumienie OUN — najczęściej przez nasilenie GABA / hiperpolaryzację (kanały Cl⁻).</div>
+<div class="mnemo"><strong>Neuroprzekaźniki snu:</strong> serotonina, noradrenalina, acetylocholina, melatonina. <strong>Antagonista benzodiazepin = FLUMAZENIL</strong> (wypiera je z rec. GABA-A — leczenie zatruć).</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>wodzian chloralu</td><td>chlorowcopochodne alkoholi i aldehydów</td><td>pod wpływem dehydrogenazy alkoholowej → alkohol trichlorooctowy o silnym działaniu nasennym</td><td>nasenny, uspokajający, słabe przeciwbólowe; u koni przejściowa sedacja przed znieczuleniem ogólnym</td><td>zaburzenia rytmu serca, nadwrażliwość, depresja oddechu (drażni tkanki, toksyczny dla tkanek miąższowych)</td><td>senność, zawroty głowy, nudności, wymioty</td></tr>
+<tr><td>chloraloza</td><td>chlorowcopochodne alkoholi i aldehydów</td><td>produkt kondensacji wodzianu chloralu z glukozą</td><td>znieczulenie ogólne u psów</td><td>—</td><td>—</td></tr>
+<tr><td>uretan etylowy, etynamat</td><td>uretany</td><td>—</td><td>usypianie i znieczulenie zwierząt laboratoryjnych</td><td>—</td><td>—</td></tr>
+<tr><td>pentobarbital, tiopental</td><td>barbiturany</td><td>wiążą się z rec. GABA (nie potrzebują GABA do działania) → silne tłumienie tworu siatkowatego i kory; skracają fazę REM</td><td>nadmierne pobudzenie, stany drgawkowe, padaczka, zapalenie mózgu w nosówce, zjadanie prosiąt przez maciory, znieczulenie ogólne, świąd</td><td>ciąża, choroby wątroby i nerek, choroby płuc</td><td>depresja układu oddechowego, uzależnienie, porażenie ośrodka oddechowego i sercowo-naczyniowego</td></tr>
+<tr><td>metomidat</td><td>środek uspokajająco-nasenny, niebarbituranowy</td><td>łączy się z rec. GABA-A → ↑ napływ Cl⁻ → hiperpolaryzacja → efekt nasenny (głęboki, krótkotrwały sen); brak działania przeciwbólowego</td><td>z azaperonem do znieczulenia ogólnego; uspokojenie, mało bolesne czynności, uśpienie przed znieczuleniem miejscowym</td><td>niewydolność nadnerczy, nadwrażliwość, wstrząs septyczny</td><td>drżenia mięśniowe, depresja oddechowo-krążeniowa (u świń i ptaków)</td></tr>
+<tr><td>flurazepam, nitrazepam, flunitrazepam, lorazepam</td><td>benzodiazepiny</td><td>GABA-A → ↑ otwierania kanałów Cl⁻</td><td>nasenne / uspokajające (w połączeniu z anestetykami lokalnymi)</td><td>—</td><td>—</td></tr>
+<tr><td>ksylazyna</td><td>agoniści rec. α₂</td><td>pobudza rec. α₂ → ↓ wydzielania NA</td><td>środek nasenno-uspokajający, miorelaksacja, krótkotrwała analgezja, premedykacja, środek wymiotny</td><td>arytmia, zaburzenia układu krążenia, hipotensja, wstrząs, niewydolność wątroby/nerek, drgawki, zaburzenia oddechowe, ciąża, niedrożność jelit</td><td>wymioty, drżenia mięśniowe, bradykardia, bloki serca, nieskoordynowane ruchy, moczenie, ślinienie, atonia żwacza, biegunki, przedwczesne porody, hipotermia</td></tr>
+<tr><td>diazepam</td><td>benzodiazepiny</td><td>GABA-A → ↑ otwierania kanałów Cl⁻ → hiperpolaryzacja, hamowanie OUN</td><td>uspokojenie (większe dawki: ataksja, postawa leżąca), premedykacja, przerwanie stanu padaczkowego, leczenie drgawek, stany spastyczne, bóle mięśniowe, pobudza łaknienie u kotów</td><td>niewydolność oddechowa, wątroby, ciąża</td><td>reakcje paradoksalne, senność, ataksja, depresja oddechowa, uzależnienie</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g7">7. NEUROLEPTYKI (antagoniści D₂)</h2>
+<div class="grupa-info"><strong>Wspólny mechanizm:</strong> działają na układ dopaminergiczny, głównie blokują rec. D₂ → uspokojenie, działanie przeciwwymiotne, antypsychotyczne, kataleptyczne. Dodatkowo blokują rec. M, H1, α1, 5-HT2. Klasyczne (D1/D2) vs atypowe (D2/5-HT2).</div>
+<div class="mnemo"><strong>Uwaga konia:</strong> NIE wolno chloropromazyny u konia (reakcje paradoksalne) — można promazynę. Neuroleptanalgezja = neuroleptyk + opioid.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>chloropromazyna (propiopromazyna, acepromazyna, promazyna, trifluperazyna)</td><td>pochodne fenotiazyny</td><td>hamowanie rec. α1-adrenergicznych i rec. M (oraz D2, H1)</td><td>uspokojenie zwierząt agresywnych, premedykacja, usunięcie ciała obcego z przełyku, drgawki tężcowe (działanie spazmolityczne), biegunka prosiąt, hamowanie wymiotów u psa, bezmleczność</td><td>padaczka, drgawki</td><td>zapaść, hipotonia, uczulenia, dolegliwości żołądkowo-jelitowe, ↓ wydzielania śliny i potu, hipotermia, obniżenie progu drgawkowego, hepatotoksyczność, zaburzenia rytmu serca</td><td>różnią się siłą i czasem działania; silnie wiążą się z białkami; i.v./i.m.; NIE chloropromazyny u konia</td></tr>
+<tr><td>detomidyna</td><td>agonista α₂</td><td>pobudza rec. α₂ → ↓ uwalniania NA</td><td>sedacja, łagodna analgezja koni i bydła, uspokojenie</td><td>choroby serca, bradykardia, wstrząs, niewydolność oddechowa, wątroby, nerek</td><td>bradykardia, ataksja, senność, sedacja, zaburzenia rytmu serca</td><td>—</td></tr>
+<tr><td>chlorprotiksen (klopentiksol, flupentiksol)</td><td>pochodne tioksantenu</td><td>hamują rec. D2, α1, H1, M</td><td>słabe neuroleptyczne, silne anksjolityczne, uspokajające (klopentiksol: słabo przeciwdepresyjne; flupentiksol: przeciwlękowo, przeciwdepresyjnie)</td><td>depresja OUN, choroby serca, niewydolność wątroby, jaskra</td><td>senność, zawroty głowy, hipotonia, zaparcia, mlekotok, zaburzenia rytmu serca</td><td>nasenne, przeciwwymiotny</td></tr>
+<tr><td>droperidol</td><td>pochodne butyrofenonu</td><td>hamują rec. D2 (droperidol też α1)</td><td>silnie uspokajające, przeciwwymiotne, potęgują leki nasenne i alkohol; przeciwpsychotyczny, rozkurczający naczynia</td><td>depresja OUN, zaburzenia rytmu serca, niewydolność wątroby, padaczka</td><td>hipotensja, mlekotok, senność, drgawki</td><td>bardzo silnie działające i selektywne; u psów i kotów</td></tr>
+<tr><td>haloperidol</td><td>pochodne butyrofenonu</td><td>hamują rec. D2</td><td>rzadko u psów i kotów, przeciwwymiotny</td><td>jw.</td><td>jw.</td><td>—</td></tr>
+<tr><td>azaperon</td><td>pochodne butyrofenonu</td><td>hamują rec. D2</td><td>nasenny, uspokajający u świń przy agresywności, łączeniu miotów, transporcie, premedykacji</td><td>jw.</td><td>jw.</td><td>—</td></tr>
+<tr><td>fluanizon</td><td>pochodne butyrofenonu</td><td>hamują rec. D2</td><td>łączony z fentanylem w premedykacji u psów, królików, kawii domowych</td><td>jw.</td><td>jw.</td><td>—</td></tr>
+<tr><td>klozapina</td><td>atypowy</td><td>hamuje rec. D4, D1, D2, 5-HT2</td><td>uspokajająca, nasenna; leczenie zachowań samookaleczających</td><td>—</td><td>—</td><td>nieskuteczna w agresji u psów</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g8">8. Przeciwdepresyjne: SSRI / TLPD / IMAO</h2>
+<div class="grupa-info"><strong>Idea:</strong> zwiększenie ilości amin biogennych (NA, A, 5-HT) w szczelinie synaptycznej — przez zahamowanie transporterów zwrotnych (SERT, NET) lub enzymów rozkładających (MAO, COMT) → desensytyzacja receptorów. Efekt ujawnia się po czasie.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>fluoksetyna (fluwoksamina, paroksetyna, sertralina)</td><td>SSRI — selektywne inhibitory wychwytu zwrotnego serotoniny</td><td>blokują transporter SERT → desensytyzacja autoreceptorów 5-HT1A → nasilenie przekaźnictwa 5-HT</td><td>zaburzenia nerwicowe, anormalne zachowania, lęk separacyjny, agresja, zaburzenia obsesyjno-kompulsywne</td><td>łączenie z innymi lekami serotoninergicznymi (ryzyko zespołu serotoninowego: biegunki, nudności, wymioty, drgawki)</td><td>letarg, zaburzenia łaknienia, spadek masy ciała, niepokój, biegunki, nadmierne pragnienie</td><td>efekt po ~2 tyg.; głównie psy i koty; metabolizm w wątrobie przez P450 (hamuje metabolizm innych leków)</td></tr>
+<tr><td>klomipramina (doksepina, amitryptylina, imipramina)</td><td>TLPD — trójpierścieniowe</td><td>blokują transportery SERT i NET (wychwyt NA i 5-HT); blokują też rec. M, H1, α1 (cholinolityczne, α1-adrenolityczne)</td><td>lęk separacyjny, agresja, zaburzenia obsesyjno-kompulsywne, lękowe</td><td>arytmie, padaczka, niewydolność serca, wątroby</td><td>zaburzenia gastryczne, ↑ ciśnienia i rytmu serca, obniżenie progu drgawkowego, senność, sedacja, zatrzymanie moczu</td><td>wąskie okno terapeutyczne — nie 1. rzutu; doustnie, efekt pierwszego przejścia</td></tr>
+<tr><td>selegilina</td><td>IMAO</td><td>hamuje MAO-B (rozkłada dopaminę i fenyloetyloaminę) → ↑ neuroprzekaźników; działanie antyoksydacyjne (katalaza, dysmutaza ponadtlenkowa)</td><td>zaburzenia percepcji, uczenia się i pamięci u starszych psów i kotów</td><td>łączenie z lekami przeciwdepresyjnymi (ryzyko zespołu serotoninowego i zaburzeń krążenia)</td><td>letarg, zawroty głowy, nudności, wymioty</td><td>nie jest lekiem przeciwdepresyjnym sensu stricto</td></tr>
+<tr><td>moklobemid</td><td>IMAO</td><td>hamuje MAO-A (rozkłada NA, A, 5-HT)</td><td>przeciwdepresyjny</td><td>nadciśnienie, zaburzenia wątroby, ciąża</td><td>nudności, wymioty, zawroty głowy, drżenia, pobudzenie</td><td>rzadko stosowany, mało sprawdzony</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g9">9. OPIOIDY: agoniści receptora μ</h2>
+<div class="grupa-info"><strong>Wspólny mechanizm:</strong> receptory opioidowe (μ, κ, δ) są metabotropowe (GPCR) → ↓ aktywności cyklazy adenylanowej (↓ cAMP); presynaptycznie ↓ napływ Ca²⁺ (↓ uwalniania subst. P, glutaminianu, CGRP), postsynaptycznie ↑ wypływ K⁺ → hiperpolaryzacja. Hamowanie przekaźnictwa nocyceptywnego w rdzeniu i percepcji bólu na poziomie wzgórza.</div>
+<div class="mnemo"><strong>Pobudzenie μ:</strong> analgezja, depresja oddechu, zwężenie źrenicy, euforia, zahamowanie perystaltyki, uzależnienie. Opioidy u psów/koni → zwężenie źrenic; u kotów → rozszerzenie. Antidotum = NALOKSON.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>morfina</td><td>czysty agonista μ, słaby κ i δ</td><td>analgezja, depresja oddechu, zwężenie źrenicy, euforia, zahamowanie perystaltyki, uzależnienie</td><td>przeciwbólowa, przeciwkaszlowa, premedykacja, uspokajająca, wymiotna</td><td>depresja oddechowa, drgawki, padaczka, łączenie z wziewnymi środkami znieczulenia ogólnego</td><td>euforia, wymioty, ślinienie, niedociśnienie, skurcz oskrzeli, zaparcia, sedacja, bradykardia, hipotensja, drgawki, depresja oddechowa, uzależnienie</td><td>NIE u kotów i ptaków; przy przedawkowaniu nalokson; M6G brak u kotów</td></tr>
+<tr><td>kodeina</td><td>agonista μ</td><td>przeciwbólowa (0.1× morfiny), przeciwkaszlowa, zapierająca</td><td>kaszel mokry, depresja oddechowa, zaparcia</td><td>jw.</td><td>senność, letarg, zawroty głowy, reakcje paradoksalne, depresja oddechowa, zaparcia, nudności, wymioty, utrata apetytu, bradykardia, hipotensja, świąd</td><td>—</td></tr>
+<tr><td>hydrokodon, hydromorfon</td><td>agonista μ (hydromorfon słabo κ)</td><td>przeciwbólowy, przeciwkaszlowy</td><td>przewlekły kaszel, kaszel kardiologiczny, umiarkowany ból, lekka sedacja</td><td>pacjenci geriatryczni, choroba Addisona, niedoczynność tarczycy, niewydolność nerek, układu oddechowego</td><td>sedacja, wymioty, zaparcia</td><td>—</td></tr>
+<tr><td>metadon</td><td>agonista μ + antagonista rec. NMDA</td><td>analgezja (2× morfiny)</td><td>ból neuropatyczny, pooperacyjny, pourazowy, premedykacja</td><td>niewydolność oddechowa, wątroby i nerek, ciąża</td><td>u kotów silne pobudzenie i drgawki, upośledzenie oddychania, hipotensja, ronienia, wokalizacja, oddawanie moczu i kału, hipertermia, zwolnienie perystaltyki lub biegunka</td><td>antagonizm NMDA → hamuje napływ Ca²⁺ do neuronu</td></tr>
+<tr><td>fentanyl (+ alfentanyl, sufentanyl, karfentanyl, remifentanyl)</td><td>agonista μ</td><td>analgezja (100× morfiny)</td><td>przeciwbólowy, anestezjologia, neuroleptanalgezja</td><td>urazy głowy, ↑ ciśnienie śródczaszkowe, niewydolność nerek lub wątroby</td><td>sztywność mięśniowa, bradykardia, hipotensja</td><td>NIE u zwierząt rzeźnych; im silniejsza pochodna (A→S→K→R), tym krótszy czas i większe ryzyko depresji oddechowej</td></tr>
+<tr><td>petydyna</td><td>agonista μ</td><td>analgezja (0.5× morfiny), cholinolityczna, spazmolityczna</td><td>przeciwbólowa w kolkach żółciowych i nerkowych, zapierający, przeciwkaszlowy, premedykacja, ból porodowy</td><td>zaburzenia nerek</td><td>wymioty, zaparcia, skurcze spastyczne zwieracza pęcherza, pobudzenie, drgawki</td><td>NIE zwęża źrenic</td></tr>
+<tr><td>etorfina</td><td>agonista μ</td><td>analgezja (5000× morfiny)</td><td>unieruchomienie i znieczulenie dzikich dużych zwierząt</td><td>—</td><td>depresja oddechowa, sztywność mięśni, bradykardia, zaburzenia rytmu, hipertermia, pobudzenie, tachykardia, hipotensja</td><td>diprenorfina odwraca działanie etorfiny</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g10">10. OPIOIDY: agoniści/antagoniści częściowi + pozostałe</h2>
+<div class="grupa-info"><strong>Mieszani:</strong> agonizm jednego receptora + antagonizm drugiego. Pobudzenie rec. κ → dysforia, działanie psychozomimetyczne, sedacja, zwężenie źrenic; nie powoduje uzależnienia.</div>
+<table>
+<tr><th>Lek</th><th>Grupa</th><th>Skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>buprenorfina</td><td>agonista μ, antagonista κ i δ</td><td>analgezja (100× morfiny), silna sedacja</td><td>bóle pourazowe, bóle trzewne</td><td>nadwrażliwość, niewydolność oddechowa, urazy głowy, niewydolność wątroby, ciąża</td><td>depresja oddechowa, sedacja, euforia, rozszerzenie źrenic u kotów, bradykardia, ślinienie, odwodnienie, zwężenie źrenic u psów</td><td>u kotów preferowana dożylnie; efekt pułapowy; działanie tylko częściowo znoszone przez nalokson</td></tr>
+<tr><td>butorfanol</td><td>antagonista μ, agonista κ</td><td>zwężenie źrenicy, sedacja, dysforia, analgezja (4-7× morfiny)</td><td>przeciwbólowy, premedykacja, przeciwwymiotny, przeciwkaszlowy, bóle morzyskowe</td><td>schorzenia wątroby, pacjenci geriatryczni i wyniszczeni, niedoczynność tarczycy, choroba Addisona, niewydolność nerek, urazy głowy</td><td>depresja oddechowa, ataksja, niezborność ruchów, brak apetytu, biegunki</td><td>—</td></tr>
+<tr><td>pentazocyna</td><td>agonista rec. κ</td><td>słabe przeciwbólowe (0.3-0.5× morfiny), słabe uspokajające, objawy psychozomimetyczne, omamy, dysforia</td><td>przeciwbólowa (u psów, koni, kotów, i.m.)</td><td>—</td><td>zawroty głowy, senność, nudności, wymioty, zaparcia, niepokój, drgawki, hipotensja, tachykardia, depresja oddechowa, uzależnienie</td><td>NIE zwęża źrenic; słabszy wpływ na przewód pokarmowy, nie powoduje wymiotów</td></tr>
+<tr><td>tramadol</td><td>słaby agonista μ + hamuje wychwyt NA i 5-HT</td><td>przeciwbólowe (0.1× morfiny), sedacja</td><td>ból przewlekły</td><td>—</td><td>ślinienie, wymioty, sedacja, drgawki</td><td>skuteczność u psów wątpliwa (słaba biodostępność, brak aktywnego metabolitu)</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g11">11. OPIOIDY: antagoniści + nieopioidowe przeciwbólowe (koanalgetyki)</h2>
+<div class="grupa-info"><strong>Antagoniści:</strong> znoszą działanie agonistów (depresję oddechową, zwężenie źrenic, analgezję). <strong>Koanalgetyki</strong> nie są typowymi lekami przeciwbólowymi — wspomagają leczenie bólu.</div>
+<table>
+<tr><th>Lek / grupa</th><th>Mechanizm</th><th>Zastosowanie</th><th>Dodatkowe</th></tr>
+<tr><td>nalorfina, lewalorfan</td><td>antagoniści o słabych właściwościach agonistycznych; znoszą działanie czystych agonistów</td><td>znoszą depresję oddechową</td><td>nie używane analgetycznie (dysforia — wrażliwe koty i konie)</td></tr>
+<tr><td>nalokson, naltrekson</td><td>antagoniści rec. μ (1 i 2 grupa); znoszą działanie leków gr. 1 i 2</td><td>znoszą depresję oddechową, zwężenie źrenic, działanie przeciwbólowe; zatrucia/przedawkowanie; leczenie zachowań stereotypowych</td><td>naltrekson działa dłużej i lepiej wchłania się z przewodu pokarmowego</td></tr>
+<tr><td>diprenorfina</td><td>antagonista ambireceptorowy</td><td>znosi działanie etorfiny → powrót świadomości</td><td>agonista jednego rec., antagonista drugiego</td></tr>
+<tr><td>koanalgetyki: przeciwdepresyjne</td><td>TLPD/SSRI podnoszą nastrój i próg bólowy; potęgują analgezję opioidów (też wenlafaksyna, nefazodon)</td><td>ból przewlekły, neuropatyczny</td><td>—</td></tr>
+<tr><td>koanalgetyki: przeciwdrgawkowe</td><td>hamują samoistne wyładowania w uszkodzonych włóknach (kanały Na⁺, ↓ uwalniania aminokwasów pobudzających, GABA-mimetyczne)</td><td>ból neuropatyczny</td><td>—</td></tr>
+<tr><td>koanalgetyki: benzodiazepiny</td><td>↓ napięcia mięśni, zmniejszają niepokój</td><td>ból z napięcia mięśni (midazolam, diazepam, baklofen)</td><td>—</td></tr>
+<tr><td>koanalgetyki: antagoniści NMDA</td><td>z meloksykamem nasilają działanie przeciwbólowe</td><td>amantadyna, ketamina, metadon</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g12">12. ZNIECZULENIE OGÓLNE: wziewne</h2>
+<div class="grupa-info"><strong>Mechanizm:</strong> działają na błony komórkowe → ↓ uwalniania neuromediatorów (mało selektywne). <strong>MAC</strong> — im niższe, tym silniejszy anestetyk. Współczynnik <strong>KREW:GAZ</strong> — im niższy, tym szybsze wprowadzenie i wybudzenie.</div>
+<table>
+<tr><th>Lek</th><th>Działanie</th><th>Działania niepożądane</th><th>Premedykacja / interakcje</th><th>Zwierzęta</th><th>Dodatkowe</th></tr>
+<tr><td>izofluran</td><td>dobre miorelaksujące, słabe przeciwbólowe (analgezja niewystarczająca)</td><td>depresja oddechowa (słabiej niż sewofluran), hipotensja, bradykardia (słabo), arytmia, hipertermia</td><td>opioidy nasilają działanie; synergizm z miorelaksantami, sympatykomimetykami; agoniści α₂/opioidy/benzodiazepiny/neuroleptyki w premedykacji → ↓ dawki</td><td>konie, psy, koty, prosięta, gryzonie, gady, ptaki</td><td>szybkie wprowadzenie i wybudzanie; niski współczynnik krew:gaz (wyższy niż sewofluran); wydalany przez płuca, prawie bez metabolizmu wątrobowego (2%)</td></tr>
+<tr><td>sewofluran</td><td>umiarkowana miorelaksacja i analgezja</td><td>depresja oddechowa, rozszerzenie naczyń, bradykardia, nudności, wymioty, hipertermia, wzrost napięcia mięśni</td><td>jw. (jak izofluran)</td><td>psy, koty</td><td>bardzo szybkie wprowadzenie i wybudzanie; bardzo niski współczynnik krew:gaz; UWAGA na przedawkowanie; nieco bardziej metabolizowany w wątrobie</td></tr>
+<tr><td>podtlenek azotu</td><td>NIE miorelaksuje; wywołuje analgezję (dobry przeciwbólowy)</td><td>hipoksja</td><td>trzeba 30% tlenu, stosować z innymi wziewnymi</td><td>—</td><td>wydalany przez płuca i częściowo przez skórę; brak depresyjnego wpływu na układ krążenia i oddechowy</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g13">13. ZNIECZULENIE OGÓLNE: dożylne / infuzyjne</h2>
+<div class="grupa-info"><strong>Stadia znieczulenia:</strong> 1. bezbolesność, 2. podniecenie (eliminować), 3. znieczulenie chirurgiczne (optymalny 2. stopień; 4. = porażenie oddychania). <strong>Składowe znieczulenia ogólnego:</strong> sen + analgezja + arefleksja + miorelaksacja.</div>
+<table>
+<tr><th>Lek</th><th>Droga / grupa</th><th>Działanie / mechanizm</th><th>Działania niepożądane</th><th>Premedykacja / interakcje</th><th>Zwierzęta</th></tr>
+<tr><td>ketamina</td><td>infuzyjne i.v./i.m. — antagonista NMDA</td><td>antagonista rec. NMDA dla glutaminianu → znieczulenie dysocjacyjne (brak miorelaksacji, niepełna utrata świadomości); bardzo dobre zniesienie bólu somatycznego, słabsze trzewnego</td><td>wzrost napięcia mięśni, rozszerzenie źrenic, tachykardia, ślinotok, otwarte oczy, wymioty, hiperglikemia, bezdech, arytmia</td><td>zolazepam, agoniści α₂</td><td>psy, koty, konie, owce, świnie, bydło, gryzonie</td></tr>
+<tr><td>tyletamina</td><td>infuzyjne i.v./i.m. — antagonista NMDA</td><td>jak ketamina</td><td>jw.</td><td>zolazepam</td><td>psy, koty</td></tr>
+<tr><td>propofol</td><td>infuzyjnie i.v. (emulsja) — GABA-A</td><td>pobudzenie rec. GABA-A → otwarcie kanałów Cl⁻ → hiperpolaryzacja; NIE przeciwbólowo, miorelaksacja, sen podstawowy; szybko ale krótko</td><td>depresja oddechowa, bezdech, pobudzenie, wymioty, hipotensja</td><td>agoniści α₂/opioidy/benzodiazepiny/neuroleptyki → ↓ dawki o 25%; propofol w bolusie i.v. w stanie padaczkowym opornym</td><td>psy, koty</td></tr>
+<tr><td>alfaksalon</td><td>infuzyjnie i.v. — GABA-A</td><td>pobudzenie rec. GABA-A → otwarcie kanałów Cl⁻ → hiperpolaryzacja; słabe przeciwbólowe (niewystarczające), bardzo dobra miorelaksacja, szybkie zniesienie świadomości</td><td>depresja oddechowa, arytmia, hipotensja</td><td>przy lekach o działaniu depresyjnym na OUN; nie stosować z innymi infuzyjnymi anestetykami; możliwość niższych dawek</td><td>psy, koty</td></tr>
+<tr><td>tiopental</td><td>barbituran krótkodziałający</td><td>nasila działanie GABA w OUN (rec. GABA-A); sen podstawowy (po 20-30 s, trwa 10-15 min); NIE przeciwbólowo, umiarkowana miorelaksacja</td><td>niski wskaźnik terapeutyczny: depresja ośrodka oddechowego, depresyjny wpływ na krążenie (wazodylatacja, ↓ kurczliwości), hamowanie motoryki przewodu pokarmowego, skurcz oskrzeli, miejscowo drażniąco, KUMULACJA</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g14">14. AUN — Parasympatykomimetyki (cholinomimetyki bezpośrednie)</h2>
+<div class="grupa-info"><strong>Mechanizm:</strong> agoniści receptorów muskarynowych → parasympatykotonia: zwężenie źrenic, ↑ wydzielania śliny/potu/łez, bradykardia (chrono-/dromo-/ino-), zwężenie oskrzeli, ↓ ciśnienia, ↑ skurczów i wydzielania przewodu pokarmowego, skurcz pęcherza i macicy.</div>
+<div class="mnemo"><strong>Receptory:</strong> N = jonotropowe (kanały Na⁺); M = metabotropowe (białko G). M1/M3 → ↑IP3/DAG → depolaryzacja; M2 (serce) → ↓cAMP → hiperpolaryzacja, bradykardia.</div>
+<table>
+<tr><th>Lek</th><th>Receptor</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>acetylocholina</td><td>agonista M (i N)</td><td>parasympatykotonia (zwężenie źrenic, bradykardia, ↑ perystaltyki, skurcz pęcherza/macicy, ↑ wydzielania)</td><td>atonie jelit/żołądka/pęcherza, jaskra, niestrawność, kolka, wzdęcia, ciała obce w przełyku, ↑ bólów poporodowych</td><td>niedrożność przewodu pokarmowego, astma, bradykardia, choroba wrzodowa, ciąża</td><td>bradykardia, ↓ ciśnienia, zwężenie oskrzeli/źrenicy, ślinotok, wymioty, biegunka, kolki, drżenia mięśni, porażenie, ataksja, drgawki, śpiączka, zapaść, porażenie oddechu</td></tr>
+<tr><td>karbachol</td><td>rec. M i N</td><td>jw.</td><td>jw.</td><td>jw.</td><td>jw.</td></tr>
+<tr><td>betanechol</td><td>rec. M</td><td>jw. (słabszy)</td><td>jw.; syndrom dysautonomii u psów i kotów</td><td>jw.</td><td>jw.</td></tr>
+<tr><td>pilokarpina</td><td>rec. M (i N)</td><td>jw.</td><td>u świń wymiotna (podskórnie); okulistyka — przeciwjaskrowo</td><td>jw.</td><td>jw.</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g15">15. AUN — Inhibitory AChE (cholinomimetyki pośrednie)</h2>
+<div class="grupa-info"><strong>Mechanizm:</strong> hamują acetylocholinoesterazę → ↓ rozkładu ACh → ↑ stężenia ACh w synapsie → nasilenie działania na receptory cholinergiczne. Działanie muskaryno-, nikotynopodobne i ośrodkowe.</div>
+<table>
+<tr><th>Lek</th><th>Typ</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Dodatkowe</th></tr>
+<tr><td>edrofonium</td><td>odwracalny, krótko działający</td><td>hamuje AChE → ↑ ACh</td><td>atonia żwacza, pooperacyjna atonia jelit i pęcherza, jaskra</td><td>—</td></tr>
+<tr><td>neostygmina</td><td>odwracalny, średnio działający</td><td>jw.; nikotynopodobne — nasila rec. Nm</td><td>antidotum dla leków zwiotczających mięśnie szkieletowe; leczenie miastenii</td><td>—</td></tr>
+<tr><td>fizostygmina</td><td>odwracalny</td><td>jw.; łatwo przenika barierę krew-mózg → pobudzenie OUN</td><td>zatrucie parasympatykomimetykami; antidotum atropiny</td><td>przenika do OUN</td></tr>
+<tr><td>pirydostygmina, galantamina</td><td>odwracalne</td><td>jw.</td><td>miastenia, atonie, jaskra</td><td>—</td></tr>
+<tr><td>związki fosfoorganiczne (pestycydy, gazy bojowe: sarin, tabun, soman)</td><td>nieodwracalne</td><td>nieodwracalnie hamują AChE</td><td>(toksykologia)</td><td>antidotum: reaktywatory AChE — pralidoksym, obidoksym + atropina</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g16">16. AUN — Parasympatykolityki (antagoniści M)</h2>
+<div class="grupa-info"><strong>Mechanizm:</strong> nieselektywne blokowanie rec. M → hamowanie układu przywspółczulnego (parasympatykoliza): tachykardia, rozkurcz mięśni gładkich oskrzeli/przewodu pokarmowego/dróg żółciowych/pęcherza, ↓ wydzielania gruczołów, rozszerzenie źrenic, porażenie akomodacji, objawy ze strony OUN.</div>
+<table>
+<tr><th>Lek</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th><th>Dodatkowe</th></tr>
+<tr><td>atropina</td><td>nieselektywny antagonista rec. M → parasympatykoliza</td><td>rozkurcz mięśni gładkich, premedykacja (ochrona serca przed nerwem błędnym), ↓ wydzielania śliny, rozszerzenie oskrzeli, zatrucia z pobudzeniem przywspółczulnym, bradykardia, przeciwwrzodowe, przeciwwymiotne, okulistyka</td><td>jaskra, hipertermia, przerost prostaty, otępienie, zaburzenia serca, niedrożność przewodu pokarmowego</td><td>suchość w ustach, przegrzanie, rozszerzenie źrenic, światłowstręt, tachykardia, zaparcia, nudności, zatrzymanie moczu</td><td>antidotum: fizostygmina</td></tr>
+<tr><td>bromek skopolaminy (butylobromek)</td><td>antagonista M</td><td>jw.</td><td>jw.</td><td>jw.</td><td>na OUN działa depresyjnie</td></tr>
+<tr><td>ipratropium, tropikamid, glikopironium</td><td>antagoniści M</td><td>rozkurcz oskrzeli (ipratropium), okulistyka (tropikamid)</td><td>jw.</td><td>jw.</td><td>—</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g17">17. AUN — Sympatykomimetyki (agoniści α/β)</h2>
+<div class="grupa-info"><strong>Mechanizm:</strong> pobudzają układ współczulny (sympatykotonia): ↑ ciśnienia, zwężenie naczyń (α1), ↑ pracy serca (β1), rozkurcz oskrzeli i macicy (β2), rozszerzenie źrenicy, ↑ glukozy, lipoliza. α2 — presynaptyczny, ↓ uwalniania NA → sympatykoliza.</div>
+<div class="mnemo"><strong>Receptory:</strong> α1 → ↑IP3/DAG, skurcz naczyń; α2 → ↓cAMP (presynapt., hamuje NA); β1 → serce; β2 → rozkurcz oskrzeli/macicy; β3 → lipoliza/termogeneza.</div>
+<table>
+<tr><th>Lek</th><th>Receptor</th><th>Mechanizm</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>adrenalina</td><td>agonista α i β</td><td>nieselektywny agonista α/β</td><td>podniesienie ciśnienia, wstrząs, operacje, pobudzenie serca, rozszerzenie oskrzeli, atak astmy, reakcje alergiczne, znieczulenie miejscowe (↓ krwawienia)</td><td>nadciśnienie, niewydolność serca, choroba wieńcowa, miażdżyca, cukrzyca, nadczynność tarczycy</td><td>tachykardia, arytmie, hipertensja, niedokrwienie serca, drżenia, bóle głowy, hiperglikemia, hipokaliemia</td></tr>
+<tr><td>noradrenalina</td><td>agonista α</td><td>agonista rec. α</td><td>jw.</td><td>jw.</td><td>jw. (silniejsza adrenalina)</td></tr>
+<tr><td>dopamina</td><td>D1, D2, β1</td><td>agonista D1 (↑cAMP) i D2 (↓cAMP), pobudza β1</td><td>rozszerza tętniczki nerkowe i krezkowe, nasila pracę serca, stymuluje ośrodek wymiotny, hamuje prolaktynę, wstrząs</td><td>tachyarytmie, niedokrwienie serca</td><td>tachykardia, arytmie, hipertensja, ból głowy, nudności, wymioty</td></tr>
+<tr><td>nafazolina, ksylometazolina, oksymetazolina</td><td>agoniści α1 i α2 (nieselektywne)</td><td>obkurczają naczynia</td><td>hipotensja, ↓ obrzęku i przekrwienia błony śluzowej, ↓ wysięku, okulistyka</td><td>—</td><td>—</td></tr>
+<tr><td>fenylefryna</td><td>agonista α1</td><td>skurcz naczyń, rozszerzenie źrenic</td><td>hipotensja, okulistyka (rozszerzenie źrenic diagnostycznie)</td><td>nadciśnienie, arytmie, jaskra, nadwrażliwość</td><td>nadciśnienie, bradykardia, zawroty głowy</td></tr>
+<tr><td>klonidyna, ksylazyna, medetomidyna, deksmedetomidyna, detomidyna, romifidyna</td><td>agoniści α2</td><td>↓ uwalniania NA → sympatykoliza (↓ ciśnienia, bradykardia, hamowanie przekaźnictwa adrenergicznego)</td><td>nadciśnienie, uspokajające, przeciwbólowe, miorelaksacyjne</td><td>bradykardia, niewydolność serca, depresja OUN</td><td>senność, sedacja, depresja OUN, suchość w ustach, zaparcia, bradykardia, hipotensja, zawroty głowy</td></tr>
+<tr><td>izoprenalina, orcyprenalina</td><td>agoniści β1 i β2 (nieselektywne)</td><td>pobudzenie β</td><td>—</td><td>—</td><td>tachykardia, arytmie</td></tr>
+<tr><td>dobutamina</td><td>agonista β1</td><td>↑ pracy serca, siły skurczu, pobudliwości, przewodzenia</td><td>wstrząs sercowy, septyczny</td><td>tachyarytmie, migotanie przedsionków, nadczynność tarczycy</td><td>tachykardia, arytmie, niepokój</td></tr>
+<tr><td>klenbuterol, salbutamol, fenoterol, terbutalina</td><td>agoniści β2</td><td>rozkurcz oskrzeli, macicy, naczyń</td><td>znoszą skurcze macicy (podtrzymanie ciąży), rozszerzenie naczyń</td><td>choroby serca, cukrzyca, nadczynność tarczycy, ciąża</td><td>tachykardia, arytmie, drżenia mięśniowe, hiperglikemia, niepokój (klenbuterol u koni)</td></tr>
+<tr><td>efedryna, fenylpropanolamina</td><td>sympatykomimetyki pośrednie (α i β)</td><td>wypierają adrenalinę z pęcherzyków presynaptycznych → ↑ jej stężenia; pobudzają α i β</td><td>nietrzymanie moczu po sterylizacji suk, zapalenia górnych dróg oddechowych, ↓ przekrwienia i obrzęku, rozszerzenie oskrzeli, hipotensja podczas zabiegów, depresja OUN</td><td>hipertensja, tachyarytmie, padaczka, jaskra, nadczynność tarczycy, cukrzyca</td><td>tachykardia, arytmie, ↑ ciśnienia, pobudzenie, niepokój, bóle głowy, tachyfilaksja, hiperglikemia</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g18">18. AUN — Sympatykolityki (antagoniści α/β)</h2>
+<div class="grupa-info"><strong>Mechanizm:</strong> antagoniści rec. α/β → hamują pobudzenie układu współczulnego (sympatykoliza): bradykardia, rozszerzenie naczyń, ↑ wydzielania gruczołów, ↑ perystaltyki, zwężenie źrenicy. β-blokery: ↓ liczby i siły skurczów serca, ↓ objętości wyrzutowej, przeciwarytmicznie.</div>
+<table>
+<tr><th>Lek</th><th>Receptor</th><th>Mechanizm / skutek</th><th>Zastosowanie</th><th>Przeciwwskazania</th><th>Działania niepożądane</th></tr>
+<tr><td>fenoksybenzamina, tolazolina, dihydroergotamina</td><td>antagoniści α1 i α2 (nieselektywni)</td><td>sympatykoliza (bradykardia, rozszerzenie naczyń, ↑ perystaltyki)</td><td>guz chromochłonny, nadciśnienie</td><td>tachyarytmie, hipotensja, choroba niedokrwienna serca</td><td>hipotensja, zawroty głowy (fenoksybenzamina nieodwracalna)</td></tr>
+<tr><td>tamsulosyna, prazosyna, nicergolina</td><td>antagoniści α1</td><td>rozkurcz mięśni gładkich cewki moczowej, rozszerzenie naczyń</td><td>rozkurcz cewki moczowej, leczenie nadciśnienia</td><td>hipotensja, wstrząs kardiogenny, niewydolność serca</td><td>bóle i zawroty głowy, nadmierna hipotensja, nudności, wymioty</td></tr>
+<tr><td>atipamezol, johimbina</td><td>antagoniści α2</td><td>sympatykotonia — ↑ przekaźnictwa w OUN (↑ uwalniania NA)</td><td>antidotum dla agonistów α2</td><td>nadciśnienie tętnicze, choroby serca, pobudzenie</td><td>drżenia, niepokój, potliwość, nudności, wymioty, tachykardia, hipertensja</td></tr>
+<tr><td>propranolol, karazolol, sotalol, tymolol</td><td>antagoniści β1 i β2 (nieselektywni)</td><td>↓ liczby/siły skurczów serca, ↓ objętości wyrzutowej, oszczędzanie rezerw energetycznych, przeciwarytmicznie</td><td>nasilenie skurczów macicy, ułatwienie akcji porodowej, przeciwjaskrowe (tymolol)</td><td>ciąża, astma oskrzelowa, bradykardia</td><td>duszność, atak astmy, bradykardia</td></tr>
+<tr><td>metoprolol, atenolol, esmolol</td><td>antagoniści β1</td><td>jw. (selektywne)</td><td>przeciwarytmiczne w tachykardii, choroba niedokrwienna serca, kardiomiopatia, nadciśnienie</td><td>bradykardia, niedociśnienie, wstrząs kardiogenny, ciąża</td><td>bradykardia, hipotensja, zawroty głowy</td></tr>
+<tr><td>karwedilol, labetalol</td><td>antagonista α i β</td><td>przeciwarytmiczny</td><td>przeciwarytmiczny, nadciśnienie</td><td>bradykardia, wstrząs kardiogenny, astma</td><td>bradykardia, skurcz oskrzeli, zawroty głowy</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2 id="g19">19. Podstawy farmakologii (farmakokinetyka / farmakodynamika)</h2>
+<div class="grupa-info"><strong>Farmakokinetyka</strong> — losy leku w organizmie (LADME: uwalnianie, wchłanianie, dystrybucja, metabolizm, wydalanie). <strong>Farmakodynamika</strong> — wpływ leku na organizm i mechanizm działania.</div>
+<table>
+<tr><th>Pojęcie</th><th>Definicja</th></tr>
+<tr><td>Powinowactwo</td><td>zdolność leku do wiązania z receptorem; im wyższe powinowactwo, tym niższe Ka (stężenie wiążące 50% receptorów)</td></tr>
+<tr><td>Tachyfilaksja</td><td>osłabienie działania leku w krótkim czasie (gł. leki działające na receptory)</td></tr>
+<tr><td>Tolerancja</td><td>osłabienie działania po długotrwałym stosowaniu (zmiany w receptorach, ↓ liczby receptorów, wyczerpanie przekaźników, ↑ metabolizmu, adaptacja)</td></tr>
+<tr><td>Up-regulacja (sensytyzacja)</td><td>długotrwałe stosowanie antagonistów → nadwrażliwość i wzrost liczby receptorów</td></tr>
+<tr><td>Down-regulacja (desensytyzacja)</td><td>długotrwałe stosowanie agonistów → odwrażliwienie / ↓ liczby receptorów</td></tr>
+<tr><td>Indeks terapeutyczny</td><td>LD50/ED50 (ED50 — efekt u 50% osobników; LD50 — śmierć 50% osobników)</td></tr>
+<tr><td>Idiosynkrazja</td><td>ostre zatrucie po podaniu dawki terapeutycznej</td></tr>
+<tr><td>Receptory metabotropowe</td><td>białko G → fosfolipaza C → IP3 (↑ Ca²⁺) + DAG; M1/M3, adrenergiczne, opioidowe (μ/κ/δ), adenozynowe, dopaminowe, histaminowe, serotoninowe (poza 5-HT3), GABA-B</td></tr>
+<tr><td>Receptory jonotropowe</td><td>kanały jonowe: nikotynowe, glutaminergiczne (NMDA), GABA-A (postsynaptyczny), 5-HT3</td></tr>
+<tr><td>Synergizm addycyjny / hiperaddycyjny</td><td>addycyjny — efekt = suma (ten sam punkt uchwytu); hiperaddycyjny — efekt > suma (różny punkt uchwytu, ten sam kierunek)</td></tr>
+<tr><td>Antagonizm</td><td>konkurencyjny (ten sam punkt uchwytu) / niekonkurencyjny (inne punkty uchwytu) / funkcjonalny / chemiczny</td></tr>
+</table>
+
+<hr style="margin-top: 40px;">
+<p style="text-align:center; color:#7f8c8d; font-size:0.85em;">
+Plik wygenerowany na potrzeby nauki farmakologii weterynaryjnej (Kolokwium 1 — OUN i układ autonomiczny). Grupowanie: według mechanizmu / klasy działania, a w obrębie grupy — według podobieństwa.
+</p>
+
+<script>
+(function() {
+  // Kolejność ma znaczenie — bardziej specyficzne wzorce pierwsze, żeby uniknąć nakładania.
+  const RULES = [
+    // Marker specjalny: antagonista / antidotum
+    { re: /\bantagonist[a-ząęłńóśźż]*/gi, cls: 'kw kw-anti' },
+    { re: /\bantidotum\b/gi, cls: 'kw kw-anti' },
+
+    // Toksyczności narządowe (DN) i narządy (PW)
+    { re: /\bnefrotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-nerki' },
+    { re: /\bhepatotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-watroba' },
+    { re: /\bneurotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-neuro' },
+    { re: /\bkardiotoksyczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-kardio' },
+
+    // Depresja oddechowa / oddech
+    { re: /\bdepresj[a-ząęłńóśźż]+ (układu )?odde[a-ząęłńóśźż]+/gi, cls: 'kw kw-oddech' },
+    { re: /\bdepresj[a-ząęłńóśźż]+ oddechu\b/gi, cls: 'kw kw-oddech' },
+    { re: /\bniewydolnoś[a-ząęłńóśźż]+ odde[a-ząęłńóśźż]+/gi, cls: 'kw kw-oddech' },
+
+    // Serce / kardio / bradykardia / arytmia
+    { re: /\bbradykardi[a-ząęłńóśźż]+/gi, cls: 'kw kw-kardio' },
+    { re: /\btachykardi[a-ząęłńóśźż]+/gi, cls: 'kw kw-kardio' },
+    { re: /\barytmi[a-ząęłńóśźż]+/gi, cls: 'kw kw-kardio' },
+    { re: /\btachyarytmi[a-ząęłńóśźż]+/gi, cls: 'kw kw-kardio' },
+    { re: /\bzaburzeni[a-ząęłńóśźż]+ rytmu serc[a-ząęłńóśźż]+/gi, cls: 'kw kw-kardio' },
+
+    // Narządy
+    { re: /\bwątrob[a-ząęłńóśźż]+/gi, cls: 'kw kw-watroba' },
+    { re: /\bnerk[a-ząęłńóśźż]+/gi, cls: 'kw kw-nerki' },
+    { re: /\bOUN\b/g, cls: 'kw kw-neuro' },
+
+    // Receptory / neuroprzekaźniki
+    { re: /\bGABA[a-ząęłńóśźż-]*/g, cls: 'kw kw-gaba' },
+    { re: /\bserotonin[a-ząęłńóśźż]+/gi, cls: 'kw kw-sero' },
+    { re: /\b5-HT[0-9A-Za-z]*/g, cls: 'kw kw-sero' },
+    { re: /\bSSRI\b/g, cls: 'kw kw-sero' },
+    { re: /\bdopamin[a-ząęłńóśźż]+/gi, cls: 'kw kw-dopa' },
+    { re: /\bdopaminergiczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-dopa' },
+    { re: /\brec\. D2\b/g, cls: 'kw kw-dopa' },
+    { re: /\bacetylocholin[a-ząęłńóśźż]+/gi, cls: 'kw kw-chol' },
+    { re: /\bmuskaryn[a-ząęłńóśźż]+/gi, cls: 'kw kw-chol' },
+    { re: /\bnikotyn[a-ząęłńóśźż]+/gi, cls: 'kw kw-chol' },
+    { re: /\bcholinergiczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-chol' },
+    { re: /\bAChE\b/g, cls: 'kw kw-chol' },
+    { re: /\bACh\b/g, cls: 'kw kw-chol' },
+    { re: /\badrenergiczn[a-ząęłńóśźż]+/gi, cls: 'kw kw-adren' },
+    { re: /\bnoradrenalin[a-ząęłńóśźż]+/gi, cls: 'kw kw-adren' },
+    { re: /\bsympatyko[a-ząęłńóśźż]+/gi, cls: 'kw kw-adren' },
+    { re: /\bopioidow[a-ząęłńóśźż]+/gi, cls: 'kw kw-opioid' },
+    { re: /\brec\. (μ|kappa|κ|delta|δ|NMDA)[a-ząęłńóśźż]*/gi, cls: 'kw kw-opioid' },
+    { re: /\bNMDA\b/g, cls: 'kw kw-opioid' },
+    { re: /\bkanał[a-ząęłńóśźż]* (Cl|Na|Ca|chlorkow[a-ząęłńóśźż]+|sodow[a-ząęłńóśźż]+|wapniow[a-ząęłńóśźż]+)[⁻⁺a-ząęłńóśźż²]*/gi, cls: 'kw kw-kanal' },
+
+    // Objawy / efekty
+    { re: /\buzależnieni[a-ząęłńóśźż]+/gi, cls: 'kw kw-uzal' },
+    { re: /\bsedacj[a-ząęłńóśźż]+/gi, cls: 'kw kw-sedacja' },
+    { re: /\bsennoś[a-ząęłńóśźż]+/gi, cls: 'kw kw-sedacja' },
+    { re: /\buspokaja[a-ząęłńóśźż]+/gi, cls: 'kw kw-sedacja' },
+    { re: /\buspokojeni[a-ząęłńóśźż]+/gi, cls: 'kw kw-sedacja' },
+    { re: /\bpadaczk[a-ząęłńóśźż]+/gi, cls: 'kw kw-drgawki' },
+    { re: /\bdrgawk[a-ząęłńóśźż]+/gi, cls: 'kw kw-drgawki' },
+    { re: /\bdrgawkow[a-ząęłńóśźż]+/gi, cls: 'kw kw-drgawki' },
+    { re: /\bnapad[a-ząęłńóśźż]+/gi, cls: 'kw kw-drgawki' },
+
+    // Gatunki / fizjologia
+    { re: /\bciąż[a-ząęłńóśźż]+/gi, cls: 'kw kw-ciaza' },
+    { re: /\blaktacj[a-ząęłńóśźż]+/gi, cls: 'kw kw-ciaza' },
+    { re: /\bkot(y|ów|om|ach|a|u|ami)\b/gi, cls: 'kw kw-koty' },
+    { re: /\bkocię[a-ząęłńóśźż]+/gi, cls: 'kw kw-koty' },
+    { re: /\bKOTY\b/g, cls: 'kw kw-koty' },
+    { re: /\bkoni(e|a|om|ach|ami)?\b/gi, cls: 'kw kw-konie' },
+    { re: /\bps(y|ów|om|ach|a|ami)\b/gi, cls: 'kw kw-psy' },
+  ];
+
+  function escapeHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function shouldSkip(node) {
+    let el = node.parentElement;
+    while (el) {
+      const tag = el.tagName;
+      if (tag === 'H1' || tag === 'H2' || tag === 'H3' || tag === 'TH' ||
+          tag === 'SCRIPT' || tag === 'STYLE' || tag === 'A') return true;
+      if (el.classList && (el.classList.contains('toc') ||
+          el.classList.contains('legend') ||
+          el.classList.contains('key') ||
+          (el.tagName === 'SPAN' && el.className && el.className.indexOf('kw') === 0))) return true;
+      el = el.parentElement;
+    }
+    return false;
+  }
+
+  function processTextNode(node) {
+    const text = node.textContent;
+    if (!text.trim()) return;
+    const matches = [];
+    RULES.forEach(rule => {
+      rule.re.lastIndex = 0;
+      let m;
+      while ((m = rule.re.exec(text)) !== null) {
+        matches.push({ start: m.index, end: m.index + m[0].length, cls: rule.cls, text: m[0] });
+        if (m[0].length === 0) rule.re.lastIndex++;
+      }
+    });
+    if (!matches.length) return;
+    matches.sort((a, b) => a.start - b.start || (b.end - b.start) - (a.end - a.start));
+
+    const filtered = [];
+    let lastEnd = 0;
+    for (const m of matches) {
+      if (m.start >= lastEnd) {
+        filtered.push(m);
+        lastEnd = m.end;
+      }
+    }
+
+    let html = '';
+    let pos = 0;
+    for (const m of filtered) {
+      html += escapeHtml(text.substring(pos, m.start));
+      html += '<span class="' + m.cls + '">' + escapeHtml(m.text) + '</span>';
+      pos = m.end;
+    }
+    html += escapeHtml(text.substring(pos));
+
+    const tmp = document.createElement('span');
+    tmp.innerHTML = html;
+    const parent = node.parentNode;
+    while (tmp.firstChild) parent.insertBefore(tmp.firstChild, node);
+    parent.removeChild(node);
+  }
+
+  function run() {
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      { acceptNode: function(n) { return shouldSkip(n) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } }
+    );
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(processTextNode);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
+</script>
+</body>
+</html>
