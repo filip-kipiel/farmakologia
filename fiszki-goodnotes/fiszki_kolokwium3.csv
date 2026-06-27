@@ -1,0 +1,331 @@
+﻿"Penicyliny naturalne (benzylopenicylina / penicylina G, penicylina prokainowa, benzatynowa, fenoksymetylopenicylina = penicylina V)","Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: wąskie: głównie G+ (ziarniaki), krętki, niektóre beztlenowce
+Zastosowanie: zakażenia G+, krętkowice; preparaty depot (prokainowa, benzatynowa) dla wydłużonego działania
+Oporność: wrażliwe na β-laktamazy (penicylinazy)
+Uwagi / DN / interakcje: penicylina G nietrwała w kwaśnym pH żołądka (podanie pozajelitowe); reakcje alergiczne; penicylina V kwasoodporna (doustnie)"
+"Penicyliny półsyntetyczne penicylinazooporne (kloksacylina, dikloksacylina, oksacylina, metycylina, nafcylina)","Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: G+ wytwarzające penicylinazy (gronkowce)
+Zastosowanie: zakażenia gronkowcowe
+Oporność: oporne na penicylinazy; MRSA oporne (zmiana PBP)"
+"Aminopenicyliny (ampicylina, amoksycylina)","Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: poszerzone: G+ i część G- (E. coli, Proteus, Salmonella)
+Zastosowanie: szerokie zakażenia, układ moczowy, pokarmowy, oddechowy
+Oporność: wrażliwe na β-laktamazy (stąd łączone z inhibitorami)
+Uwagi / DN / interakcje: amoksycylina lepiej wchłaniana doustnie niż ampicylina"
+"Karboksypenicyliny / ureidopenicyliny (karbenicylina, tikarcylina, piperacylina, azlocylina)","Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: poszerzone o Pseudomonas i inne G-
+Zastosowanie: ciężkie zakażenia G- (w tym Pseudomonas)
+Oporność: wrażliwe na β-laktamazy
+Uwagi / DN / interakcje: często łączone z inhibitorami β-laktamaz"
+"Inhibitory β-laktamaz (kwas klawulanowy, sulbaktam, tazobaktam)","Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: brak własnego istotnego spektrum
+Zastosowanie: łączone z penicylinami (np. amoksycylina + kwas klawulanowy; ampicylina + sulbaktam; piperacylina + tazobaktam) — przywracają aktywność wobec szczepów β-laktamazo-dodatnich
+Uwagi / DN / interakcje: nieodwracalnie wiążą i inaktywują β-laktamazy („samobójcze” inhibitory)"
+"Cefalosporyny I generacji (cefaleksyna, cefadroksyl, cefazolina, cefapiryna, cefadroksyl)","Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: głównie G+, słabiej G-
+Zastosowanie: zakażenia skóry i tkanek miękkich, profilaktyka chirurgiczna
+Oporność: β-laktamazy
+Uwagi / DN / interakcje: reakcje alergiczne (krzyżowe z penicylinami); wzrost aktywności od I do III gen. wobec G-, spadek wobec G+"
+"Cefalosporyny II generacji (cefuroksym, cefaklor) + cefamycyny (cefoksytyna)","Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: G+ i poszerzone G-; cefamycyny dodatkowo beztlenowce
+Zastosowanie: zakażenia mieszane
+Oporność: cefamycyny bardziej oporne na β-laktamazy"
+"Cefalosporyny III generacji (cefotaksym, ceftriakson, ceftazydym, cefovecyna, cefpodoksym, ceftiofur)","Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: szerokie G-, słabiej G+; ceftazydym aktywny wobec Pseudomonas
+Zastosowanie: ciężkie zakażenia G-; ceftiofur/cefovecyna — weterynaryjne
+Oporność: β-laktamazy o rozszerzonym spektrum (ESBL)
+Uwagi / DN / interakcje: cefovecyna — długie działanie (PLW dla psów/kotów); dobra penetracja do OUN (cefotaksym, ceftriakson)"
+"Cefalosporyny IV generacji (cefepim, cefquinom)","Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: bardzo szerokie: G+ i G- (w tym Pseudomonas)
+Zastosowanie: ciężkie zakażenia szpitalne / weterynaryjne (cefquinom)
+Oporność: oporne na wiele β-laktamaz"
+"Cefalosporyny V generacji (ceftarolina, ceftobiprol)","Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: szerokie + MRSA
+Zastosowanie: zakażenia MRSA"
+"Karbapenemy (imipenem, meropenem, ertapenem, dorypenem)","Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: bardzo szerokie: G+, G-, beztlenowce
+Zastosowanie: ciężkie zakażenia wielolekooporne („antybiotyki ostatniej szansy”)
+Oporność: karbapenemazy
+Uwagi / DN / interakcje: imipenem podawany z cylastatyną (hamuje dehydropeptydazę nerkową); ryzyko drgawek"
+Monobaktamy (aztreonam),"Kategoria: Inhibitory syntezy ściany komórkowej — BETALAKTAMY (+ inhibitory β-laktamaz)
+Spektrum: tylko tlenowe G- (w tym Pseudomonas)
+Zastosowanie: zakażenia G- u uczulonych na inne β-laktamy
+Uwagi / DN / interakcje: brak reaktywności krzyżowej alergicznej z penicylinami"
+wankomycyna,"Kategoria: Inhibitory syntezy ściany komórkowej — pozostałe mechanizmy (glikopeptydy, bacytracyna, fosfomycyna)
+Grupa: glikopeptydy
+Mechanizm: blokuje ostatni etap syntezy ściany komórkowej — procesy transglikozylacji i transpeptydacji
+Efekt: bakteriobójczy, czasozależny
+Spektrum: tlenowe ziarenkowce G+, beztlenowe laseczki Clostridium, MRSA
+Zastosowanie: rzekomobłoniaste zapalenie jelit
+Uwagi / DN / interakcje / kat.: kat. A — głównie dla ludzi, brak danych o działaniu u zwierząt"
+"bacytracyna, gramicydyna","Kategoria: Inhibitory syntezy ściany komórkowej — pozostałe mechanizmy (glikopeptydy, bacytracyna, fosfomycyna)
+Grupa: cykliczne (peptydowe)
+Mechanizm: punkt uchwytu w błonie komórkowej i wpływ na transport przezbłonowy; hamowanie biosyntezy ściany komórkowej (zapobiega tworzeniu nici peptydoglikanu); działanie bakteriobójcze wymaga obecności kationów dwuwartościowych (cynk)
+Efekt: bakteriobójcze (oporność rozwija się powoli)
+Spektrum: G+; gramicydyna ma poszerzone spektrum o mycobacterium i candida
+Zastosowanie: zakażenia skóry, owrzodzenia, zakażenia ucha zewnętrznego, zakażenia spojówki, rogówki i wymienia
+Uwagi / DN / interakcje / kat.: nie wchłania się z pp; PW: choroby nerek; DN: nefrotoksyczne, reakcje nadwrażliwości; kat. D"
+fosfomycyna,"Kategoria: Inhibitory syntezy ściany komórkowej — pozostałe mechanizmy (glikopeptydy, bacytracyna, fosfomycyna)
+Mechanizm: hamowanie syntezy ściany komórkowej bakterii poprzez inaktywację transferazy fosfoenolopirogronianowej — hamuje nieodwracalnie kondensację pochodnych N-acetyloglukozaminy z fosfoenolopirogronianem
+Efekt: bakteriobójczo
+Spektrum: G+, G-
+Zastosowanie: zakażenia DM niepowikłane, zapalenie pęcherza moczowego, bezobjawowy bakteriomocz (np. w ciąży), profilaktyka zakażeń układu moczowego przed zabiegami chirurgicznymi, przezcewkowymi i diagnostycznymi
+Uwagi / DN / interakcje / kat.: DN: nudności, biegunka, zgaga, bóle brzucha, osłabienie, bóle i zawroty głowy"
+erytromycyna,"Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: makrolidy C14
+Efekt / spektrum: bakteriostatyczny (50S); G+, atypowe, część G-, Campylobacter
+Oporność: fenotyp MLSB (metylacja 50S)
+Zastosowanie: zakażenia G+, DO, mykoplazmy, kampylobakterioza
+DN / PW: zaburzenia pp (prokinetyk — pobudza receptory motyliny); u koni/przeżuwaczy ryzyko ciężkich zaburzeń pp
+Interakcje / uwagi: inhibitor cytochromu P450 (interakcje)"
+"roksytromycyna, klarytromycyna","Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: makrolidy C14
+Efekt / spektrum: bakteriostatyczny (50S); lepsza biodostępność i tolerancja niż erytromycyna
+Oporność: MLSB
+Zastosowanie: zakażenia G+, atypowe, DO
+DN / PW: mniej zaburzeń pp niż erytromycyna
+Interakcje / uwagi: klarytromycyna — silny inhibitor P450"
+azytromycyna,"Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: makrolidy C15 (azalidy)
+Efekt / spektrum: bakteriostatyczny (50S); poszerzone o G-, długi t½, kumulacja w tkankach
+Oporność: MLSB
+Zastosowanie: zakażenia tkankowe, wewnątrzkomórkowe
+DN / PW: dobra tolerancja
+Interakcje / uwagi: długie działanie tkankowe (dawkowanie rzadkie)"
+"spiramycyna, jozamycyna","Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: makrolidy C16
+Efekt / spektrum: bakteriostatyczny (50S); G+, atypowe
+Oporność: MLSB (C16 częściowo wymyka się indukcyjnej oporności)
+Zastosowanie: zakażenia G+, jamy ustnej, toksoplazmoza (spiramycyna)
+Interakcje / uwagi: synergizm spiramycyna + metronidazol (stomatologia)"
+"tylozyna, tilmikozyna, gamitromycyna, tulatromycyna","Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: makrolidy weterynaryjne
+Efekt / spektrum: bakteriostatyczny (50S); G+, mykoplazmy
+Oporność: MLSB
+Zastosowanie: zakażenia DO i mykoplazmozy bydła/świń/drobiu; gamitromycyna — długodziałający
+DN / PW: tilmikozyna — kardiotoksyczna (przy podaniu dożylnym/iniekcji ryzyko zgonu, zwłaszcza świnie)
+Interakcje / uwagi: synergizm tylozyna + oksytetracyklina"
+linkomycyna,"Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: linkozamidy
+Efekt / spektrum: bakteriostatyczny (50S); G+, beztlenowce
+Oporność: MLSB (krzyżowa z makrolidami)
+Zastosowanie: zakażenia G+, beztlenowcowe, kości/stawy
+DN / PW: u koni, królików, przeżuwaczy, chomików — ciężkie, śmiertelne zaburzenia pp (zapalenie jelit)
+Interakcje / uwagi: antagonizm z makrolidami (wspólne miejsce 50S)"
+klindamycyna,"Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: linkozamidy
+Efekt / spektrum: bakteriostatyczny (50S); G+, beztlenowce, niektóre pierwotniaki (Toxoplasma)
+Oporność: MLSB
+Zastosowanie: zakażenia skóry, kości, jamy ustnej, ropnie, toksoplazmoza, beztlenowce
+DN / PW: jw. ryzyko zaburzeń pp u gatunków wrażliwych (koń, królik)
+Interakcje / uwagi: antagonizm z makrolidami"
+"chloramfenikol (detreomycyna, chloromycetyna)","Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: fenikole
+Efekt / spektrum: bakteriostatyczny; hamuje biosyntezę białka na 50S; G+, G-, riketsje
+Oporność: acetylotransferaza (acetylacja leku), zmiany przepuszczalności błony, redukcja grupy nitrowej, hydroliza wiązania amidowego
+Zastosowanie: ograniczone ze względu na toksyczność: zakażenia PP i DM, stany zapalne macicy i pęcherza, zakażenia DO, biegunki (E. coli, Salmonella, Proteus); miejscowo — zakażenia gałki ocznej, ucha, skóry
+DN / PW: PW: choroby wątroby; DN: stany zapalne PP, zaburzenia trawienia (przeżuwacze), wymioty (mięsożerne), niedokrwistość aplastyczna (szpik kostny)
+Interakcje / uwagi: przechodzi przez łożysko i do mleka; inhibitor cyt. P-450; przechodzi do płynu mózgowo-rdzeniowego; może opóźniać gojenie (nie szczepić podczas leczenia)"
+tiamfenikol,"Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: fenikole
+Efekt / spektrum: bakteriostatyczny; 50S; mniej aktywny na G+ i G-; beztlenowce, Mycoplasma, Chlamydia, Riketsje
+Oporność: jw. fenikole; nie ma grupy nitrowej
+Zastosowanie: zakażenia PP, DO, DM, zapalenie macicy, zapalenie gruczołu mlekowego, ropnie
+DN / PW: DN: biegunki, hamuje szpik kostny
+Interakcje / uwagi: nie ma grupy nitrowej"
+florfenikol,"Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: fenikole
+Efekt / spektrum: 50S; G+, G-, Haemophilus, Pasteurella (przez bakterie)
+Oporność: jw. fenikole; nie ma grupy nitrowej
+Zastosowanie: zakażenia moczowo-płciowego
+DN / PW: DN: wysokie dawki — wpływ na układ krwiotwórczy; u bydła biegunki
+Interakcje / uwagi: fluor zamiast chloru"
+"tiamulina, walnemulina","Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: pochodne pleuromutyliny
+Efekt / spektrum: bakteriostatyczny; wiązanie z podjednostką 50S — blokują transferazę peptydylową i hamują tworzenie wiązania peptydowego między aminokwasami → zahamowanie syntezy białek; spektrum: tlenowe G+, tlenowe G-, bakterie beztlenowe, atypowe
+Oporność: modyfikacja peptydylotransferazy (uniemożliwia przyłączenie antybiotyku)
+Zastosowanie: dyzenteria świń, zakażenia DO, zakaźne zapalenie ucha u królików, zakażenia wywołane przez mykoplazmy, leptospiroza świń, rozrostowe zapalenie jelit świń, enzootyczne zapalenie płuc; walnemulina — świnie, króliki (tylko doustnie/miejscowo)
+DN / PW: PW: konie (zaburzenia mikroflory); DN: odczyny poiniekcyjne, rumień, obrzęk, u koni zaburzenia mikroflory; świnie, króliki — hipertermia
+Interakcje / uwagi: antagonizm z makrolidami, linkozamidami i fenikolami (wspólne miejsce wiązania); interakcja z jonoforami (tiamulina + sulfonamidy/jonofory — neurotoksyczne; konkurują o miejsce metabolizmu w nerkach); tiamulina 2× zwiększa biodostępność; kat. C"
+"wirginiamycyna M, pristynamycyna (grupa A); wirginiamycyna S (grupa B); SYNERCID (chinuprystyna/dalfoprystyna)","Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: streptograminy (należą do MLS)
+Efekt / spektrum: nieodwracalnie wiążą podjednostkę 50S i hamują syntezę białka; A+B — bakteriobójcze, A lub B osobno — bakteriostatyczne; tlenowe i beztlenowe G+, niektóre atypowe
+Oporność: oporność chromosomowa i plazmidowa; aktywne usuwanie leku; modyfikacja przez acetylotransferazy (gr. A); metylacja adeniny 50S (MLSB, gr. B); rozerwanie cyklicznej struktury przez liazy
+DN / PW: SYNERCID: bóle stawów i mięśni, nudność, wymioty, biegunka, hiperalbuminemia, świąd
+Interakcje / uwagi: grupa A: budowa makrolaktonowa; grupa B: cykliczne heksadepsipeptydy; SYNERCID wykazuje PAE, działa na tlenowe G+, bakteriobójczy, hamuje cyt. P450; kat. A , brak PLW, nie wchłania się z pp"
+linezolid,"Kategoria: Inhibitory syntezy białka — podjednostka 50S rybosomu
+Grupa: oksazolidynony
+Efekt / spektrum: bakteriostatycznie; miejsce docelowe to obie podjednostki rybosomu — hamuje przyłączanie kompleksu mRNA-tRNA do pj 70S, blokując powstawanie kompleksu inicjującego syntezę; G+
+DN / PW: morfologia krwi, zwłaszcza trombocytopenia; neuropatie obwodowe i oczne
+Interakcje / uwagi: hamowanie MAO — interakcje; raczej się go nie zaleca u zwierząt"
+"streptomycyna, dihydrostreptomycyna","Kategoria: Inhibitory syntezy białka — podjednostka 30S rybosomu
+Spektrum / efekt: bakteriobójcze, stężeniozależne (30S); tlenowe G- + prątki gruźlicy
+Zastosowanie: gruźlica, zakażenia G-, leptospiroza
+DN / PW: ototoksyczność (przedsionkowa/słuchowa), nefrotoksyczność, blok nerwowo-mięśniowy
+Interakcje / uwagi: nie łączyć z innymi nefro-/ototoksycznymi; nieaktywne wobec beztlenowców"
+neomycyna,"Kategoria: Inhibitory syntezy białka — podjednostka 30S rybosomu
+Spektrum / efekt: bakteriobójcze (30S); G-, G+
+Zastosowanie: głównie doustnie (wyjaławianie jelit) i miejscowo (zbyt toksyczna ogólnie)
+DN / PW: silna nefro- i ototoksyczność
+Interakcje / uwagi: synergizm neomycyna + oksytetracyklina; neomycyna + bacytracyna + prednizolon (maści)"
+gentamycyna,"Kategoria: Inhibitory syntezy białka — podjednostka 30S rybosomu
+Spektrum / efekt: bakteriobójcze, stężeniozależne (30S); szerokie G- (w tym Pseudomonas), G+
+Zastosowanie: ciężkie zakażenia G-, posocznice, zakażenia miejscowe
+DN / PW: nefrotoksyczność, ototoksyczność, blok nerwowo-mięśniowy
+Interakcje / uwagi: synergizm z β-laktamami; nie mieszać w jednej strzykawce z penicylinami (inaktywacja)"
+"tobramycyna, amikacyna","Kategoria: Inhibitory syntezy białka — podjednostka 30S rybosomu
+Spektrum / efekt: bakteriobójcze (30S); szerokie G- (w tym Pseudomonas)
+Zastosowanie: ciężkie zakażenia G-, szczepy oporne na gentamycynę (amikacyna)
+DN / PW: nefro- i ototoksyczność (amikacyna nieco mniejsza oto)
+Interakcje / uwagi: amikacyna oporna na wiele enzymów modyfikujących"
+paromomycyna,"Kategoria: Inhibitory syntezy białka — podjednostka 30S rybosomu
+Spektrum / efekt: 30S; G-, pierwotniaki (Cryptosporidium, Leishmania, ameby)
+Zastosowanie: kryptosporydioza, leiszmanioza, pierwotniakowe zakażenia jelit
+DN / PW: jw. aminoglikozydy (słabo wchłaniany doustnie → działanie głównie jelitowe)"
+spektynomycyna,"Kategoria: Inhibitory syntezy białka — podjednostka 30S rybosomu
+Spektrum / efekt: aminocyklitol; bakteriostatyczny (30S); G-
+Zastosowanie: zakażenia G- (np. drób, świnie), mykoplazmy
+DN / PW: mniej nefro-/ototoksyczna niż klasyczne aminoglikozydy
+Interakcje / uwagi: często łączona z linkomycyną"
+"oksytetracyklina, tetracyklina, chlorotetracyklina","Kategoria: Inhibitory syntezy białka — podjednostka 30S rybosomu
+Podgrupa (t½): krótko działające (6–8 h)
+Zastosowanie / cechy: zakażenia DO, układu moczowego, zapalenie ucha, zakażone rany, borelioza, bruceloza, listerioza; chlorotetracyklina — pierwszy odkryty, słabo wchłaniana z pp, głównie miejscowo (rany, skóra); oksytetracyklina dostępna doustnie, parenteralnie, aerozole na skórę, preparaty LA (bydło — leczenie w stadzie)
+DN / PW: nefrotoksyczne, hepatotoksyczne, zaburzenia pp, nadwrażliwość na światło (fotouczulenie), reakcje alergiczne, przebarwienia szkliwa i kości u młodych, hipoplazja szkliwa; PW: panleukopenia u kotów, niewydolność nerek, zaburzenia wątroby, konie i przeżuwacze z wykształconą funkcją przedżołądków; kardiotoksyczność — szybkie podanie iv może spowodować zgon (konie — arytmia; bydło — hipotensja); cielęta — uszkodzenie mięśnia sercowego
+Interakcje: antagonizm z penicylinami i cefalosporynami; preparaty z Fe, Mg, Ca obniżają wchłanianie (nieaktywne chelaty); nie łączyć z aminoglikozydami; synergizm: + makrolidy (tylozyna + oksytetracyklina), + polimyksyny, + aminoglikozydy, + NLPZ, + pleuromutyliny (tiamulina + oksytetracyklina)"
+"demeklocyklina, metacyklina","Kategoria: Inhibitory syntezy białka — podjednostka 30S rybosomu
+Podgrupa (t½): pośrednie (12 h)
+DN / PW: jw.; kat. D
+Interakcje: antagonizm z penicylinami i cefalosporynami; preparaty z Fe, Mg, Ca obniżają wchłanianie (nieaktywne chelaty); nie łączyć z aminoglikozydami; synergizm: + makrolidy (tylozyna + oksytetracyklina), + polimyksyny, + aminoglikozydy, + NLPZ, + pleuromutyliny (tiamulina + oksytetracyklina)"
+doksycyklina,"Kategoria: Inhibitory syntezy białka — podjednostka 30S rybosomu
+Podgrupa (t½): o przedłużonym działaniu (16–18 h)
+Zastosowanie / cechy: lepsza penetracja przez błony, mniejsza tendencja do chelatów (można z pokarmem), niski potencjał nefrotoksyczności, eliminacja nienerkowa (wydalana gł. z kałem) → można przy chorobach nerek; konie — brak zarejestrowanych PLW (tylko doustnie, słaba biodostępność, możliwe biegunki); najbezpieczniejsza pod względem przebarwień zębów
+DN / PW: uszkodzenie przełyku u psów/kotów (podać z wodą/pokarmem); jw. mniejsza hepato-/nefrotoksyczność
+Interakcje: + rifampicyna/streptomycyna (synergizm)"
+minocyklina,"Kategoria: Inhibitory syntezy białka — podjednostka 30S rybosomu
+Podgrupa (t½): o przedłużonym działaniu
+Zastosowanie / cechy: bardzo dobra rozpuszczalność w tłuszczach, dobra penetracja do OUN i prostaty; brak PLW w Polsce; opisana u psów i kotów
+DN / PW: uszkodzenie przełyku u psów/kotów (podać z wodą/pokarmem); jw. mniejsza hepato-/nefrotoksyczność
+Interakcje: + rifampicyna/streptomycyna (synergizm)"
+"kwas nalidyksowy, kwas oksolinowy","Kategoria: Inhibitory syntezy kwasów nukleinowych — CHINOLONY i FLUOROCHINOLONY (gyraza/topoizomerazy)
+Generacja: I generacja
+Spektrum: G-, niska aktywność
+Zastosowanie: leczenie zakażeń układu moczowego — psy, koty, drób, ryby
+PW: młode, rosnące psy, koty, konie; ciąża; laktacja; padaczka; zaburzenia wątroby i nerek
+DN: toksyczne uszkodzenie chrząstek stawowych u młodych, nudności, wymioty, drgawki, nadciśnienie, reakcje alergiczne
+Oporność / interakcje / uwagi: niska wchłanialność z pp, silne wiązanie z białkami osocza"
+flumechina,"Kategoria: Inhibitory syntezy kwasów nukleinowych — CHINOLONY i FLUOROCHINOLONY (gyraza/topoizomerazy)
+Generacja: II generacja = fluorochinolony
+Spektrum: tlenowe G-, atypowe
+Zastosowanie: infekcje układu moczowego, oddechowego, pp, zakażenia skóry i tkanek miękkich, zapalenie ucha zewnętrznego
+PW: jw. (młode, rosnące, ciąża, laktacja, padaczka)
+DN: uszkodzenie chrząstek stawowych u młodych, zaburzenia pp, degeneracja siatkówki u kotów, zwiększenie ataków padaczkowych
+Oporność / interakcje / uwagi: aktywne usuwanie leku z komórki, zmniejszona przepuszczalność błony, modyfikacje gyrazy/topoizomerazy IV (mechanizmy transmisyjne); preparaty z Fe, Mg, Ca obniżają wchłanianie (chelaty); inhibitory cyt. P450 (hamują metabolizm innych leków, np. teofiliny); kat. B; osiągają wysokie stężenia w oskrzelach, płucach, wątrobie, żółci, nerkach, prostacie, chrząstkach, kościach i mleku"
+"norfloksacyna, enrofloksacyna, marbofloksacyna, danofloksacyna, orbifloksacyna","Kategoria: Inhibitory syntezy kwasów nukleinowych — CHINOLONY i FLUOROCHINOLONY (gyraza/topoizomerazy)
+Generacja: II–III generacja (fluorochinolony)
+Spektrum: szerokie: tlenowe G+ i G- (gronkowce, słabiej paciorkowce), atypowe/wewnątrzkomórkowe; pradofloksacyna też na beztlenowce
+Zastosowanie: infekcje pp, dróg moczowych, rodnych, układu oddechowego, skóry, ucha, gruczołu mlekowego, posocznice — ważne bo tylko w weterynarii (enro-, marbo-, dano-, orbi-)
+PW: młode, rosnące psy, koty, konie; ciąża; laktacja; padaczka
+DN: uszkodzenie chrząstek u młodych, zaburzenia pp, degeneracja siatkówki u kotów, zwiększenie ataków padaczkowych
+Oporność / interakcje / uwagi: synergizm: β-laktamy, aminoglikozydy, polipeptydowe, metronidazol; antagonizm: makrolidy, tetracykliny, fenikole, nitrofurany; oporność krzyżowa w grupie"
+pradofloksacyna,"Kategoria: Inhibitory syntezy kwasów nukleinowych — CHINOLONY i FLUOROCHINOLONY (gyraza/topoizomerazy)
+Generacja: III generacja = polifluorochinolony
+Spektrum: + beztlenowce
+Zastosowanie: zakażenia skóry, choroby przyzębia, zakażenia DO, DM
+PW: młode, rosnące psy, koty, konie; ciąża; laktacja
+DN: biegunka
+Oporność / interakcje / uwagi: synergizm: β-laktamy, aminoglikozydy, polipeptydowe, metronidazol; antagonizm: makrolidy, tetracykliny, fenikole, nitrofurany; oporność krzyżowa w grupie"
+difloksacyna,"Kategoria: Inhibitory syntezy kwasów nukleinowych — CHINOLONY i FLUOROCHINOLONY (gyraza/topoizomerazy)
+Generacja: III generacja
+Spektrum: + beztlenowce
+Zastosowanie: zakażenia skóry
+PW: młode, rosnące psy, koty, konie
+DN: biegunka, wymioty
+Oporność / interakcje / uwagi: synergizm: β-laktamy, aminoglikozydy, polipeptydowe, metronidazol; antagonizm: makrolidy, tetracykliny, fenikole, nitrofurany; oporność krzyżowa w grupie"
+"moksyfloksacyna, ibafloksacyna","Kategoria: Inhibitory syntezy kwasów nukleinowych — CHINOLONY i FLUOROCHINOLONY (gyraza/topoizomerazy)
+Generacja: IV generacja
+Spektrum: + beztlenowce
+Zastosowanie: zakażenia skóry i tkanek miękkich, zapalenie płuc
+PW: młode, rosnące psy, koty, konie
+DN: biegunka, wymioty
+Oporność / interakcje / uwagi: synergizm: β-laktamy, aminoglikozydy, polipeptydowe, metronidazol; antagonizm: makrolidy, tetracykliny, fenikole, nitrofurany; oporność krzyżowa w grupie"
+"sulfatiazol, sulfacetamid, sulfafurazol (krótko działające 4–6 h); sulfadymidyna, sulfadiazyna, sulfametoksazol, sulfachloropirydazyna (średnio długo 8–12 h); sulfadoksyna, sulfamerazyna, sulfadimetoksyna, sulfametoksydiazyna, sulfapirazol, sulfametoksypirydazyna (długo działające 16–40 h)","Kategoria: Inhibitory szlaku kwasu foliowego — SULFONAMIDY + trimetoprim (diaminopirymidyny)
+Mechanizm / efekt: hamują syntetazę dihydropterydynową — blok przekształcania PABA (który naśladują) w kwas foliowy; bakteriostatyczne (po zużyciu zapasów PABA bakterii)
+Spektrum: G+, G- (Enterobacteriaceae), chlamydie, H. influenzae, pierwotniaki, Actinomyces (beztlenowiec)
+Zastosowanie: promienica/aktynomykoza, kokcydioza, kolibakterioza, zanokcica, nekrobacyloza, infekcje DO, zołzy, zapalenie płuc/stawów/wymienia, toksoplazmoza, salmonelloza; sulfacetamid — okulistyka; sulfafurazol — z wyboru przy zakażeniach DM; sulfachloropirazyna — zapalenie jelit świń i cieląt; długodziałające — kokcydioza królików (z trimetoprimem), zakażenia DO/zatok/macicy/skóry psów i kotów
+PW / DN: PW: uszkodzenie nerek, wątroby, odwodnienie, kamica moczanowa, niedokrwistość, ciąża, noworodki, dysfunkcja układu immunologicznego; DN: pobudzenie, zaburzenie koordynacji, zwiotczenie mięśni, zapaść, zaburzenia obrazu krwi, zapalenie nerwów obwodowych, zmiany mikroflory, niedobór witaminy K, krwawienia, hamowanie fermentacji i apetytu (bydło), biegunki (kozy), reakcje uczuleniowe (wstrząs anafilaktyczny, pokrzywka, astma), DRESS (gorączka, eozynofilia, zapalenie wątroby/serca/nerek/płuc); słabo rozpuszczalne (sulfatiazol, sulfanilamid) — nefrotoksyczne (krystalizacja w niskim pH)
+Oporność / interakcje / uwagi: oporność: wytwarzanie endogennego PABA innymi szlakami, zmiana struktury syntetazy, blok transportu sulfonamidu, aktywne usuwanie z komórki; osłabiają działanie: witaminy B, PABA, prokaina, penicylina prokainowa, krew, ropa (dużo PABA), albuminy; synergizm z inhibitorami reduktazy kwasu dihydrofoliowego; NLPZ potęgują DN; nefrotoksyczny"
+"ftaliosulfacetamid, formosulfatiazol","Kategoria: Inhibitory szlaku kwasu foliowego — SULFONAMIDY + trimetoprim (diaminopirymidyny)
+Mechanizm / efekt: trudno wchłaniają się z jelit; hydroliza w jelicie (do sulfacetamidu / sulfatiazolu)
+Spektrum: G+, G- (Enterobacteriaceae), chlamydie, H. influenzae, pierwotniaki, Actinomyces (beztlenowiec)
+Zastosowanie: działanie miejscowe w jelicie (świnie, psy)"
+salazosulfapirydyna (sulfasalazyna),"Kategoria: Inhibitory szlaku kwasu foliowego — SULFONAMIDY + trimetoprim (diaminopirymidyny)
+Mechanizm / efekt: rozpad w jelicie do sulfapirydyny (część toksyczna) i kwasu 5-aminosalicylowego; działa przeciwzapalnie
+Spektrum: G+, G- (Enterobacteriaceae), chlamydie, H. influenzae, pierwotniaki, Actinomyces (beztlenowiec)
+Zastosowanie: wrzodziejące zapalenie jelita grubego psów (nie u kotów)"
+"sulfanilamid, sól srebrowa sulfadiazyny, sulfacetamid, mafenid","Kategoria: Inhibitory szlaku kwasu foliowego — SULFONAMIDY + trimetoprim (diaminopirymidyny)
+Mechanizm / efekt: stosowane miejscowo
+Spektrum: jw.; mafenid działa na beztlenowce
+Zastosowanie: zakażenia ran (krótkie, słabe działanie); sól srebrowa — rany pooparzeniowe i zakażone (Ps. aeruginosa); sulfacetamid — okulistyka; mafenid — zakażenia ran ropnych (zwłaszcza beztlenowce)
+PW / DN: nie stosować na niezakażone rany ani z obfitą ropą; mafenid — opóźnia gojenie ran (więc się go łączy z sulfonamidami), nietoksyczny
+Oporność / interakcje / uwagi: PABA nie znosi działania mafenidu"
+trimetoprim,"Kategoria: Inhibitory szlaku kwasu foliowego — SULFONAMIDY + trimetoprim (diaminopirymidyny)
+Mechanizm / efekt: antagonista kwasu foliowego — hamuje reduktazę dihydrofolianową (przemiana kwasu dihydrofoliowego w tetrahydrofoliowy); może być bakteriobójczy w połączeniu z sulfonamidem
+Spektrum: tlenowe G+, G-, pierwotniaki (oprócz Pseudomonas i Mycobacterium)
+Zastosowanie: łączony z sulfonamidami — sulfonamidy potencjonowane
+PW / DN: DN (u koni po podaniu doustnym): biegunki, neurotoksyczność, nieprawidłowy chód
+Oporność / interakcje / uwagi: oporność: synteza reduktazy niewrażliwej na inhibitory, zmniejszenie przepuszczalności"
+diawerdyna,"Kategoria: Inhibitory szlaku kwasu foliowego — SULFONAMIDY + trimetoprim (diaminopirymidyny)
+Mechanizm / efekt: inhibitor przemian kwasu foliowego
+Zastosowanie: z sulfachinoksaliną — leczenie kokcydiozy"
+"furazolidon, nitrofurazon, nitrofurantoina, nifuroksazyd, nifuratel","Kategoria: Leki uszkadzające DNA — NITROIMIDAZOLE i nitrofurany
+Grupa: nitrofurany
+Mechanizm / efekt / spektrum: nitroreduktazy bakteryjne redukują lek do aktywnych metabolitów wiążących się z rybosomami i rRNA → blok syntezy białek; zaburzenia reakcji enzymatycznych przemian węglowodanów → blok biosyntezy DNA; utlenienie lipidów i uszkodzenie błon; bakteriostatyczne, w większych stężeniach bakteriobójcze; tlenowe G+/G-, beztlenowce, niektóre pierwotniaki, wirusy, grzyby
+Zastosowanie: zakażenia pp, skóry i oczu, macicy; nitrofurazon — miejscowo, duża toksyczność; nitrofurantoina — zakażenia DM (doustnie, max 14 dni); nifuroksazyd — biegunki bakteryjne (nie wchłania się z pp); nifuratel — infekcje DM, PP (ogólnie, miejscowo, dopochwowo)
+PW: ciąża, szczenięta <5–6 tygodnia, niewydolność nerek i wątroby
+DN: wąski margines bezpieczeństwa; produkty rozkładu mutagenne i kancerogenne; nowotwory gruczołu sutkowego i jajników po nitrofurazonie (stymuluje proliferację komórek estrogenozależnych); drżenia, drgawki, neuropatie, zaburzenia pp, czerwone zabarwienie moczu, niedokrwistość hemolityczna noworodków
+Oporność / interakcje / uwagi: oporność rozwija się powoli, krzyżowa (Pseudomonas i Proteus oporne — brak reduktaz); kat. D , zakazane u zwierząt rzeźnych, brak PLW; podane ogólnie nie osiągają stężenia terapeutycznego w osoczu/tkankach"
+metronidazol,"Kategoria: Leki uszkadzające DNA — NITROIMIDAZOLE i nitrofurany
+Grupa: nitroimidazole
+Mechanizm / efekt / spektrum: biernie wnika do komórki, gdzie redukuje się do aktywnych metabolitów uszkadzających DNA niezależnie od fazy wzrostu drobnoustrojów; bakteriobójcze; bakterie beztlenowe (wymagają niskiego potencjału redoks), pierwotniaki
+Zastosowanie: choroby przyzębia, zapalenie jamy otrzewnowej / narządów rodnych / ucha środkowego / kości / stawów / opon mózgowych, ropnie jamy brzusznej, leczenie RZJ i biegunek wywołanych przez Clostridium difficile
+PW: ciąża; konie — brak apetytu
+DN: wysokie dawki neurotoksyczne — depresja OUN, ataksja, drżenia, hipertermia, napady padaczkowe, zaburzenia świadomości, mielotoksyczne; psy i koty — zaburzenia ze strony pp
+Oporność / interakcje / uwagi: oporność rzadko (obniżenie wewnątrzkomórkowej redukcji leku; oporność u Clostridium difficile i perfringens u koni i psów; krzyżowa); może nasilać działanie warfaryny i cyklosporyny; kat. D; per os, IV, doodbytniczo; szybko się wchłania, lipofilny — łatwo penetruje do OUN, kości, ropni, przez łożysko i do mleka; najbardziej aktywny"
+"dimetronidazol, ronidazol, karnidazol, ipronidazol","Kategoria: Leki uszkadzające DNA — NITROIMIDAZOLE i nitrofurany
+Grupa: nitroimidazole
+Mechanizm / efekt / spektrum: biernie wnika do komórki, gdzie redukuje się do aktywnych metabolitów uszkadzających DNA niezależnie od fazy wzrostu drobnoustrojów; bakteriobójcze; bakterie beztlenowe (wymagają niskiego potencjału redoks), pierwotniaki
+Zastosowanie: trychomonadoza, histomonadoza, giardioza, kokcydioza"
+tynidazol,"Kategoria: Leki uszkadzające DNA — NITROIMIDAZOLE i nitrofurany
+Grupa: nitroimidazole
+Mechanizm / efekt / spektrum: jw.; giardia
+Zastosowanie: giardioza
+DN: biegunka, wymioty, zaburzenia neurologiczne
+Oporność / interakcje / uwagi: brak PLW"
+"kolistyna (polimyksyna E), polimyksyna B","Kategoria: Leki uszkadzające błonę komórkową — POLIMYKSYNY i pozostałe peptydowe
+Grupa: polimyksyny
+Mechanizm / efekt / spektrum: kationowe detergenty; niszczą błony komórkowe przez atakowanie odsłoniętych grup fosforanowych błony fosfolipidowej → wyciek zawartości cytoplazmy, rozpad i śmierć komórki; w przypadku G- wiążą lipid A LPS (neutralizują endotoksynę); bakteriobójcze, stężeniozależne; bardziej G- niż G+
+Zastosowanie: stany zapalne uszu i skóry, infekcje pp, wczesne etapy wstrząsu septycznego (endotoksemii) wywołanego przez G-; może być iniekcyjnie (preparat dla bydła); u koni doustnie — kolki/colitis
+PW: choroby nerek; nadwrażliwość; u koni doustnie (kolki)
+DN: neurotoksyczność, nefrotoksyczność, zawroty głowy, blok nerwowo-mięśniowy, uszkodzenie nerek; ototoksyczne przy uszkodzonej błonie bębenkowej
+Interakcje / uwagi / kat.: oporność rzadka, chromosomalna (modyfikacja LPS, aktywne wypompowywanie); nie stosować z aminoglikozydami; synergizm z betalaktamami; kat. B"
+daptomycyna,"Kategoria: Leki uszkadzające błonę komórkową — POLIMYKSYNY i pozostałe peptydowe
+Grupa: lipopeptydy
+Mechanizm / efekt / spektrum: łączy się z błoną komórkową w sposób zależny od wapnia, oligomeryzuje tworząc kanały jonowe → ucieczka jonów potasowych, zaburzenie potencjału, rozpad błony i śmierć komórki; stężeniozależna; wyłącznie G+ (w tym MRSA, VISA, VRSA, VRE)
+DN: osłabienie mięśni szkieletowych (>10 mg/kg u psów), neuropatia obwodowa z degeneracją aksonów
+Interakcje / uwagi / kat.: aktywność wzrasta wprost proporcjonalnie do stężenia Ca²⁺; kat. A"
+ryfamycyna (ryfampicyna),"Kategoria: Inhibitory polimerazy RNA i inne (ryfamycyny, nowobiocyna, kwas fusydowy)
+Mechanizm / efekt: hamują aktywność polimerazy RNA → blok syntezy kwasów nukleinowych; bakteriobójczy
+Spektrum: G+
+Zastosowanie: stosowana w połączeniu z innymi lekami (oporność szybko się rozwija)
+DN: mocz, kał, ślina zabarwiają się na czerwono-pomarańczowo; u koni depresja OUN, zmniejszony apetyt
+Oporność / interakcje: szybko rozwijająca się oporność (stąd terapia skojarzona)"
+nowobiocyna,"Kategoria: Inhibitory polimerazy RNA i inne (ryfamycyny, nowobiocyna, kwas fusydowy)
+Mechanizm / efekt: hamuje syntezę kwasów nukleinowych i procesy oddychania komórkowego, uszkadza błony komórkowe; bakteriostatyczny
+Spektrum: niektóre G+, nieliczne G-
+Zastosowanie: zakażenia wymienia; infekcje gronkowcowe u psów i kotów gdy oporność na penicylinę"
+kwas fusydowy,"Kategoria: Inhibitory polimerazy RNA i inne (ryfamycyny, nowobiocyna, kwas fusydowy)
+Mechanizm / efekt: blokowanie biosyntezy białka; bakteriostatyczny, w wysokich stężeniach bakteriobójczy
+Spektrum: G+
+Zastosowanie: zakażenia skóry (liszajec, zapalenie gruczołów potowych, trądzik pospolity u ludzi)
+DN: reakcje alergiczne
+Oporność / interakcje: synergizm z metycyliną, cefalosporynami i wankomycyną"

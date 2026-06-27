@@ -61,6 +61,15 @@
   .c2 { --accent: #c0392b; }
   .c3 { --accent: #16a085; }
   .c4 { --accent: #d68910; }
+  .c5 { --accent: #2980b9; }
+
+  /* Wyróżniony kafelek fiszek na całą szerokość */
+  .card-wide { grid-column: 1 / -1; }
+  .card-wide .num { background: var(--accent); }
+  .card-wide .flash-body { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; }
+  .card-wide .flash-text { flex: 1; min-width: 240px; }
+  .card-wide .flash-text p { margin: 6px 0 0; color: #444; font-size: 0.92em; line-height: 1.5; }
+  .card-wide .actions { margin-top: 0; min-width: 200px; }
 
   footer { color: #aebfc9; font-size: 0.82em; text-align: center; padding: 0 20px 40px 20px; max-width: 800px; }
 </style>
@@ -144,6 +153,21 @@
     <div class="actions">
       <a class="btn btn-open" href="leki_pogrupowane.html">Otwórz →</a>
       <a class="btn btn-pdf" href="leki_pogrupowane.pdf" download>⬇ PDF</a>
+    </div>
+  </div>
+
+  <div class="card c5 card-wide">
+    <span class="num">🎴</span>
+    <div class="flash-body">
+      <div class="flash-text">
+        <h2>Fiszki — losowanie leków</h2>
+        <div class="subtitle">Tryb powtórek: nazwa leku → właściwości</div>
+        <p>Losuje jeden lek ze wszystkich kolokwiów (lub z wybranego). Przypomnij sobie mechanizm,
+        zastosowanie i działania niepożądane, a potem odsłoń odpowiedź. Możesz filtrować po kolokwium.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-open" href="fiszki.html">Zacznij naukę →</a>
+      </div>
     </div>
   </div>
 
