@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baza egzaminacyjna — część 3</title>
+<style>
+  * { box-sizing: border-box; }
+  :root { --accent: #27ae60; }
+  body { font-family:'Segoe UI',Tahoma,sans-serif; margin:0; padding:0; color:#222;
+    background:linear-gradient(135deg,#2c3e50 0%,#34495e 100%); min-height:100vh; }
+  header { text-align:center; color:#fff; padding:42px 20px 6px; }
+  header h1 { font-size:1.8em; margin:0 0 8px; letter-spacing:.5px; }
+  header p { font-size:1.0em; color:#cfd8dc; margin:6px auto; line-height:1.5; max-width:720px; }
+  .backlink { display:inline-block; margin-top:14px; color:#aebfc9; text-decoration:none; font-size:.92em; }
+  .backlink:hover { color:#fff; }
+  .toolbar { position:sticky; top:0; z-index:50; background:rgba(20,28,38,.92); backdrop-filter:blur(6px);
+    display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:center; padding:12px 16px;
+    color:#cfd8dc; font-size:.9em; box-shadow:0 2px 10px rgba(0,0,0,.3); }
+  .toolbar .stat b { color:#fff; }
+  .toolbar input[type=search] { border:none; border-radius:8px; padding:8px 12px; font-size:.95em; width:230px; max-width:60vw; }
+  .toolbar button { border:none; border-radius:8px; padding:8px 14px; font-weight:700; font-size:.9em; cursor:pointer;
+    background:#455a6b; color:#fff; transition:filter .15s ease; }
+  .toolbar button:hover { filter:brightness(1.15); }
+  .toolbar button.reset { background:#c0392b; }
+  .wrap { max-width:880px; margin:0 auto; padding:24px 16px 70px; }
+  .card { background:#fff; border-radius:14px; padding:22px 24px 18px; box-shadow:0 6px 20px rgba(0,0,0,.25);
+    border-left:6px solid var(--accent); margin-bottom:20px; }
+  .card.answered { border-left-color:#2980b9; }
+  .qhead { display:flex; align-items:baseline; gap:12px; margin-bottom:6px; }
+  .qnum { flex:0 0 auto; min-width:34px; height:34px; padding:0 8px; display:inline-flex; align-items:center;
+    justify-content:center; background:var(--accent); color:#fff; font-weight:700; border-radius:18px; font-size:.95em; }
+  .card.answered .qnum { background:#2980b9; }
+  .qtext { font-size:1.06em; font-weight:600; color:#2c3e50; line-height:1.45; }
+  .items { margin:8px 0 14px; padding:12px 14px; background:#f4f7f9; border-radius:10px; font-size:.93em;
+    color:#44525c; line-height:1.5; }
+  .items ol { margin:0; padding-left:22px; }
+  .items .raw { margin:2px 0; }
+  .opts { list-style:none; margin:6px 0 0; padding:0; }
+  .opt { display:flex; align-items:flex-start; gap:12px; padding:11px 14px; margin:8px 0; border:2px solid #e1e6ea;
+    border-radius:10px; cursor:pointer; transition:background .12s ease,border-color .12s ease; line-height:1.45; font-size:.98em; }
+  .opt:hover { background:#f4f7f9; border-color:#cdd6dd; }
+  .opt .mark { flex:0 0 auto; width:26px; height:26px; border-radius:50%; border:2px solid #c2ccd3; color:#7f8c8d;
+    font-weight:700; font-size:.9em; display:inline-flex; align-items:center; justify-content:center; background:#fff; transition:all .12s ease; }
+  .opt.sel { background:#eafaf1; border-color:var(--accent); }
+  .opt.sel .mark { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .opt .otext { padding-top:2px; }
+  footer { color:#aebfc9; font-size:.82em; text-align:center; padding:0 20px 40px; }
+  @media (max-width:560px){ .card{padding:18px 16px;} .qtext{font-size:1em;} }
+</style>
+</head>
+<body>
+<header>
+  <h1>Baza egzaminacyjna — część 3</h1>
+  <p>Pytania 127–189 z dużej bazy (PDF). <b>Poprawne odpowiedzi nie są zaznaczone</b> — klikając wybierasz własną odpowiedź. Twoje zaznaczenia zapisują się w przeglądarce.</p>
+  <a class="backlink" href="index.html">← Powrót do strony głównej</a>
+</header>
+<div class="toolbar">
+  <span class="stat">Zaznaczone: <b id="cnt">0</b> / <span id="tot">0</span></span>
+  <input type="search" id="search" placeholder="Szukaj w pytaniach…" autocomplete="off">
+  <button id="scrollUnanswered">Następne bez odpowiedzi ↓</button>
+  <button class="reset" id="reset">Wyczyść wszystkie</button>
+</div>
+<div class="wrap" id="wrap"></div>
+<footer>Pytania jednokrotnego wyboru — kliknij odpowiedź, aby ją zaznaczyć, kliknij ponownie, aby odznaczyć. Strona nie podpowiada poprawnych odpowiedzi.</footer>
+<script>
+const QUESTIONS = [{"n": 127, "q": "Długotrwałe stosowanie leków zobojętniających kwas solny może prowadzić do:", "items": [], "options": ["zakażeń bakteryjnych w żołądku", "alkalozy metabolicznej", "kamicy nerkowej", "wszystkie odpowiedzi są prawidłowe"]}, {"n": 128, "q": "Laktuloza poza leczeniem zaparć znalazła jeszcze zastosowanie w leczeniu:", "items": [], "options": ["encefalopatii wątrobowej", "niewydolności nerek", "niewydolności mięśnia sercowego", "żadna odpowiedź nie jest prawidłowa"]}, {"n": 129, "q": "Długotrwałe stosowanie glikozydów antrachinonowych może prowadzić do:", "items": [], "options": ["hiperkalcemii", "hipokaliemii", "hiperkaliemii", "żadna odpowiedź nie jest prawidłowa"]}, {"n": 130, "q": "Maropitant jest:", "items": [], "options": ["antagonistą receptora 5-HT3", "antagonistą receptora D2", "antagonistą receptora neurokininowego-1", "antagonistą receptora H1"]}, {"n": 131, "q": "Do inhibitorów pompy protonowej należy:", "items": [], "options": ["cymetydyna", "omeprazol", "pirenzepina", "cytrynian potasowo-bizmutowy"]}, {"n": 132, "q": "Na działanie apomorfiny najbardziej wrażliwe są:", "items": [], "options": ["Psy", "Koty", "wszystkie zwierzęta w takim samym stopniu", "żadna odpowiedź nie jest prawidłowa"]}, {"n": 133, "q": "Azotany:", "items": [], "options": ["są aktywatorami grup NO", "działają przeciwarytmicznie", "w wyniku ich stosowania może rozwinąć się tolerancja", "prawidłowe a i c"]}, {"n": 134, "q": "Do działań glikozydów nasercowych nie zaliczamy:", "items": [], "options": ["działania inotropowo dodatniego", "moczopędnego", "działania chronotropowo dodatniego", "prawidłowe a i b"]}, {"n": 135, "q": "Milrynon nie wykazuje działania:", "items": [], "options": ["Przeciwarytmicznego", "Wazodylatacyjnego", "inotropowo dodatniego", "hamującego PDE3"]}, {"n": 136, "q": "Do leków przeciwarytmicznych klasy Ib zaliczamy:", "items": [], "options": ["flekainid, propafenon", "fenytoinę, lidokainę", "chinidynę, dizopiramid", "dofetylid, tokainid"]}, {"n": 137, "q": "Do działań niepożądanych leków β-adrenolitycznych nie zaliczamy:", "items": [], "options": ["senności", "działania proarytmicznego", "skurczu oskrzeli", "bradykardii"]}, {"n": 138, "q": "Wskazaniem do stosowania leków blokujących kanały wapniowe nie są:", "items": [], "options": ["Nadciśnienie tętnicze", "Zaburzenia rytmu serca", "Obrzęki", "Choroba niedokrwienna serca"]}, {"n": 139, "q": "Do beta-adrenolityków o właściwościach wazodylatacyjnych zaliczamy:", "items": [], "options": ["Bisoprolol, karwedilol", "Metoprolol, labetalol", "Labetalol, nebiwolol", "Propranolol, bisoprolol"]}, {"n": 140, "q": "Do inhibitorów PDE3 nie zaliczamy:", "items": [], "options": ["Milrynonu", "Kofeiny", "Dobutaminy", "Pimobendanu"]}, {"n": 141, "q": "Do zaburzeń elektrolitowych występujących po diuretykach tiazydowych zaliczamy:", "items": [], "options": ["Hiperkaliemię", "Hiperglikiemię", "Hiponatremię", "Prawidłowe b i c"]}, {"n": 142, "q": "Przyczyną alkalozy (zasadowicy) metabolicznej nie są:", "items": [], "options": ["Wymioty", "Stosowanie diuretyków", "Biegunka", "Nadczynność tarczycy"]}, {"n": 143, "q": "Do lokalnych anestetyków aminoamidowych należą:", "items": [], "options": ["Lidokaina", "Mepiwakaina", "Bupiwakaina", "Wszystkie prawdziwe"]}, {"n": 144, "q": "Do penicylin naturalnych należy:", "items": ["Benzylopenicylina", "Penicylina prokainowa", "Kloksacylina", "Oksacylina", "Ampicylina"], "options": ["abe", "ab", "cde", "abcd", "be"]}, {"n": 145, "q": "Benzynopenicylinę można podać w zakażeniu wywołanym przez:", "items": ["Streptococcus", "Pseudomonas aeruginosa", "Neisseria meningitidis", "Proteus vulgaris", "Escherichia coli"], "options": ["ace", "abc", "bcd", "ac", "abe"]}, {"n": 146, "q": "Zespół Hoigne występuje po podaniu", "items": ["Benzylopenicyliny", "Penicyliny prokainowej", "Oksacyliny", "Kloksacyliny", "Doxycykliny"], "options": ["ab", "cd", "b", "a", "ce"]}, {"n": 147, "q": "Do wstrząsu penicylinowego może dojść po podaniu:", "items": ["Benzylopenicyliny", "Penicyliny prokainowej", "Erytromycyny", "Roksytromycyny", "Doxycykliny"], "options": ["a", "b", "ab", "abc", "cde"]}, {"n": 148, "q": "W przypadku wystąpienia wstrząsu penicylinowego podam:", "items": [], "options": ["Hydrokortyzon", "Adrenalinę", "Diazepam", "Aminofilinę", "Metoklopramid"]}, {"n": 149, "q": "U osoby uczulonej na penicylinę możemy zastosować:", "items": [], "options": ["Doxycyklinę", "Amoksycylinę", "Augmentin", "Erytromycynę", "Gentamycynę"]}, {"n": 150, "q": "W przypadku wystąpienia zespołu Hoigne’a podam:", "items": [], "options": ["Hydrokortyzon", "Adrenalinę", "Diazepam", "Aminofilinę", "Metoklopramid"]}, {"n": 151, "q": "Do aminopenicylin należy:", "items": [], "options": ["Ampicylina", "Amoksycylina", "Mezlocylina", "Azlocylina", "Piperacylina"]}, {"n": 152, "q": "W przypadku zakażenia bakteriami wytwarzającymi laktamazy podam:", "items": [], "options": ["Ampicylinę", "Augmentin", "Unasyn", "Amoksycylinę", "V-cylinę"]}, {"n": 153, "q": "W przypadku zakażenia wywołanego Pseudomonas aeruginosa możesz spodziewać się wrażliwości na:", "items": [], "options": ["Benzylopenicylinę", "Erytromycynę", "Penicylinę prokainową", "Azlocylinę", "Mezlocylinę"]}, {"n": 154, "q": "Do działań niepożądanych występujących po ampicylinie należy:", "items": [], "options": ["Skórny odczyn alergiczny", "Objawy dyspeptyczne", "Zapalenie chrząstek", "Autoimmunologiczne zapalenie wątroby", "Osteoporoza"]}, {"n": 155, "q": "Do cefalosporyn I generacji należą:", "items": [], "options": ["Cefradyna", "Cefalotyna", "Cefadroksyl", "Ceftriakson", "Ceftazidim"]}, {"n": 156, "q": "Podkreśl zdanie prawdziwe dotyczące cefalosporyn I generacji:", "items": [], "options": ["Cefalosporyny I generacji działają bakteriostatycznie", "Działają silnie na bakterie gram-", "Są skuteczne w zakażeniach wywołanych Proteus i Pseudomonas", "Stosowane mogą być w zakażeniach dróg oddechowych", "Często wywołują zapalenie chrząstek"]}, {"n": 157, "q": "Podkreśl zdanie prawdziwe dotyczące cefalosporyn III generacji", "items": [], "options": ["Słabiej działają na bakterie gram+", "Mogą działac na Proteus i Enterobakteriaceae", "Dobrze wchłaniają się z przewodu pokarmowego", "Mogą być stosowane w leczeniu posocznicy", "Mogą być stosowane w zapaleniu opon mózgowo-rdzeniowych"]}, {"n": 158, "q": "Najdłuższym okresem półtrwania charakteryzuje się:", "items": [], "options": ["Cefoperazon", "Ceftriakson", "Cefotaksym", "Cefsulodyna", "Ceftazidim"]}, {"n": 159, "q": "Penicylinę benzylową podam w przypadku:", "items": [], "options": ["Meningokowego zapaleniu opon mózgowych", "Anginy paciorkowcowej", "Zapalenie wsierdzia wywołanego przez paciorkowca", "Zapalenia pęcherza moczowego wywołanego przez Proteus", "Posocznicy wywołanej przez Pseudomonas"]}, {"n": 160, "q": "W przypadku eradykacji Helicobacter pylori można zastosować:", "items": [], "options": ["Gentamycynę", "Klarytromycynę", "Metronidazol", "Klindamycynę", "Amoksycylinę"]}, {"n": 161, "q": "Prawdą jest, że erytromycyna:", "items": [], "options": ["Jest antybiotykiem bakteriobójczym", "Działa głównie na bakterie gram-", "Może działać na Mycoplasma i Legionella", "Do najczęstszych działań niepożądanych należy biegunka i wymioty", "Nie wchłania się z przewodu pokarmowego"]}, {"n": 162, "q": "Najdłuższy okres półtrwania posiada:", "items": [], "options": ["Oleandomycyna", "Erytromycyna", "Azitromycyna", "Dawercyna", "Spiramycyna"]}, {"n": 163, "q": "W leczeniu trądziku miejscowo możemy stosować:", "items": [], "options": ["Gentamycynę", "Klindamycynę", "Dawercin", "Cefradynę", "Ampicylinę"]}, {"n": 164, "q": "Rzekomobłoniaste zapalenie jelit występuje po:", "items": [], "options": ["Klindamycynie", "Ceftiaksonie", "Amikacynie", "Wankomycynie", "Metronidazolu"]}, {"n": 165, "q": "W przypadku rzekomobłoniastego zapalenia jelit podam:", "items": [], "options": ["Klindamycynę", "Ceftriakson", "Amikacynę", "Wankomycynę", "Matronidazol"]}, {"n": 166, "q": "Do antybiotyków wchłaniających się z przewodu pokarmowego należy:", "items": [], "options": ["Amoksycylina", "Klindamycyna", "Gentamycyna", "Ceftriakson", "Ceftazidim"]}, {"n": 167, "q": "Pacjentowi ze stanem zapalnym w obrębie kości żuchwy podam:", "items": [], "options": ["Ampicylinę", "Augmentin", "Klindamycynę", "Cefalotynę", "Amikacynę"]}, {"n": 168, "q": "Amikacyna (aminoglikozyd):", "items": [], "options": ["Dobrze wchłania się z przewodu pokarmowego", "Jest antybiotykiem bakteriobójczym", "Nie działa wobec Proteus i Pseudomonas", "Może działać oto i nefrotoksycznie", "Stosowana jest zawsze łącznie z penicylinami"]}, {"n": 169, "q": "Neomycyna (aminoglikozyd):", "items": [], "options": ["Podawana jest najczęściej dożylnie", "Dobrze wchłania się z przewodu pokarmowego", "Może być stosowana w maści i aerozolu", "Nie działa oto i nefrotoksycznie", "Działa tylko na bakterie G+"]}, {"n": 170, "q": "Do antybiotyków bakteriostatycznych należy:", "items": [], "options": ["Erytromycyna", "Oksytetracyklina", "Oleandomycyna", "Amoksycylina", "Cefaklor"]}, {"n": 171, "q": "W przypadku zapalenia płuc wywołanego przez mykoplazmy podam:", "items": [], "options": ["Amoksycylinę", "Doxycyklinę", "Klarytromycynę", "Gentamycynę", "Cefedroksyl"]}, {"n": 172, "q": "Tetracykliny:", "items": [], "options": ["Działa bakteriobójczo", "Działają na Chlamydie i Riketsje", "Hamuja biosyntezę białka komórki bakteryjnej", "Nie wchłaniają się z przewodu pokarmowego", "Nie mogą być stosowane w zakażeniach dróg żółciowych"]}, {"n": 173, "q": "Do leków przeciwprątkowych należy:", "items": [], "options": ["Izoniazyd", "Ryfampicyna", "Etambutol", "Metronidazol", "Ketokonazol"]}, {"n": 174, "q": "Chondrotoksycznie może działać:", "items": [], "options": ["Gentamycyna", "Erytromycyna", "Pefloksacyna", "Mezlocylina", "Klindamycyna"]}, {"n": 175, "q": "Gryzeofulwina:", "items": [], "options": ["Jest antybiotykiem przeciwgrzybiczym", "Stosowana jest w grzybicach skóry", "Nie powodują działań niepożądanych", "Nie wchłania się z przewodu pokarmowego", "Działa na Candiida albicans i bakterie"]}, {"n": 176, "q": "Amfoterycyna B:", "items": [], "options": ["Wchłania się dobrze z przewodu pokarmowego", "Działa na Cryptococcus, Blastomyces", "Działa nefrotoksycznie", "Stosowana jest w grzybicach narządowych", "Może wywołać zakrzepowe zapalenie żył"]}, {"n": 177, "q": "Metronidazol:", "items": [], "options": ["Działa na bakterie beztlenowe", "Podawany jest tylko dożylnie", "Może być stosowany w zakażeniach Trichomonas i Lambliozie", "Stosowany jest w eradykacji Helicobacter pylori", "Jest pochodną nitroimidazoli"]}, {"n": 178, "q": "Wskaż antybiotyki o aktywności bakteriostatycznej:", "items": ["Tiamulina", "Kolistyna", "Cefowecyna", "Doksycyklina", "Penicylina prokainowa"], "options": ["1,3", "2,3,5", "1,2,4", "1,4", "4,5"]}, {"n": 179, "q": "Wskaż prawidłowo przyporządkowany mech. działania do niżej wymienionego antybiotyku/chemioterapeutyku:", "items": ["Kloksacylina", "Metronidazol", "Cyprofloksacyna", "Tiamulina", "Ryfampicyna"], "options": ["I-a, II-c, III-e, IV-b, V-d", "I-d, II-c, III-b, IV-e, V-a", "I-a, II-c, III-b, IV-d, V-e", "I-a, II-c, III-d, IV-e, V-b", "I-a, II-e, III-d, IV-c, V-b"]}, {"n": 180, "q": "Metabolizm działania pochodnych nitroimidazolu polega na", "items": [], "options": ["Hamowaniu enzymow kom biorących udział w metabolizmie węglowodanów", "uszkadzaniu DNA przez wysoce reaktywne cytotoksyczne związki pośrednie", "łączeniu się z podjednostka alfa top izomerazy II i blokowaniu tworsenia podwójnej helisy DNA", "uszkadzaniu DNA przez aktywne metabolity powstałe w wyniku reakcji utleniania w komórkach bakterii tlenowych", "Działaniu antagonistycznym w stosunku do kwasu p-aminobenzoesowego"]}, {"n": 181, "q": "Wskaż szereg, w którym prawidłowo przyporządkowano zastosowanie do leku", "items": ["Nitrofurantoina", "Metronidazol", "Cyprofloksacyna", "Walnemulina", "Oksytetracyklina"], "options": ["I-c II-b III-a IV-d V-e", "I-b II-c III-a IV-e V-d", "I-c II-e III-a IV-b V-d", "I-c II-e III-b IV-a V-d", "I-d II-c III-e IV-b V-a"]}, {"n": 182, "q": "Wskaz szereg, w którym prawidłowo przyporządkowano działanie niepożądane do leku", "items": ["Ampicylina", "Wankomycyna", "Chloramfenikol", "Neomycyna", "Klindamycyna"], "options": ["I-b II-c III-a IV-d V-e", "I-b II-a III-c IV-e V-d", "I-a II-c III-b IV-d V-e", "I-b II-e III-d IV-a V-c", "I-e II-d III-c IV-a V-b"]}, {"n": 183, "q": "Wskaż prawidłowo przyporządkowany mechanizm działania do niżej wymienionego antybiotyku/chemioterapeutyku", "items": ["Piperacylina", "Metronidazol", "Cyprofloksacyna", "Mupirocyna", "Ryfampicyna"], "options": ["I-a II-c III-e IV-b V-d", "I-d II-c III-b IV-e V-a", "I-a II-c III-d IV-e V-b", "I-a II-e III-d IV-c V-b"]}, {"n": 184, "q": "Wskaż antybiotyki o aktywności bakteriobójczej", "items": ["Erytromycyna", "Kolistyna", "Cefuroksym", "Doksycyklina", "Aztreonam"], "options": ["1,3,5", "2,3,5"]}, {"n": 185, "q": "Do glikokortykosteroidów o największej sile działania p/zapalnego zaliczamy", "items": [], "options": ["hydrokortyzon, fludrokortyzon", "deksmetazon, metyloprednizolon", "deksametazon, betametazon", "kortyzon, triamcynolon", "prednizon, prednizolon"]}, {"n": 186, "q": "Do leków adrenostatycznych zaliczamy", "items": [], "options": ["mitotan, trilostan", "metimazol, propylotiouracyl", "aminoglutetimid, metyrapon", "a i c", "b i c"]}, {"n": 187, "q": "Mechanizm działania rec. opioidowych – wybierz prawidłowe", "items": [], "options": ["działa na rec. jonowe, jonotropowe ki i delta", "rec. metabotropowe Gi/Go", "układ nocyceptywny w rdzeniu", "układ antynocyceptywny", "układ w podwzgórzu"]}, {"n": 188, "q": "Wskaż prawdziwą odpowiedź na temat inhibitorów COX-2", "items": [], "options": ["ma porównywalne działanie przeciwzapalne jak inne NLPZ", "wyższe działanie p/bólowe niż inne NLPZ", "działają nefrotoksycznie", "działają kardioprotekcyjnie"]}, {"n": 189, "q": "Wskaż fałszywe", "items": [], "options": ["lei o przedłużonym uwalnianiu NLPZ są bezpieczne", "COX-1 jest bardziej gastrotoksyczny niż COX-2", "Paracetamol nie uszkadza błony śluzowej żołądka", "Leki zobojętniające pH żołądka są pomocne w likwidowaniu działań niepożądanych – gastrotoksyczności"]}];
+const LSKEY = 'farma_baza_p3_v1';
+let answers = {};
+try { answers = JSON.parse(localStorage.getItem(LSKEY) || '{}'); } catch(e){ answers = {}; }
+function save(){ localStorage.setItem(LSKEY, JSON.stringify(answers)); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+const LETTERS = ['A','B','C','D','E','F','G','H'];
+const wrap = document.getElementById('wrap');
+function labeledItems(items){
+  const labeled = items.some(it => /^\s*([0-9]+|[a-eA-E])[.)]/.test(it));
+  if(labeled){ return '<div class="items">' + items.map(it => '<div class="raw">'+esc(it)+'</div>').join('') + '</div>'; }
+  return '<div class="items"><ol>' + items.map(it => '<li>'+esc(it)+'</li>').join('') + '</ol></div>';
+}
+function render(){
+  wrap.innerHTML = '';
+  QUESTIONS.forEach(q => {
+    const card = document.createElement('div');
+    card.className = 'card'; card.dataset.n = q.n;
+    card.dataset.text = (q.q + ' ' + (q.items||[]).join(' ') + ' ' + q.options.join(' ')).toLowerCase();
+    if(answers[q.n] != null) card.classList.add('answered');
+    let h = '<div class="qhead"><span class="qnum">'+q.n+'</span><div class="qtext">'+esc(q.q)+'</div></div>';
+    if(q.items && q.items.length) h += labeledItems(q.items);
+    h += '<ul class="opts">';
+    q.options.forEach((opt, i) => {
+      const sel = answers[q.n] === i ? ' sel' : '';
+      const mark = answers[q.n] === i ? '\u2713' : LETTERS[i];
+      h += '<li class="opt'+sel+'" data-i="'+i+'"><span class="mark">'+mark+'</span><span class="otext">'+esc(opt)+'</span></li>';
+    });
+    h += '</ul>'; card.innerHTML = h;
+    card.querySelectorAll('.opt').forEach(el => {
+      el.addEventListener('click', () => {
+        const i = +el.dataset.i;
+        if(answers[q.n] === i){ delete answers[q.n]; } else { answers[q.n] = i; }
+        save(); render(); updateStat();
+      });
+    });
+    wrap.appendChild(card);
+  });
+}
+function updateStat(){ document.getElementById('cnt').textContent = Object.keys(answers).length;
+  document.getElementById('tot').textContent = QUESTIONS.length; }
+document.getElementById('reset').addEventListener('click', () => {
+  if(confirm('Na pewno wyczy\u015bci\u0107 wszystkie zaznaczenia w tym te\u015bcie?')){ answers = {}; save(); render(); updateStat(); }
+});
+document.getElementById('search').addEventListener('input', e => {
+  const term = e.target.value.trim().toLowerCase();
+  document.querySelectorAll('.card').forEach(c => { c.style.display = (!term || c.dataset.text.includes(term)) ? '' : 'none'; });
+});
+document.getElementById('scrollUnanswered').addEventListener('click', () => {
+  const cards = [...document.querySelectorAll('.card')].filter(c => c.style.display !== 'none');
+  const next = cards.find(c => !c.classList.contains('answered') && c.getBoundingClientRect().top > 10) || cards.find(c => !c.classList.contains('answered'));
+  if(next) next.scrollIntoView({behavior:'smooth', block:'start'});
+});
+render(); updateStat();
+</script>
+</body>
+</html>
